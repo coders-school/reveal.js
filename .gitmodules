@@ -13,3 +13,6 @@
 [submodule "cmake"]
 	path = md.cmake
 	url = https://github.com/coders-school/cmake.git
+[submodule "qa-sessions"]
+	path = md.qa
+	url = https://github.com/coders-school/qa-sessions.git
