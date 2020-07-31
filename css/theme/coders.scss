@@ -1,0 +1,139 @@
+/**
+ * Coders School theme for reveal.js.
+ *
+ * By Łukasz "Lukin" Ziobroń
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+@import url(fonts/source-sans-pro/source-sans-pro.css);
+@import url(fonts/rajdhani/rajdhani.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #363232;
+
+// Primary/body text
+$mainFont: Rajdhani, "Source Sans Pro", Helvetica, sans-serif;
+$mainFontSize: 40px;
+$mainColor: #eee;
+
+// Vertical spacing between blocks of text
+$blockMargin: 20px;
+
+// Headings
+$headingMargin: 10px 0 $blockMargin 0;
+$headingFont: Rajdhani, "Source Sans Pro", Helvetica, sans-serif;
+$headingColor: #eee;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingTextShadow: none;
+$headingFontWeight: 600;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+$codeFont: monospace;
+
+$linkColor: #cf802a;
+$linkColorHover: lighten( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #cf802a;
+$selectionColor: #fff;
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal p {
+    font-size: 0.8em;
+    text-align: justify;
+}
+
+.reveal ul {
+    font-size: 0.8em;
+}
+
+.reveal pre {
+    width: 95%;
+    font-size: 0.6em;
+    /*box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);*/
+}
+
+.reveal pre code {
+    padding: 15px;
+    max-height: 560px;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 4px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+
+.reveal section img.plain {
+  border: 0;
+  background: none;
+  box-shadow: none; }
+
+.reveal a img {
+  -webkit-transition: all .15s linear;
+  -moz-transition: all .15s linear;
+  transition: all .15s linear; }
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #ce904e;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress span {
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+
+/*********************************************
+ * PRINT BACKGROUND
+ *********************************************/
+@media print {
+  .backgrounds {
+    background-color: #191919; } }
+
+/*********************************************
+ * OWN BOXES
+ *********************************************/
+.reveal .box {
+  position: absolute;
+  /*box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2);*/
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 0.6em;
+  text-align: left; }
+
+/*********************************************
+ * MULTICOLUMN SUPPORT
+ *********************************************/
+.multicolumn {
+  display: flex; }
+.col {
+  flex: 1; }
