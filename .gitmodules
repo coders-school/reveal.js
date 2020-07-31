@@ -1,3 +1,6 @@
 [submodule "stl"]
 	path = md.stl
 	url = https://github.com/coders-school/stl.git
+[submodule "object-oriented-programming"]
+	path = md.oop
+	url = https://github.com/coders-school/object-oriented-programming.git
