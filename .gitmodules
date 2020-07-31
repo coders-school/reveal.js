@@ -10,3 +10,6 @@
 [submodule "good-practices"]
 	path = md.good-practices
 	url = https://github.com/coders-school/good-practices.git
+[submodule "cmake"]
+	path = md.cmake
+	url = https://github.com/coders-school/cmake.git
