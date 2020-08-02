@@ -16,3 +16,6 @@
 [submodule "qa-sessions"]
 	path = md.qa
 	url = https://github.com/coders-school/qa-sessions.git
+[submodule "cpp-fundamentals"]
+	path = md.cpp-fundamentals
+	url = https://github.com/coders-school/cpp-fundamentals.git
