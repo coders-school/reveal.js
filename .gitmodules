@@ -22,3 +22,6 @@
 [submodule "modern-cpp"]
 	path = md.modern-cpp
 	url = https://github.com/coders-school/modern-cpp.git
+[submodule "templates"]
+	path = md.templates
+	url = https://github.com/coders-school/templates.git
