@@ -19,3 +19,6 @@
 [submodule "cpp-fundamentals"]
 	path = md.cpp-fundamentals
 	url = https://github.com/coders-school/cpp-fundamentals.git
+[submodule "modern-cpp"]
+	path = md.modern-cpp
+	url = https://github.com/coders-school/modern-cpp.git
