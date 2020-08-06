@@ -25,3 +25,6 @@
 [submodule "templates"]
 	path = md.templates
 	url = https://github.com/coders-school/templates.git
+[submodule "memory-management"]
+	path = md.memory-management
+	url = https://github.com/coders-school/memory-management.git
