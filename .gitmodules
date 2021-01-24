@@ -28,3 +28,12 @@
 [submodule "memory-management"]
 	path = md.memory-management
 	url = https://github.com/coders-school/memory-management.git
+[submodule "md.lambdas"]
+	path = md.lambdas
+    url = https://github.com/coders-school/lambdas.git
+[submodule "md.multithreading"]
+	path = md.multithreading
+    url = https://github.com/coders-school/multithreading.git
+[submodule "md.recruitment"]
+	path = md.recruitment
+	url = https://github.com/coders-school/recruitment.git
