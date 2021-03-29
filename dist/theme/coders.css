@@ -362,6 +362,86 @@
   font-size: 0.6em;
   text-align: left; }
 
+#animation .producer {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  background: #272625;
+  width: 100%; }
+
+#animation .producer-active {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  background: #8B3536;
+  width: 100%; }
+
+#animation .consumer {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  background: #272625;
+  width: 40%; }
+
+#animation .consumer-active {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  background: #8B3536;
+  width: 40%; }
+
+#animation .queue {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  background: #8B3536;
+  width: 40%;
+  margin: 50px 5px; }
+
+#animation .mutex, #animation .condvar {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  background: #272625; }
+
+#animation .mutex-locked, #animation .condvar-notified {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  background: #cf802a; }
+
+#animation .element {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  display: block;
+  background: #cf802a; }
+
+#animation .element-screwed {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  display: inline-block;
+  text-transform: uppercase;
+  display: block;
+  background: #ff0000; }
+
 /*********************************************
  * MULTICOLUMN SUPPORT
  *********************************************/
