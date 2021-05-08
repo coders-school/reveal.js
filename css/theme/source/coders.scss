@@ -138,6 +138,79 @@ $selectionColor: #fff;
     text-align: left;
 }
 
+#animation {
+    $accentColor: #8B3536;
+
+    @mixin block {
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid black;
+        display: inline-block;
+        text-transform: uppercase;
+    }
+
+    @mixin inactive {
+        background: #272625;
+    }
+
+    @mixin active {
+        background: $accentColor;
+    }
+
+    .producer {
+        @include block;
+        @include inactive;
+        width: 100%;
+    }
+
+    .producer-active {
+        @include block;
+        @include active;
+        width: 100%;
+    }
+
+    .consumer {
+        @include block;
+        @include inactive;
+        width: 40%;
+    }
+
+    .consumer-active {
+        @include block;
+        @include active;
+        width: 40%;
+    }
+
+    .queue {
+        @include block;
+        @include active;
+        width: 40%;
+        margin: 50px 5px;
+    }
+
+    .mutex, .condvar {
+        @include block;
+        @include inactive;
+    }
+
+    .mutex-locked, .condvar-notified {
+        @include block;
+        background: $linkColor;
+    }
+
+    .element {
+        @include block;
+        display: block;
+        background: $linkColor;
+    }
+
+    .element-screwed {
+        @include block;
+        display: block;
+        background: #ff0000;
+    }
+}
+
 /*********************************************
  * MULTICOLUMN SUPPORT
  *********************************************/
