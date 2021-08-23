@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - Structures Example (with MD)</title>
+
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/white.css" id="theme">
+
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+        <!-- Use external markdown resource, separate slides by three newlines; vertical slides by two newlines -->
+        <section data-markdown="markdown.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+
+        <!-- Slides are separated by three dashes (quick 'n dirty regular expression) -->
+        <section data-markdown data-separator="---">
+          <script type="text/template">
+            ```structure
+            !type: labyrinth
+            !cell_size: 20
+            S P P W
+            W W P W
+            W F P W
+            ```
+          </script>
+        </section>
+
+        <!-- Slides are separated by newline + three dashes + newline, vertical slides identical but two dashes -->
+        <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+          <script type="text/template">
+              ```structure
+              !type: red_black_tree
+              R: 104
+              B: 82 24R
+              R: 12L 2 13 44
+              ```
+          </script>
+        </section>
+
+      </div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <!-- paper.js for structures plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
+
+		<script>
+      import RevealStructures from "../plugin/structures/plugin.js";
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealStructures ]
+			});
+
+		</script>
+
+	</body>
+</html>
