@@ -861,10 +861,10 @@
     "estree-walker" "^1.0.1"
     "picomatch" "^2.2.2"
 
-"@toothlessjs/diagram-drawer@1.0.1":
-  "integrity" "sha512-psdl7Fbco3mDb+xzhSgTyqiM+INAJeCGsXVPBLRAFHw0NLCsrvYly9vFoAzaPJAq4PWGGTGU2/ASaSacENUUBQ=="
-  "resolved" "https://registry.npmjs.org/@toothlessjs/diagram-drawer/-/diagram-drawer-1.0.1.tgz"
-  "version" "1.0.1"
+"@toothlessjs/diagram-drawer@^1.0.1":
+  "integrity" "sha512-bNZaBuWLvRcGpMYIHcyCjuh5j06FvX1B0f1vIOwuHNC/OL2WivCdyCOoz1OsHKPBvFW7jOWETwYdYRtk+j9hkA=="
+  "resolved" "https://registry.npmjs.org/@toothlessjs/diagram-drawer/-/diagram-drawer-1.1.3.tgz"
+  "version" "1.1.3"
 
 "@types/color-name@^1.1.1":
   "integrity" "sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ=="

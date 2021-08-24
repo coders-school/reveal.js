@@ -421,7 +421,7 @@ const Plugin = () => {
       "labyrinth": labyrinth,
       "red_black_tree": red_black_tree
     }
-  
+    
     structureDrawer.init(structures[attributes["type"]](structure, attributes));
     structureDrawer.draw();
     // console.log(structureDrawer);
