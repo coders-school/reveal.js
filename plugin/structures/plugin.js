@@ -599,6 +599,7 @@ function graph(structure, attributes) {
       "start_arrow": edge.lArrow,
       "end_arrow": edge.rArrow,
       "text_height": 20,
+      "text_size": attributes["cell_size"] * 0.6,
       "margin": 10,
     });
   }
