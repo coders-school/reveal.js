@@ -309,7 +309,7 @@ function red_black_tree(structure, attributes) {
   return structure_dict;
 }
 
-function containers(structure, attributes) {
+function container(structure, attributes) {
   const attributes_defaults = {
     text_size: 20
   }
@@ -383,6 +383,234 @@ function containers(structure, attributes) {
   return structure_dict;
 }
 
+function repulsive(x, k) {
+  return Math.pow(k, 2) / x;
+}
+
+function attractive(x, k) {
+  return Math.pow(x, 2) / k;
+}
+
+function graph(structure, attributes) {
+  const attributes_defaults = {
+    width: 400,
+    height: 400,
+    cell_size: 20
+  }
+
+  for (let key in attributes_defaults) {
+    if (!(key in attributes)) attributes[key] = attributes_defaults[key];
+  }
+
+  let structure_dict = {
+    "background": "",
+    "elements": {
+      "template": {
+        "x": 0,
+        "y": 0,
+        "width": attributes["cell_size"],
+        "height": attributes["cell_size"],
+        "shape": "ellipse",
+        "border_color": "#000",
+        "border_width": 2,
+        "text_color": "#000",
+        "text_size": attributes["cell_size"] * 0.6,
+      }
+    },
+    "connections": []
+  };
+
+  class Edge {
+    constructor(from, to, value, lArrow, rArrow) {
+      this.from = from;
+      this.to = to;
+      this.value = value;
+      this.lArrow = lArrow;
+      this.rArrow = rArrow;
+    }
+  }
+
+  class Vector {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+
+    get distance() {
+      return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+    }
+
+    div(scalar) {
+      if (scalar == 0) {
+        console.log("DIVISION BY 0");
+        // for this application returning zero vector works fine
+        return new Vector(0, 0);
+      }
+      return new Vector(this.x / scalar, this.y / scalar);
+    }
+
+    multiply(scalar) {
+      return new Vector(this.x * scalar, this.y * scalar);
+    }
+
+    add(other) {
+      return new Vector(this.x + other.x, this.y + other.y);
+    }
+
+    subtract(other) {
+      return new Vector(this.x - other.x, this.y - other.y);
+    }
+  }
+
+  class Vertex {
+    constructor(pos, disp) {
+      this.pos = pos;
+      this.disp = disp;
+    }
+  }
+
+  // read graph structure
+  let regex = /^\s*?(\d*)\s*?(<?)-(>?)\s*?(\d*)\s*?(?:\((\d*)\))?\s*?$/;
+  let line_match;
+  let edges = [];
+
+  for (let row of structure.split("\n")) {
+    line_match = row.match(regex);
+
+    edges.push(new Edge(line_match[1], line_match[4], line_match[5] ? line_match[5] : null, line_match[2] != "" ? true : false, line_match[3] != "" ? true : false));
+  }
+
+  let vertices = new Set();
+
+  for (let edge of edges) {
+    if (!vertices.has(edge.from)) vertices.add(edge.from);
+    if (!vertices.has(edge.to)) vertices.add(edge.to);
+  }
+
+  var vertices_dict = {};
+  vertices.forEach(function(value) {
+    vertices_dict[value] = new Vertex(new Vector(0, 0), new Vector(0, 0));
+  });
+
+  // initialize random position for vertices
+  let index = 0;
+  let len = vertices.size;
+
+  for (const [key, value] of Object.entries(vertices_dict)) {
+    value.pos.x = (attributes["width"] / len) * index;
+    value.pos.y = Math.sqrt((attributes["width"] / len) * index);
+    index++;
+  }
+
+  // use force-directed algorithm to calculate vertices positions
+  // https://cs.brown.edu/people/rtamassi/gdhandbook/chapters/force-directed.pdf
+  let area = attributes["width"] * attributes["height"];
+  let k = Math.sqrt(area / vertices.size) * 0.5;
+  const max_t = attributes["width"] / 10
+  let t = max_t;
+  let iterations = 50;
+
+  for (let i = 0; i < iterations; i++) {
+    // calculate repulsive forces
+    for (const [key, value] of Object.entries(vertices_dict)) {
+      value.disp = new Vector(0, 0);
+      for (const [key2, value2] of Object.entries(vertices_dict)) {
+        if (key != key2) {
+          let delta = value.pos.subtract(value2.pos);
+          value.disp = value.disp.add(delta.div(delta.distance).multiply(repulsive(delta.distance, k)));
+        }
+      }
+    }
+
+    // calculate attractive forces
+    for (let edge of edges) {
+      let delta = vertices_dict[edge.from].pos.subtract(vertices_dict[edge.to].pos);
+      vertices_dict[edge.from].disp = vertices_dict[edge.from].disp.subtract((delta.div(delta.distance)).multiply(attractive(delta.distance, k)));
+      vertices_dict[edge.to].disp = vertices_dict[edge.to].disp.add((delta.div(delta.distance)).multiply(attractive(delta.distance, k)));
+    }
+
+    // apply adjustments
+    for (const [key, value] of Object.entries(vertices_dict)) {
+      value.pos = value.pos.add(value.disp.div(value.disp.distance).multiply(Math.min(value.disp.distance, t)));
+    }
+
+    t -= max_t / iterations;
+  }
+
+  console.log("Before scaling");
+  vertices.forEach((key) => {
+    console.log(key, vertices_dict[key].pos);
+  })
+
+  // scale graph to viewport
+  let min_x, max_x, min_y, max_y = null;
+
+  // find the smallest rectangle that contains entire graph
+  for (const [key, value] of Object.entries(vertices_dict)) {
+    if (min_x == null) {
+      min_x = value.pos.x;
+      max_x = value.pos.x;
+      min_y = value.pos.y;
+      max_y = value.pos.y;
+    } else {
+      if (value.pos.x < min_x) min_x = value.pos.x;
+      if (value.pos.x > max_x) max_x = value.pos.x;
+      if (value.pos.y < min_y) min_y = value.pos.y;
+      if (value.pos.y > max_y) max_y = value.pos.y;
+    }
+  }
+
+  // make rectangle larger so vertices don't get clipped in walls
+  min_x -= parseInt(attributes["cell_size"]);
+  max_x += parseInt(attributes["cell_size"]);
+  min_y -= parseInt(attributes["cell_size"]);
+  max_y += parseInt(attributes["cell_size"]);
+  let sWidth = max_x - min_x;
+  let sHeight = max_y - min_y;
+
+  // scale each vertex
+  for (const [key, value] of Object.entries(vertices_dict)) {
+    value.pos = value.pos.subtract(new Vector(min_x, min_y));
+    let x_scaled = value.pos.x * (parseInt(attributes["width"]) / sWidth);
+    let y_scaled = value.pos.y * (parseInt(attributes["height"]) / sHeight);
+    value.pos = new Vector(x_scaled, y_scaled);
+  }
+
+  console.log("Before scaling");
+  vertices.forEach((key) => {
+    console.log(key, vertices_dict[key].pos);
+  })
+
+  // update structure_dict
+  for (const [key, value] of Object.entries(vertices_dict)) {
+    structure_dict["elements"][key] = {
+      copy: "template",
+      x: value.pos.x,
+      y: value.pos.y,
+      text: key
+    }
+  }
+
+  for (let edge of edges) {
+    structure_dict["connections"].push({
+      "from": edge.from,
+      "to": edge.to,
+      "text": edge.value != null ? edge.value : "",
+      "start_arrow": edge.lArrow,
+      "end_arrow": edge.rArrow,
+      "text_height": 20,
+      "margin": 10,
+    });
+  }
+
+  structure_dict["x_size"] = attributes["width"];
+  structure_dict["y_size"] = attributes["height"];
+
+  console.log(structure_dict);
+
+  return structure_dict;
+}
+
 const Plugin = () => {
   function extractAttributes(text) {
     let regex = /^!.+:.+\n?/gm;
@@ -419,12 +647,14 @@ const Plugin = () => {
   
     const structures = {
       "labyrinth": labyrinth,
-      "red_black_tree": red_black_tree
+      "red_black_tree": red_black_tree,
+      "graph": graph,
     }
     
+    console.log(structures[attributes["type"]](structure, attributes));
     structureDrawer.init(structures[attributes["type"]](structure, attributes));
     structureDrawer.draw();
-    // console.log(structureDrawer);
+    console.log(structureDrawer);
   }
 
   return {
