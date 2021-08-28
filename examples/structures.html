@@ -21,15 +21,46 @@
         <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
           <script type="text/template">
             ```structure
-            !type:graph
+            !type: container
+            !cell_size: 45
+            n-th_elementsuperlongname(first -> 3, middle -> 5, lastsuperlongparametername -> 10)
+            1 1 2 3 4 4 5 6 7 -> 1 2 2 4
+            end -> 7
+            ```
+          </script>
+        </section>
+
+        <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+          <script type="text/template">
+            ```structure
+            !type: graph
             !cell_size: 40
             0 - 1
-            1 -> 2
-            2 - 10
-            2 <-> 3 (10)
-            3 - 4
-            4 - 0
-            0 - 2
+            2 - 3
+            0 -> 2 (11)
+            1 - 3
+            0 - 3
+            2 - 1
+            ```
+          </script>
+        </section>
+
+        <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+          <script type="text/template">
+            ```structure
+            !type: graph
+            !cell_size: 40
+            0 -> 1
+            1 - 2
+            1 - 3
+            0 <-> 3
+            ```
+            ```structure
+            !type: graph
+            !cell_size: 40
+            0 -> 1
+            1 - 2
+            1 - 3
             ```
           </script>
         </section>
@@ -37,7 +68,7 @@
         <section data-markdown data-separator="---">
           <script type="text/template">
             ```structure
-            !type:labyrinth
+            !type: labyrinth
             !cell_size: 30
             S P P W
             W W P W
@@ -49,7 +80,7 @@
         <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
           <script type="text/template">
             ```structure
-            !type:red_black_tree
+            !type: red_black_tree
             R: 104
             B: 82 24R
             R: 12L 2 13 44

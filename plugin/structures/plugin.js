@@ -311,7 +311,8 @@ function red_black_tree(structure, attributes) {
 
 function container(structure, attributes) {
   const attributes_defaults = {
-    text_size: 20
+    text_size: 30,
+    cell_size: 40,
   }
 
   for (let key in attributes_defaults) {
@@ -321,64 +322,205 @@ function container(structure, attributes) {
   let structure_dict = {
     "background": "#ddd",
     "elements": {
-      "template": {
+      "cell": {
         "x": 0,
         "y": 0,
+        "border_color": "#000",
         "width": attributes["cell_size"],
         "height": attributes["cell_size"],
-        "border_color": attributes["border_color"],
+        "text_size": attributes["cell_size"] * 0.8,
+        "text_color": "#000",
       },
-      "W": {
-        "position": "template",
-        "copy": "template",
-        "background_color": attributes["wall_color"],
-      },
-      "E": {
-        "position": "template",
-        "copy": "template",
-        "border_color": ""
-      },
-      "P": {
-        "position": "template",
-        "copy": "template",
-        "background_color": attributes["floor_color"],
-      },
-      "S": {
-        "position": "template",
-        "copy": "E",
-        "text": "S",
-        "text_color": attributes["text_color"],
-        "text_size": attributes["cell_size"],
-      },
-      "F": {
-        "position": "template",
-        "copy": "S",
-        "text": "F"
+      "text": {
+        "x": 0,
+        "y": 0,
+        "shape": "text",
+        "width": attributes["cell_size"],
+        "height": attributes["cell_size"],
+        "text_size": attributes["text_size"],
       }
     },
     "connections": []
   };
 
-  let x = 0;
-  let y = 0;
-  let max_x = 0;
+  // read function name and its parameters
+  let lines = structure.split('\n');
+  let regex = /(?<=[\(,])\s*?(\w+)\s*?->\s*?(\d+)\s*?(?=[\),])/gm;
+  let params = [];
 
-  for (let row of structure.split("\n")) {
-    for (let cell of row.split(" ")) {
-      structure_dict["elements"][x.toString() + ":" + y.toString()] = {
-        "x": (x + 0.5) * (attributes["cell_size"]),
-        "y": (y + 0.5) * (attributes["cell_size"]),
-        "copy": cell
-      }
-      x++;
-    }
-    y++;
-    if (x > max_x) max_x = x;
-    x = 0;
+  for (const match of lines[0].matchAll(regex)) {
+    params.push([match[1], match[2]]);
   }
 
-  structure_dict["x_size"] = (max_x + 1) * (attributes["cell_size"]);
-  structure_dict["y_size"] = (y + 1) * (attributes["cell_size"]);
+  // start calculating x_size
+  let max_x = attributes["text_size"] * lines[0].length * 0.6;
+
+  // render function name
+  let function_name = lines[0].match(/.*(?=\()/gm)[0];
+
+  structure_dict["elements"]["function_name"] = {
+    "copy": "text",
+    "x": attributes["text_size"] * 0.3 * function_name.length,
+    "y": attributes["text_size"] * 0.6,
+    "text_color": "#000",
+    "text": function_name,
+  };
+
+  // render parameter names
+  if (params.length == 0) {
+    structure_dict["elements"]["brackets"] = {
+      "copy": "text",
+      "position": "function_name",
+      "align": "right",
+      "text_color": "#000",
+      "text": "()",
+    };
+  } else if (params.length == 1) {
+    structure_dict["elements"]["bracket_left"] = {
+      "copy": "text",
+      "position": "function_name",
+      "align": "right",
+      "text_color": "#000",
+      "text": "(",
+    };
+    structure_dict["elements"]["parameter"] = {
+      "copy": "text",
+      "position": "bracket_left",
+      "align": "right",
+      "text_color": "#f00",
+      "text": params[0][0],
+    };
+    structure_dict["elements"]["bracket_right"] = {
+      "copy": "text",
+      "position": "parameter",
+      "align": "right",
+      "text_color": "#000",
+      "text": ")",
+    };
+  } else {
+    for (let i = 0; i < params.length; i++) {
+      if (i == 0) {
+        structure_dict["elements"]["comma" + i] = {
+          "copy": "text",
+          "position": "function_name",
+          "align": "right",
+          "text_color": "#000",
+          "text": "(",
+        };
+      } else {
+        structure_dict["elements"]["comma" + i] = {
+          "copy": "text",
+          "position": "param" + (i - 1),
+          "align": "right",
+          "text_color": "#000",
+          "text": ", ",
+        };
+      }
+      structure_dict["elements"]["param" + i] = {
+        "copy": "text",
+        "position": "comma" + i,
+        "align": "right",
+        "text_color": "#f00",
+        "text": params[i][0],
+      };
+    }
+    structure_dict["elements"]["bracket_right"] = {
+      "copy": "text",
+      "position": "param" + (params.length - 1),
+      "align": "right",
+      "text_color": "#000",
+      "text": ")",
+    };
+  }
+
+  function render_array(array_to_render, x_pos, name) {
+    for (let i = 0; i < array_to_render.length; i++) {
+      if (i == 0) {
+        structure_dict["elements"][name + i] = {
+          "copy": "cell",
+          "text": array_to_render[i],
+          "x": x_pos,
+          "y": parseInt(attributes["text_size"]) * 1.2 + parseInt(attributes["cell_size"]) * 2,
+        }
+      } else {
+        structure_dict["elements"][name + i] = {
+          "copy": "cell",
+          "position": name + (i - 1),
+          "align": "right",
+          "text": array_to_render[i],
+        }
+      }
+    }
+  }
+
+  // read array
+  let matches = lines[1].match(/^([ \d]*)(?:->([ \d]*))?$/);
+  let first_array = matches[1].trim().split(' ');
+
+  // calculate offset of array
+  let offset = (function_name.length + params[0][0].length / 2) * attributes["text_size"] * 0.6;
+  let pos_x = offset - (parseInt(params[0][1]) - 0.5) * attributes["cell_size"];
+
+  render_array(first_array, pos_x, "first_array_");
+
+  // calculate size_x
+  max_x = Math.max(max_x, pos_x + (attributes["cell_size"] * first_array.length));
+
+  if (matches[2]) {
+    let second_array = matches[2].trim().split(' ');
+
+    render_array(second_array, pos_x + (attributes["cell_size"] * (first_array.length + 3)), "second_array_");
+
+    // connect arrays
+    structure_dict["connections"].push({
+      "from": "first_array_" + (first_array.length - 1),
+      "to": "second_array_0",
+      "end_arrow": "true",
+      "margin": attributes["cell_size"] / 4,
+    });
+
+    // calculate size_x
+    max_x = Math.max(max_x, pos_x + attributes["cell_size"] * (first_array.length + second_array.length + 3));
+  }
+
+  // connect params to cells
+  for (let i = 0; i < params.length; i++) {
+    structure_dict["connections"].push({
+      "from": "param" + i,
+      "to": params[i][1] < first_array.length ? "first_array_" + params[i][1] : "second_array_" + (params[i][1] - first_array.length),
+      "end_arrow": "true",
+    });
+  }
+
+  // read last line
+  if (lines[2]) {
+    let match = lines[2].match(/^\s*?(\w+)\s*?->\s*?(\d*)\s*?$/);
+    
+    const first_array_cell = pos_x + (attributes["cell_size"] * parseInt(match[2]));
+    let last_param_x = match[2] < first_array.length ? first_array_cell : first_array_cell + (attributes["cell_size"] * 3);
+
+    structure_dict["elements"]["last_param"] = {
+      "copy": "text",
+      "x": last_param_x,
+      "y": parseInt(attributes["text_size"]) * 1.8 + parseInt(attributes["cell_size"]) * 4,
+      "text_color": "#00f",
+      "text": match[1],
+    };
+
+    // connect param to cell
+    structure_dict["connections"].push({
+      "from": "last_param",
+      "to": match[2] < first_array.length ? "first_array_" + match[2] : "second_array_" + (match[2] - first_array.length),
+      "end_arrow": "true",
+      "margin": attributes["cell_size"] / 4,
+    });
+
+    // calculate size_x
+    max_x = Math.max(max_x, last_param_x + match[2].length * attributes["text_size"] * 0.6);
+  }
+
+  structure_dict["x_size"] = max_x;
+  structure_dict["y_size"] = parseInt(attributes["text_size"]) * 2.4 + parseInt(attributes["cell_size"]) * 4;
 
   return structure_dict;
 }
@@ -403,7 +545,7 @@ function graph(structure, attributes) {
   }
 
   let structure_dict = {
-    "background": "",
+    "background": "#ddd",
     "elements": {
       "template": {
         "x": 0,
@@ -505,7 +647,7 @@ function graph(structure, attributes) {
   // use force-directed algorithm to calculate vertices positions
   // https://cs.brown.edu/people/rtamassi/gdhandbook/chapters/force-directed.pdf
   let area = attributes["width"] * attributes["height"];
-  let k = Math.sqrt(area / vertices.size) * 0.5;
+  let k = Math.sqrt(area / vertices.size);
   const max_t = attributes["width"] / 10
   let t = max_t;
   let iterations = 50;
@@ -536,11 +678,6 @@ function graph(structure, attributes) {
 
     t -= max_t / iterations;
   }
-
-  console.log("Before scaling");
-  vertices.forEach((key) => {
-    console.log(key, vertices_dict[key].pos);
-  })
 
   // scale graph to viewport
   let min_x, max_x, min_y, max_y = null;
@@ -576,11 +713,6 @@ function graph(structure, attributes) {
     value.pos = new Vector(x_scaled, y_scaled);
   }
 
-  console.log("Before scaling");
-  vertices.forEach((key) => {
-    console.log(key, vertices_dict[key].pos);
-  })
-
   // update structure_dict
   for (const [key, value] of Object.entries(vertices_dict)) {
     structure_dict["elements"][key] = {
@@ -607,14 +739,12 @@ function graph(structure, attributes) {
   structure_dict["x_size"] = attributes["width"];
   structure_dict["y_size"] = attributes["height"];
 
-  console.log(structure_dict);
-
   return structure_dict;
 }
 
 const Plugin = () => {
   function extractAttributes(text) {
-    let regex = /^!.+:.+\n?/gm;
+    let regex = /^!\s*?[\w.]+\s*?:\s*?[\w.]+\s*?\n?/gm;
   
     // get matches
     let matches = text.match(regex);
@@ -626,7 +756,7 @@ const Plugin = () => {
     if (structure.slice(-1) == '\n') structure = structure.slice(0, -1); 
   
     let attributes = {};
-    regex = /^!(.+):(.+)\n?/;
+    regex = /^!\s*?([\w.]+)\s*?:\s*?([\w.]+)\s*?\n?/;
   
     // add extracted attributes to dict
     for (let match of matches) {
@@ -650,8 +780,9 @@ const Plugin = () => {
       "labyrinth": labyrinth,
       "red_black_tree": red_black_tree,
       "graph": graph,
+      "container": container,
     }
-    
+    console.log(attributes["type"]);
     console.log(structures[attributes["type"]](structure, attributes));
     structureDrawer.init(structures[attributes["type"]](structure, attributes));
     structureDrawer.draw();
