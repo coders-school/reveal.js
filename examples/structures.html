@@ -20,10 +20,12 @@
 
         <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
           <script type="text/template">
+            Welcome to structure plugin showcase.
+
             ```structure
             !type: container
             !cell_size: 45
-            n-th_elementsuperlongname(first -> 3, middle -> 5, lastsuperlongparametername -> 10)
+            find_n(first -> 3, middle -> 5, last -> 10)
             1 1 2 3 4 4 5 6 7 -> 1 2 2 4
             end -> 7
             ```
@@ -32,6 +34,17 @@
 
         <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
           <script type="text/template">
+            To render a structure, create a block of code and put 'structure' in the start like so:
+            
+            ```notepad
+            ``structure
+            !type: graph
+            0 - 1
+            1 - 2
+            2 -> 3
+            ``
+            ```
+
             ```structure
             !type: graph
             !cell_size: 40
@@ -47,6 +60,8 @@
 
         <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
           <script type="text/template">
+            Lines starting with exclamation mark are attributes of the structure and don't affect the content.
+
             ```structure
             !type: graph
             !cell_size: 40
@@ -67,6 +82,8 @@
 
         <section data-markdown data-separator="---">
           <script type="text/template">
+            Each structure has its own attributes, although type attribute is common for all and must be defined.
+
             ```structure
             !type: labyrinth
             !cell_size: 30
@@ -79,6 +96,8 @@
 
         <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
           <script type="text/template">
+            Complete list of structures and their description can be found in README file.
+
             ```structure
             !type: red_black_tree
             R: 104

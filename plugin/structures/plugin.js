@@ -352,11 +352,9 @@ function container(structure, attributes) {
     params.push([match[1], match[2]]);
   }
 
-  // start calculating x_size
-  let max_x = attributes["text_size"] * lines[0].length * 0.6;
-
   // render function name
   let function_name = lines[0].match(/.*(?=\()/gm)[0];
+  let char_count = function_name.length;
 
   structure_dict["elements"]["function_name"] = {
     "copy": "text",
@@ -375,6 +373,7 @@ function container(structure, attributes) {
       "text_color": "#000",
       "text": "()",
     };
+    char_count += 2;
   } else if (params.length == 1) {
     structure_dict["elements"]["bracket_left"] = {
       "copy": "text",
@@ -397,10 +396,11 @@ function container(structure, attributes) {
       "text_color": "#000",
       "text": ")",
     };
+    char_count += 2 + params[0][0].length;
   } else {
     for (let i = 0; i < params.length; i++) {
       if (i == 0) {
-        structure_dict["elements"]["comma" + i] = {
+        structure_dict["elements"]["comma" + i] = {     // actually left_bracket
           "copy": "text",
           "position": "function_name",
           "align": "right",
@@ -423,6 +423,7 @@ function container(structure, attributes) {
         "text_color": "#f00",
         "text": params[i][0],
       };
+      char_count += params[i][0].length;
     }
     structure_dict["elements"]["bracket_right"] = {
       "copy": "text",
@@ -431,7 +432,12 @@ function container(structure, attributes) {
       "text_color": "#000",
       "text": ")",
     };
+
+    char_count += 2 + (params.length - 1) * 2
   }
+
+  // start calculating x_size
+  let max_x = attributes["text_size"] * char_count * 0.6;
 
   function render_array(array_to_render, x_pos, name) {
     for (let i = 0; i < array_to_render.length; i++) {
@@ -459,7 +465,7 @@ function container(structure, attributes) {
 
   // calculate offset of array
   let offset = (function_name.length + params[0][0].length / 2) * attributes["text_size"] * 0.6;
-  let pos_x = offset - (parseInt(params[0][1]) - 0.5) * attributes["cell_size"];
+  let pos_x = Math.max(offset - (parseInt(params[0][1]) - 0.5) * attributes["cell_size"], attributes["cell_size"]);
 
   render_array(first_array, pos_x, "first_array_");
 
@@ -498,10 +504,10 @@ function container(structure, attributes) {
     
     const first_array_cell = pos_x + (attributes["cell_size"] * parseInt(match[2]));
     let last_param_x = match[2] < first_array.length ? first_array_cell : first_array_cell + (attributes["cell_size"] * 3);
-
+    
     structure_dict["elements"]["last_param"] = {
       "copy": "text",
-      "x": last_param_x,
+      "x": Math.max(last_param_x, match[1].length * attributes["text_size"] * 0.3),
       "y": parseInt(attributes["text_size"]) * 1.8 + parseInt(attributes["cell_size"]) * 4,
       "text_color": "#00f",
       "text": match[1],
@@ -516,7 +522,7 @@ function container(structure, attributes) {
     });
 
     // calculate size_x
-    max_x = Math.max(max_x, last_param_x + match[2].length * attributes["text_size"] * 0.6);
+    max_x = Math.max(max_x, last_param_x + match[1].length * attributes["text_size"] * 0.3);
   }
 
   structure_dict["x_size"] = max_x;
