@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - Structures Example (with MD)</title>
+
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/white.css" id="theme">
+
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+        <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+          <script type="text/template">
+            Welcome to structure plugin showcase.
+
+            ```structure
+            !type: container
+            !cell_size: 45
+            find_n(first -> 3, middle -> 5, last -> 10)
+            1 1 2 3 4 4 5 6 7 -> 1 2 2 4
+            end -> 7
+            ```
+          </script>
+        </section>
+
+        <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+          <script type="text/template">
+            To render a structure, create a block of code and put 'structure' in the start like so:
+            
+            ```notepad
+            ``structure
+            !type: graph
+            0 - 1
+            1 - 2
+            2 -> 3
+            ``
+            ```
+
+            ```structure
+            !type: graph
+            !cell_size: 40
+            0 - 1
+            2 - 3
+            0 -> 2 (11)
+            1 - 3
+            0 - 3
+            2 - 1
+            ```
+          </script>
+        </section>
+
+        <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+          <script type="text/template">
+            Lines starting with exclamation mark are attributes of the structure and don't affect the content.
+
+            ```structure
+            !type: graph
+            !cell_size: 40
+            0 -> 1
+            1 - 2
+            1 - 3
+            0 <-> 3
+            ```
+            ```structure
+            !type: graph
+            !cell_size: 40
+            0 -> 1
+            1 - 2
+            1 - 3
+            ```
+          </script>
+        </section>
+
+        <section data-markdown data-separator="---">
+          <script type="text/template">
+            Each structure has its own attributes, although type attribute is common for all and must be defined.
+
+            ```structure
+            !type: labyrinth
+            !cell_size: 30
+            S P P W
+            W W P W
+            W F P W
+            ```
+          </script>
+        </section>
+
+        <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+          <script type="text/template">
+            Complete list of structures and their description can be found in README file.
+
+            ```structure
+            !type: red_black_tree
+            R: 104
+            B: 82 24R
+            R: 12L 2 13 44
+            ```
+          </script>
+        </section>
+
+      </div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <!-- paper.js for structures plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-full.min.js"></script>
+
+		<script type="module">
+      import RevealStructures from "../plugin/structures/plugin.js";
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealStructures ]
+			});
+
+		</script>
+
+	</body>
+</html>
