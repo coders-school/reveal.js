@@ -450,3 +450,4 @@
 
 .col {
   flex: 1; }
+html.print-pdf .reveal .backgrounds{display:block}

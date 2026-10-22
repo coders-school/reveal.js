@@ -1,1 +1,970 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealNotes=e()}(this,(function(){"use strict";var t="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function e(t,e,n){return t(n={path:e,exports:{},require:function(t,e){return function(){throw new Error("Dynamic requires are not currently supported by @rollup/plugin-commonjs")}(null==e&&n.path)}},n.exports),n.exports}var n=function(t){return t&&t.Math==Math&&t},r=n("object"==typeof globalThis&&globalThis)||n("object"==typeof window&&window)||n("object"==typeof self&&self)||n("object"==typeof t&&t)||Function("return this")(),i=function(t){try{return!!t()}catch(t){return!0}},a=!i((function(){return 7!=Object.defineProperty({},1,{get:function(){return 7}})[1]})),o={}.propertyIsEnumerable,l=Object.getOwnPropertyDescriptor,s={f:l&&!o.call({1:2},1)?function(t){var e=l(this,t);return!!e&&e.enumerable}:o},c=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}},u={}.toString,p=function(t){return u.call(t).slice(8,-1)},d="".split,f=i((function(){return!Object("z").propertyIsEnumerable(0)}))?function(t){return"String"==p(t)?d.call(t,""):Object(t)}:Object,h=function(t){if(null==t)throw TypeError("Can't call method on "+t);return t},g=function(t){return f(h(t))},m=function(t){return"object"==typeof t?null!==t:"function"==typeof t},v=function(t,e){if(!m(t))return t;var n,r;if(e&&"function"==typeof(n=t.toString)&&!m(r=n.call(t)))return r;if("function"==typeof(n=t.valueOf)&&!m(r=n.call(t)))return r;if(!e&&"function"==typeof(n=t.toString)&&!m(r=n.call(t)))return r;throw TypeError("Can't convert object to primitive value")},y={}.hasOwnProperty,k=function(t,e){return y.call(t,e)},b=r.document,w=m(b)&&m(b.createElement),x=!a&&!i((function(){return 7!=Object.defineProperty((t="div",w?b.createElement(t):{}),"a",{get:function(){return 7}}).a;var t})),S=Object.getOwnPropertyDescriptor,T={f:a?S:function(t,e){if(t=g(t),e=v(e,!0),x)try{return S(t,e)}catch(t){}if(k(t,e))return c(!s.f.call(t,e),t[e])}},E=function(t){if(!m(t))throw TypeError(String(t)+" is not an object");return t},_=Object.defineProperty,A={f:a?_:function(t,e,n){if(E(t),e=v(e,!0),E(n),x)try{return _(t,e,n)}catch(t){}if("get"in n||"set"in n)throw TypeError("Accessors not supported");return"value"in n&&(t[e]=n.value),t}},z=a?function(t,e,n){return A.f(t,e,c(1,n))}:function(t,e,n){return t[e]=n,t},R=function(t,e){try{z(r,t,e)}catch(n){r[t]=e}return e},O="__core-js_shared__",I=r[O]||R(O,{}),$=Function.toString;"function"!=typeof I.inspectSource&&(I.inspectSource=function(t){return $.call(t)});var C,L,P,M,j=I.inspectSource,N=r.WeakMap,q="function"==typeof N&&/native code/.test(j(N)),U=e((function(t){(t.exports=function(t,e){return I[t]||(I[t]=void 0!==e?e:{})})("versions",[]).push({version:"3.6.5",mode:"global",copyright:"© 2020 Denis Pushkarev (zloirock.ru)"})})),D=0,Z=Math.random(),W=function(t){return"Symbol("+String(void 0===t?"":t)+")_"+(++D+Z).toString(36)},K=U("keys"),J={},F=r.WeakMap;if(q){var H=new F,B=H.get,Y=H.has,V=H.set;C=function(t,e){return V.call(H,t,e),e},L=function(t){return B.call(H,t)||{}},P=function(t){return Y.call(H,t)}}else{var G=K[M="state"]||(K[M]=W(M));J[G]=!0,C=function(t,e){return z(t,G,e),e},L=function(t){return k(t,G)?t[G]:{}},P=function(t){return k(t,G)}}var X={set:C,get:L,has:P,enforce:function(t){return P(t)?L(t):C(t,{})},getterFor:function(t){return function(e){var n;if(!m(e)||(n=L(e)).type!==t)throw TypeError("Incompatible receiver, "+t+" required");return n}}},Q=e((function(t){var e=X.get,n=X.enforce,i=String(String).split("String");(t.exports=function(t,e,a,o){var l=!!o&&!!o.unsafe,s=!!o&&!!o.enumerable,c=!!o&&!!o.noTargetGet;"function"==typeof a&&("string"!=typeof e||k(a,"name")||z(a,"name",e),n(a).source=i.join("string"==typeof e?e:"")),t!==r?(l?!c&&t[e]&&(s=!0):delete t[e],s?t[e]=a:z(t,e,a)):s?t[e]=a:R(e,a)})(Function.prototype,"toString",(function(){return"function"==typeof this&&e(this).source||j(this)}))})),tt=r,et=function(t){return"function"==typeof t?t:void 0},nt=function(t,e){return arguments.length<2?et(tt[t])||et(r[t]):tt[t]&&tt[t][e]||r[t]&&r[t][e]},rt=Math.ceil,it=Math.floor,at=function(t){return isNaN(t=+t)?0:(t>0?it:rt)(t)},ot=Math.min,lt=function(t){return t>0?ot(at(t),9007199254740991):0},st=Math.max,ct=Math.min,ut=function(t,e){var n=at(t);return n<0?st(n+e,0):ct(n,e)},pt=function(t){return function(e,n,r){var i,a=g(e),o=lt(a.length),l=ut(r,o);if(t&&n!=n){for(;o>l;)if((i=a[l++])!=i)return!0}else for(;o>l;l++)if((t||l in a)&&a[l]===n)return t||l||0;return!t&&-1}},dt={includes:pt(!0),indexOf:pt(!1)},ft=dt.indexOf,ht=["constructor","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","toLocaleString","toString","valueOf"].concat("length","prototype"),gt={f:Object.getOwnPropertyNames||function(t){return function(t,e){var n,r=g(t),i=0,a=[];for(n in r)!k(J,n)&&k(r,n)&&a.push(n);for(;e.length>i;)k(r,n=e[i++])&&(~ft(a,n)||a.push(n));return a}(t,ht)}},mt={f:Object.getOwnPropertySymbols},vt=nt("Reflect","ownKeys")||function(t){var e=gt.f(E(t)),n=mt.f;return n?e.concat(n(t)):e},yt=function(t,e){for(var n=vt(e),r=A.f,i=T.f,a=0;a<n.length;a++){var o=n[a];k(t,o)||r(t,o,i(e,o))}},kt=/#|\.prototype\./,bt=function(t,e){var n=xt[wt(t)];return n==Tt||n!=St&&("function"==typeof e?i(e):!!e)},wt=bt.normalize=function(t){return String(t).replace(kt,".").toLowerCase()},xt=bt.data={},St=bt.NATIVE="N",Tt=bt.POLYFILL="P",Et=bt,_t=T.f,At=function(t,e){var n,i,a,o,l,s=t.target,c=t.global,u=t.stat;if(n=c?r:u?r[s]||R(s,{}):(r[s]||{}).prototype)for(i in e){if(o=e[i],a=t.noTargetGet?(l=_t(n,i))&&l.value:n[i],!Et(c?i:s+(u?".":"#")+i,t.forced)&&void 0!==a){if(typeof o==typeof a)continue;yt(o,a)}(t.sham||a&&a.sham)&&z(o,"sham",!0),Q(n,i,o,t)}},zt=function(){var t=E(this),e="";return t.global&&(e+="g"),t.ignoreCase&&(e+="i"),t.multiline&&(e+="m"),t.dotAll&&(e+="s"),t.unicode&&(e+="u"),t.sticky&&(e+="y"),e};function Rt(t,e){return RegExp(t,e)}var Ot={UNSUPPORTED_Y:i((function(){var t=Rt("a","y");return t.lastIndex=2,null!=t.exec("abcd")})),BROKEN_CARET:i((function(){var t=Rt("^r","gy");return t.lastIndex=2,null!=t.exec("str")}))},It=RegExp.prototype.exec,$t=String.prototype.replace,Ct=It,Lt=function(){var t=/a/,e=/b*/g;return It.call(t,"a"),It.call(e,"a"),0!==t.lastIndex||0!==e.lastIndex}(),Pt=Ot.UNSUPPORTED_Y||Ot.BROKEN_CARET,Mt=void 0!==/()??/.exec("")[1];(Lt||Mt||Pt)&&(Ct=function(t){var e,n,r,i,a=this,o=Pt&&a.sticky,l=zt.call(a),s=a.source,c=0,u=t;return o&&(-1===(l=l.replace("y","")).indexOf("g")&&(l+="g"),u=String(t).slice(a.lastIndex),a.lastIndex>0&&(!a.multiline||a.multiline&&"\n"!==t[a.lastIndex-1])&&(s="(?: "+s+")",u=" "+u,c++),n=new RegExp("^(?:"+s+")",l)),Mt&&(n=new RegExp("^"+s+"$(?!\\s)",l)),Lt&&(e=a.lastIndex),r=It.call(o?n:a,u),o?r?(r.input=r.input.slice(c),r[0]=r[0].slice(c),r.index=a.lastIndex,a.lastIndex+=r[0].length):a.lastIndex=0:Lt&&r&&(a.lastIndex=a.global?r.index+r[0].length:e),Mt&&r&&r.length>1&&$t.call(r[0],n,(function(){for(i=1;i<arguments.length-2;i++)void 0===arguments[i]&&(r[i]=void 0)})),r});var jt=Ct;At({target:"RegExp",proto:!0,forced:/./.exec!==jt},{exec:jt});var Nt=!!Object.getOwnPropertySymbols&&!i((function(){return!String(Symbol())})),qt=Nt&&!Symbol.sham&&"symbol"==typeof Symbol.iterator,Ut=U("wks"),Dt=r.Symbol,Zt=qt?Dt:Dt&&Dt.withoutSetter||W,Wt=function(t){return k(Ut,t)||(Nt&&k(Dt,t)?Ut[t]=Dt[t]:Ut[t]=Zt("Symbol."+t)),Ut[t]},Kt=Wt("species"),Jt=!i((function(){var t=/./;return t.exec=function(){var t=[];return t.groups={a:"7"},t},"7"!=="".replace(t,"$<a>")})),Ft="$0"==="a".replace(/./,"$0"),Ht=Wt("replace"),Bt=!!/./[Ht]&&""===/./[Ht]("a","$0"),Yt=!i((function(){var t=/(?:)/,e=t.exec;t.exec=function(){return e.apply(this,arguments)};var n="ab".split(t);return 2!==n.length||"a"!==n[0]||"b"!==n[1]})),Vt=function(t,e,n,r){var a=Wt(t),o=!i((function(){var e={};return e[a]=function(){return 7},7!=""[t](e)})),l=o&&!i((function(){var e=!1,n=/a/;return"split"===t&&((n={}).constructor={},n.constructor[Kt]=function(){return n},n.flags="",n[a]=/./[a]),n.exec=function(){return e=!0,null},n[a](""),!e}));if(!o||!l||"replace"===t&&(!Jt||!Ft||Bt)||"split"===t&&!Yt){var s=/./[a],c=n(a,""[t],(function(t,e,n,r,i){return e.exec===jt?o&&!i?{done:!0,value:s.call(e,n,r)}:{done:!0,value:t.call(n,e,r)}:{done:!1}}),{REPLACE_KEEPS_$0:Ft,REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE:Bt}),u=c[0],p=c[1];Q(String.prototype,t,u),Q(RegExp.prototype,a,2==e?function(t,e){return p.call(t,this,e)}:function(t){return p.call(t,this)})}r&&z(RegExp.prototype[a],"sham",!0)},Gt=function(t){return function(e,n){var r,i,a=String(h(e)),o=at(n),l=a.length;return o<0||o>=l?t?"":void 0:(r=a.charCodeAt(o))<55296||r>56319||o+1===l||(i=a.charCodeAt(o+1))<56320||i>57343?t?a.charAt(o):r:t?a.slice(o,o+2):i-56320+(r-55296<<10)+65536}},Xt={codeAt:Gt(!1),charAt:Gt(!0)}.charAt,Qt=function(t,e,n){return e+(n?Xt(t,e).length:1)},te=function(t,e){var n=t.exec;if("function"==typeof n){var r=n.call(t,e);if("object"!=typeof r)throw TypeError("RegExp exec method returned something other than an Object or null");return r}if("RegExp"!==p(t))throw TypeError("RegExp#exec called on incompatible receiver");return jt.call(t,e)};Vt("match",1,(function(t,e,n){return[function(e){var n=h(this),r=null==e?void 0:e[t];return void 0!==r?r.call(e,n):new RegExp(e)[t](String(n))},function(t){var r=n(e,t,this);if(r.done)return r.value;var i=E(t),a=String(this);if(!i.global)return te(i,a);var o=i.unicode;i.lastIndex=0;for(var l,s=[],c=0;null!==(l=te(i,a));){var u=String(l[0]);s[c]=u,""===u&&(i.lastIndex=Qt(a,lt(i.lastIndex),o)),c++}return 0===c?null:s}]}));var ee=Object.is||function(t,e){return t===e?0!==t||1/t==1/e:t!=t&&e!=e};Vt("search",1,(function(t,e,n){return[function(e){var n=h(this),r=null==e?void 0:e[t];return void 0!==r?r.call(e,n):new RegExp(e)[t](String(n))},function(t){var r=n(e,t,this);if(r.done)return r.value;var i=E(t),a=String(this),o=i.lastIndex;ee(o,0)||(i.lastIndex=0);var l=te(i,a);return ee(i.lastIndex,o)||(i.lastIndex=o),null===l?-1:l.index}]}));var ne={};ne[Wt("toStringTag")]="z";var re="[object z]"===String(ne),ie=Wt("toStringTag"),ae="Arguments"==p(function(){return arguments}()),oe=re?p:function(t){var e,n,r;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(n=function(t,e){try{return t[e]}catch(t){}}(e=Object(t),ie))?n:ae?p(e):"Object"==(r=p(e))&&"function"==typeof e.callee?"Arguments":r},le=re?{}.toString:function(){return"[object "+oe(this)+"]"};re||Q(Object.prototype,"toString",le,{unsafe:!0});var se="toString",ce=RegExp.prototype,ue=ce.toString,pe=i((function(){return"/a/b"!=ue.call({source:"a",flags:"b"})})),de=ue.name!=se;function fe(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function he(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function ge(t,e,n){return e&&he(t.prototype,e),n&&he(t,n),t}function me(t,e){return function(t){if(Array.isArray(t))return t}(t)||function(t,e){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(t)))return;var n=[],r=!0,i=!1,a=void 0;try{for(var o,l=t[Symbol.iterator]();!(r=(o=l.next()).done)&&(n.push(o.value),!e||n.length!==e);r=!0);}catch(t){i=!0,a=t}finally{try{r||null==l.return||l.return()}finally{if(i)throw a}}return n}(t,e)||ve(t,e)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function ve(t,e){if(t){if("string"==typeof t)return ye(t,e);var n=Object.prototype.toString.call(t).slice(8,-1);return"Object"===n&&t.constructor&&(n=t.constructor.name),"Map"===n||"Set"===n?Array.from(t):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?ye(t,e):void 0}}function ye(t,e){(null==e||e>t.length)&&(e=t.length);for(var n=0,r=new Array(e);n<e;n++)r[n]=t[n];return r}function ke(t){if("undefined"==typeof Symbol||null==t[Symbol.iterator]){if(Array.isArray(t)||(t=ve(t))){var e=0,n=function(){};return{s:n,n:function(){return e>=t.length?{done:!0}:{done:!1,value:t[e++]}},e:function(t){throw t},f:n}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var r,i,a=!0,o=!1;return{s:function(){r=t[Symbol.iterator]()},n:function(){var t=r.next();return a=t.done,t},e:function(t){o=!0,i=t},f:function(){try{a||null==r.return||r.return()}finally{if(o)throw i}}}}(pe||de)&&Q(RegExp.prototype,se,(function(){var t=E(this),e=String(t.source),n=t.flags;return"/"+e+"/"+String(void 0===n&&t instanceof RegExp&&!("flags"in ce)?zt.call(t):n)}),{unsafe:!0});var be=function(t){return Object(h(t))},we=Math.max,xe=Math.min,Se=Math.floor,Te=/\$([$&'`]|\d\d?|<[^>]*>)/g,Ee=/\$([$&'`]|\d\d?)/g;Vt("replace",2,(function(t,e,n,r){var i=r.REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE,a=r.REPLACE_KEEPS_$0,o=i?"$":"$0";return[function(n,r){var i=h(this),a=null==n?void 0:n[t];return void 0!==a?a.call(n,i,r):e.call(String(i),n,r)},function(t,r){if(!i&&a||"string"==typeof r&&-1===r.indexOf(o)){var s=n(e,t,this,r);if(s.done)return s.value}var c=E(t),u=String(this),p="function"==typeof r;p||(r=String(r));var d=c.global;if(d){var f=c.unicode;c.lastIndex=0}for(var h=[];;){var g=te(c,u);if(null===g)break;if(h.push(g),!d)break;""===String(g[0])&&(c.lastIndex=Qt(u,lt(c.lastIndex),f))}for(var m,v="",y=0,k=0;k<h.length;k++){g=h[k];for(var b=String(g[0]),w=we(xe(at(g.index),u.length),0),x=[],S=1;S<g.length;S++)x.push(void 0===(m=g[S])?m:String(m));var T=g.groups;if(p){var _=[b].concat(x,w,u);void 0!==T&&_.push(T);var A=String(r.apply(void 0,_))}else A=l(b,u,w,x,T,r);w>=y&&(v+=u.slice(y,w)+A,y=w+b.length)}return v+u.slice(y)}];function l(t,n,r,i,a,o){var l=r+t.length,s=i.length,c=Ee;return void 0!==a&&(a=be(a),c=Te),e.call(o,c,(function(e,o){var c;switch(o.charAt(0)){case"$":return"$";case"&":return t;case"`":return n.slice(0,r);case"'":return n.slice(l);case"<":c=a[o.slice(1,-1)];break;default:var u=+o;if(0===u)return e;if(u>s){var p=Se(u/10);return 0===p?e:p<=s?void 0===i[p-1]?o.charAt(1):i[p-1]+o.charAt(1):e}c=i[u-1]}return void 0===c?"":c}))}}));var _e,Ae=/"/g;At({target:"String",proto:!0,forced:(_e="link",i((function(){var t=""[_e]('"');return t!==t.toLowerCase()||t.split('"').length>3})))},{link:function(t){return e="a",n="href",r=t,i=String(h(this)),a="<"+e,""!==n&&(a+=" "+n+'="'+String(r).replace(Ae,"&quot;")+'"'),a+">"+i+"</"+e+">";var e,n,r,i,a}});var ze=function(t,e){var n=[][t];return!!n&&i((function(){n.call(null,e||function(){throw 1},1)}))},Re=Object.defineProperty,Oe={},Ie=function(t){throw t},$e=function(t,e){if(k(Oe,t))return Oe[t];e||(e={});var n=[][t],r=!!k(e,"ACCESSORS")&&e.ACCESSORS,o=k(e,0)?e[0]:Ie,l=k(e,1)?e[1]:void 0;return Oe[t]=!!n&&!i((function(){if(r&&!a)return!0;var t={length:-1};r?Re(t,1,{enumerable:!0,get:Ie}):t[1]=1,n.call(t,o,l)}))},Ce=dt.indexOf,Le=[].indexOf,Pe=!!Le&&1/[1].indexOf(1,-0)<0,Me=ze("indexOf"),je=$e("indexOf",{ACCESSORS:!0,1:0});At({target:"Array",proto:!0,forced:Pe||!Me||!je},{indexOf:function(t){return Pe?Le.apply(this,arguments)||0:Ce(this,t,arguments.length>1?arguments[1]:void 0)}});var Ne=[].join,qe=f!=Object,Ue=ze("join",",");At({target:"Array",proto:!0,forced:qe||!Ue},{join:function(t){return Ne.call(g(this),void 0===t?",":t)}});var De,Ze,We=function(t){if("function"!=typeof t)throw TypeError(String(t)+" is not a function");return t},Ke=Array.isArray||function(t){return"Array"==p(t)},Je=Wt("species"),Fe=function(t,e){var n;return Ke(t)&&("function"!=typeof(n=t.constructor)||n!==Array&&!Ke(n.prototype)?m(n)&&null===(n=n[Je])&&(n=void 0):n=void 0),new(void 0===n?Array:n)(0===e?0:e)},He=[].push,Be=function(t){var e=1==t,n=2==t,r=3==t,i=4==t,a=6==t,o=5==t||a;return function(l,s,c,u){for(var p,d,h=be(l),g=f(h),m=function(t,e,n){if(We(t),void 0===e)return t;switch(n){case 0:return function(){return t.call(e)};case 1:return function(n){return t.call(e,n)};case 2:return function(n,r){return t.call(e,n,r)};case 3:return function(n,r,i){return t.call(e,n,r,i)}}return function(){return t.apply(e,arguments)}}(s,c,3),v=lt(g.length),y=0,k=u||Fe,b=e?k(l,v):n?k(l,0):void 0;v>y;y++)if((o||y in g)&&(d=m(p=g[y],y,h),t))if(e)b[y]=d;else if(d)switch(t){case 3:return!0;case 5:return p;case 6:return y;case 2:He.call(b,p)}else if(i)return!1;return a?-1:r||i?i:b}},Ye={forEach:Be(0),map:Be(1),filter:Be(2),some:Be(3),every:Be(4),find:Be(5),findIndex:Be(6)},Ve=nt("navigator","userAgent")||"",Ge=r.process,Xe=Ge&&Ge.versions,Qe=Xe&&Xe.v8;Qe?Ze=(De=Qe.split("."))[0]+De[1]:Ve&&(!(De=Ve.match(/Edge\/(\d+)/))||De[1]>=74)&&(De=Ve.match(/Chrome\/(\d+)/))&&(Ze=De[1]);var tn=Ze&&+Ze,en=Wt("species"),nn=function(t){return tn>=51||!i((function(){var e=[];return(e.constructor={})[en]=function(){return{foo:1}},1!==e[t](Boolean).foo}))},rn=Ye.map,an=nn("map"),on=$e("map");At({target:"Array",proto:!0,forced:!an||!on},{map:function(t){return rn(this,t,arguments.length>1?arguments[1]:void 0)}});var ln=function(t,e,n){var r=v(e);r in t?A.f(t,r,c(0,n)):t[r]=n},sn=nn("slice"),cn=$e("slice",{ACCESSORS:!0,0:0,1:2}),un=Wt("species"),pn=[].slice,dn=Math.max;At({target:"Array",proto:!0,forced:!sn||!cn},{slice:function(t,e){var n,r,i,a=g(this),o=lt(a.length),l=ut(t,o),s=ut(void 0===e?o:e,o);if(Ke(a)&&("function"!=typeof(n=a.constructor)||n!==Array&&!Ke(n.prototype)?m(n)&&null===(n=n[un])&&(n=void 0):n=void 0,n===Array||void 0===n))return pn.call(a,l,s);for(r=new(void 0===n?Array:n)(dn(s-l,0)),i=0;l<s;l++,i++)l in a&&ln(r,i,a[l]);return r.length=i,r}});var fn=Object.setPrototypeOf||("__proto__"in{}?function(){var t,e=!1,n={};try{(t=Object.getOwnPropertyDescriptor(Object.prototype,"__proto__").set).call(n,[]),e=n instanceof Array}catch(t){}return function(n,r){return E(n),function(t){if(!m(t)&&null!==t)throw TypeError("Can't set "+String(t)+" as a prototype")}(r),e?t.call(n,r):n.__proto__=r,n}}():void 0),hn=Wt("match"),gn=function(t){var e;return m(t)&&(void 0!==(e=t[hn])?!!e:"RegExp"==p(t))},mn=Wt("species"),vn=A.f,yn=gt.f,kn=X.set,bn=Wt("match"),wn=r.RegExp,xn=wn.prototype,Sn=/a/g,Tn=/a/g,En=new wn(Sn)!==Sn,_n=Ot.UNSUPPORTED_Y;if(a&&Et("RegExp",!En||_n||i((function(){return Tn[bn]=!1,wn(Sn)!=Sn||wn(Tn)==Tn||"/a/i"!=wn(Sn,"i")})))){for(var An=function(t,e){var n,r=this instanceof An,i=gn(t),a=void 0===e;if(!r&&i&&t.constructor===An&&a)return t;En?i&&!a&&(t=t.source):t instanceof An&&(a&&(e=zt.call(t)),t=t.source),_n&&(n=!!e&&e.indexOf("y")>-1)&&(e=e.replace(/y/g,""));var o,l,s,c,u,p=(o=En?new wn(t,e):wn(t,e),l=r?this:xn,s=An,fn&&"function"==typeof(c=l.constructor)&&c!==s&&m(u=c.prototype)&&u!==s.prototype&&fn(o,u),o);return _n&&n&&kn(p,{sticky:n}),p},zn=function(t){t in An||vn(An,t,{configurable:!0,get:function(){return wn[t]},set:function(e){wn[t]=e}})},Rn=yn(wn),On=0;Rn.length>On;)zn(Rn[On++]);xn.constructor=An,An.prototype=xn,Q(r,"RegExp",An)}!function(t){var e=nt(t),n=A.f;a&&e&&!e[mn]&&n(e,mn,{configurable:!0,get:function(){return this}})}("RegExp");var In,$n=function(t){if(gn(t))throw TypeError("The method doesn't accept regular expressions");return t},Cn=Wt("match"),Ln=function(t){var e=/./;try{"/./"[t](e)}catch(n){try{return e[Cn]=!1,"/./"[t](e)}catch(t){}}return!1},Pn=T.f,Mn="".endsWith,jn=Math.min,Nn=Ln("endsWith");At({target:"String",proto:!0,forced:!!(Nn||(In=Pn(String.prototype,"endsWith"),!In||In.writable))&&!Nn},{endsWith:function(t){var e=String(h(this));$n(t);var n=arguments.length>1?arguments[1]:void 0,r=lt(e.length),i=void 0===n?r:jn(lt(n),r),a=String(t);return Mn?Mn.call(e,a,i):e.slice(i-a.length,i)===a}});var qn=Wt("species"),Un=[].push,Dn=Math.min,Zn=4294967295,Wn=!i((function(){return!RegExp(Zn,"y")}));Vt("split",2,(function(t,e,n){var r;return r="c"=="abbc".split(/(b)*/)[1]||4!="test".split(/(?:)/,-1).length||2!="ab".split(/(?:ab)*/).length||4!=".".split(/(.?)(.?)/).length||".".split(/()()/).length>1||"".split(/.?/).length?function(t,n){var r=String(h(this)),i=void 0===n?Zn:n>>>0;if(0===i)return[];if(void 0===t)return[r];if(!gn(t))return e.call(r,t,i);for(var a,o,l,s=[],c=(t.ignoreCase?"i":"")+(t.multiline?"m":"")+(t.unicode?"u":"")+(t.sticky?"y":""),u=0,p=new RegExp(t.source,c+"g");(a=jt.call(p,r))&&!((o=p.lastIndex)>u&&(s.push(r.slice(u,a.index)),a.length>1&&a.index<r.length&&Un.apply(s,a.slice(1)),l=a[0].length,u=o,s.length>=i));)p.lastIndex===a.index&&p.lastIndex++;return u===r.length?!l&&p.test("")||s.push(""):s.push(r.slice(u)),s.length>i?s.slice(0,i):s}:"0".split(void 0,0).length?function(t,n){return void 0===t&&0===n?[]:e.call(this,t,n)}:e,[function(e,n){var i=h(this),a=null==e?void 0:e[t];return void 0!==a?a.call(e,i,n):r.call(String(i),e,n)},function(t,i){var a=n(r,t,this,i,r!==e);if(a.done)return a.value;var o=E(t),l=String(this),s=function(t,e){var n,r=E(t).constructor;return void 0===r||null==(n=E(r)[qn])?e:We(n)}(o,RegExp),c=o.unicode,u=(o.ignoreCase?"i":"")+(o.multiline?"m":"")+(o.unicode?"u":"")+(Wn?"y":"g"),p=new s(Wn?o:"^(?:"+o.source+")",u),d=void 0===i?Zn:i>>>0;if(0===d)return[];if(0===l.length)return null===te(p,l)?[l]:[];for(var f=0,h=0,g=[];h<l.length;){p.lastIndex=Wn?h:0;var m,v=te(p,Wn?l:l.slice(h));if(null===v||(m=Dn(lt(p.lastIndex+(Wn?0:h)),l.length))===f)h=Qt(l,h,c);else{if(g.push(l.slice(f,h)),g.length===d)return g;for(var y=1;y<=v.length-1;y++)if(g.push(v[y]),g.length===d)return g;h=f=m}}return g.push(l.slice(f)),g}]}),!Wn);var Kn=T.f,Jn="".startsWith,Fn=Math.min,Hn=Ln("startsWith");At({target:"String",proto:!0,forced:!(!Hn&&!!function(){var t=Kn(String.prototype,"startsWith");return t&&!t.writable}())&&!Hn},{startsWith:function(t){var e=String(h(this));$n(t);var n=lt(Fn(arguments.length>1?arguments[1]:void 0,e.length)),r=String(t);return Jn?Jn.call(e,r,n):e.slice(n,n+r.length)===r}});var Bn="\t\n\v\f\r                　\u2028\u2029\ufeff",Yn="["+Bn+"]",Vn=RegExp("^"+Yn+Yn+"*"),Gn=RegExp(Yn+Yn+"*$"),Xn=function(t){return function(e){var n=String(h(e));return 1&t&&(n=n.replace(Vn,"")),2&t&&(n=n.replace(Gn,"")),n}},Qn={start:Xn(1),end:Xn(2),trim:Xn(3)},tr=function(t){return i((function(){return!!Bn[t]()||"​᠎"!="​᠎"[t]()||Bn[t].name!==t}))},er=Qn.trim;At({target:"String",proto:!0,forced:tr("trim")},{trim:function(){return er(this)}});var nr=Qn.end,rr=tr("trimEnd"),ir=rr?function(){return nr(this)}:"".trimEnd;At({target:"String",proto:!0,forced:rr},{trimEnd:ir,trimRight:ir});var ar=e((function(t){function e(){return{baseUrl:null,breaks:!1,gfm:!0,headerIds:!0,headerPrefix:"",highlight:null,langPrefix:"language-",mangle:!0,pedantic:!1,renderer:null,sanitize:!1,sanitizer:null,silent:!1,smartLists:!1,smartypants:!1,tokenizer:null,walkTokens:null,xhtml:!1}}t.exports={defaults:{baseUrl:null,breaks:!1,gfm:!0,headerIds:!0,headerPrefix:"",highlight:null,langPrefix:"language-",mangle:!0,pedantic:!1,renderer:null,sanitize:!1,sanitizer:null,silent:!1,smartLists:!1,smartypants:!1,tokenizer:null,walkTokens:null,xhtml:!1},getDefaults:e,changeDefaults:function(e){t.exports.defaults=e}}})),or=nn("splice"),lr=$e("splice",{ACCESSORS:!0,0:0,1:2}),sr=Math.max,cr=Math.min,ur=9007199254740991,pr="Maximum allowed length exceeded";At({target:"Array",proto:!0,forced:!or||!lr},{splice:function(t,e){var n,r,i,a,o,l,s=be(this),c=lt(s.length),u=ut(t,c),p=arguments.length;if(0===p?n=r=0:1===p?(n=0,r=c-u):(n=p-2,r=cr(sr(at(e),0),c-u)),c+n-r>ur)throw TypeError(pr);for(i=Fe(s,r),a=0;a<r;a++)(o=u+a)in s&&ln(i,a,s[o]);if(i.length=r,n<r){for(a=u;a<c-r;a++)l=a+n,(o=a+r)in s?s[l]=s[o]:delete s[l];for(a=c;a>c-r+n;a--)delete s[a-1]}else if(n>r)for(a=c-r;a>u;a--)l=a+n-1,(o=a+r-1)in s?s[l]=s[o]:delete s[l];for(a=0;a<n;a++)s[a+u]=arguments[a+2];return s.length=c-r+n,i}});var dr=/[&<>"']/,fr=/[&<>"']/g,hr=/[<>"']|&(?!#?\w+;)/,gr=/[<>"']|&(?!#?\w+;)/g,mr={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"},vr=function(t){return mr[t]};var yr=/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/gi;function kr(t){return t.replace(yr,(function(t,e){return"colon"===(e=e.toLowerCase())?":":"#"===e.charAt(0)?"x"===e.charAt(1)?String.fromCharCode(parseInt(e.substring(2),16)):String.fromCharCode(+e.substring(1)):""}))}var br=/(^|[^\[])\^/g;var wr=/[^\w:]/g,xr=/^$|^[a-z][a-z0-9+.-]*:|^[?#]/i;var Sr={},Tr=/^[^:]+:\/*[^/]*$/,Er=/^([^:]+:)[\s\S]*$/,_r=/^([^:]+:\/*[^/]*)[\s\S]*$/;function Ar(t,e){Sr[" "+t]||(Tr.test(t)?Sr[" "+t]=t+"/":Sr[" "+t]=zr(t,"/",!0));var n=-1===(t=Sr[" "+t]).indexOf(":");return"//"===e.substring(0,2)?n?e:t.replace(Er,"$1")+e:"/"===e.charAt(0)?n?e:t.replace(_r,"$1")+e:t+e}function zr(t,e,n){var r=t.length;if(0===r)return"";for(var i=0;i<r;){var a=t.charAt(r-i-1);if(a!==e||n){if(a===e||!n)break;i++}else i++}return t.substr(0,r-i)}var Rr=function(t,e){if(e){if(dr.test(t))return t.replace(fr,vr)}else if(hr.test(t))return t.replace(gr,vr);return t},Or=kr,Ir=function(t,e){t=t.source||t,e=e||"";var n={replace:function(e,r){return r=(r=r.source||r).replace(br,"$1"),t=t.replace(e,r),n},getRegex:function(){return new RegExp(t,e)}};return n},$r=function(t,e,n){if(t){var r;try{r=decodeURIComponent(kr(n)).replace(wr,"").toLowerCase()}catch(t){return null}if(0===r.indexOf("javascript:")||0===r.indexOf("vbscript:")||0===r.indexOf("data:"))return null}e&&!xr.test(n)&&(n=Ar(e,n));try{n=encodeURI(n).replace(/%25/g,"%")}catch(t){return null}return n},Cr={exec:function(){}},Lr=function(t){for(var e,n,r=1;r<arguments.length;r++)for(n in e=arguments[r])Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t},Pr=function(t,e){var n=t.replace(/\|/g,(function(t,e,n){for(var r=!1,i=e;--i>=0&&"\\"===n[i];)r=!r;return r?"|":" |"})).split(/ \|/),r=0;if(n.length>e)n.splice(e);else for(;n.length<e;)n.push("");for(;r<n.length;r++)n[r]=n[r].trim().replace(/\\\|/g,"|");return n},Mr=zr,jr=function(t,e){if(-1===t.indexOf(e[1]))return-1;for(var n=t.length,r=0,i=0;i<n;i++)if("\\"===t[i])i++;else if(t[i]===e[0])r++;else if(t[i]===e[1]&&--r<0)return i;return-1},Nr=function(t){t&&t.sanitize&&!t.silent&&console.warn("marked(): sanitize and sanitizer parameters are deprecated since version 0.7.0, should not be used and will be removed in the future. Read more here: https://marked.js.org/#/USING_ADVANCED.md#options")},qr=ar.defaults,Ur=Mr,Dr=Pr,Zr=Rr,Wr=jr;function Kr(t,e,n){var r=e.href,i=e.title?Zr(e.title):null;return"!"!==t[0].charAt(0)?{type:"link",raw:n,href:r,title:i,text:t[1]}:{type:"image",raw:n,text:Zr(t[1]),href:r,title:i}}var Jr=function(){function t(e){fe(this,t),this.options=e||qr}return ge(t,[{key:"space",value:function(t){var e=this.rules.block.newline.exec(t);if(e)return e[0].length>1?{type:"space",raw:e[0]}:{raw:"\n"}}},{key:"code",value:function(t,e){var n=this.rules.block.code.exec(t);if(n){var r=e[e.length-1];if(r&&"paragraph"===r.type)return{raw:n[0],text:n[0].trimRight()};var i=n[0].replace(/^ {4}/gm,"");return{type:"code",raw:n[0],codeBlockStyle:"indented",text:this.options.pedantic?i:Ur(i,"\n")}}}},{key:"fences",value:function(t){var e=this.rules.block.fences.exec(t);if(e){var n=e[0],r=function(t,e){var n=t.match(/^(\s+)(?:```)/);if(null===n)return e;var r=n[1];return e.split("\n").map((function(t){var e=t.match(/^\s+/);return null===e?t:me(e,1)[0].length>=r.length?t.slice(r.length):t})).join("\n")}(n,e[3]||"");return{type:"code",raw:n,lang:e[2]?e[2].trim():e[2],text:r}}}},{key:"heading",value:function(t){var e=this.rules.block.heading.exec(t);if(e)return{type:"heading",raw:e[0],depth:e[1].length,text:e[2]}}},{key:"nptable",value:function(t){var e=this.rules.block.nptable.exec(t);if(e){var n={type:"table",header:Dr(e[1].replace(/^ *| *\| *$/g,"")),align:e[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:e[3]?e[3].replace(/\n$/,"").split("\n"):[],raw:e[0]};if(n.header.length===n.align.length){var r,i=n.align.length;for(r=0;r<i;r++)/^ *-+: *$/.test(n.align[r])?n.align[r]="right":/^ *:-+: *$/.test(n.align[r])?n.align[r]="center":/^ *:-+ *$/.test(n.align[r])?n.align[r]="left":n.align[r]=null;for(i=n.cells.length,r=0;r<i;r++)n.cells[r]=Dr(n.cells[r],n.header.length);return n}}}},{key:"hr",value:function(t){var e=this.rules.block.hr.exec(t);if(e)return{type:"hr",raw:e[0]}}},{key:"blockquote",value:function(t){var e=this.rules.block.blockquote.exec(t);if(e){var n=e[0].replace(/^ *> ?/gm,"");return{type:"blockquote",raw:e[0],text:n}}}},{key:"list",value:function(t){var e=this.rules.block.list.exec(t);if(e){for(var n,r,i,a,o,l,s,c=e[0],u=e[2],p=u.length>1,d={type:"list",raw:c,ordered:p,start:p?+u:"",loose:!1,items:[]},f=e[0].match(this.rules.block.item),h=!1,g=f.length,m=0;m<g;m++)c=n=f[m],r=n.length,~(n=n.replace(/^ *([*+-]|\d+\.) */,"")).indexOf("\n ")&&(r-=n.length,n=this.options.pedantic?n.replace(/^ {1,4}/gm,""):n.replace(new RegExp("^ {1,"+r+"}","gm"),"")),m!==g-1&&(i=this.rules.block.bullet.exec(f[m+1])[0],(u.length>1?1===i.length:i.length>1||this.options.smartLists&&i!==u)&&(a=f.slice(m+1).join("\n"),d.raw=d.raw.substring(0,d.raw.length-a.length),m=g-1)),o=h||/\n\n(?!\s*$)/.test(n),m!==g-1&&(h="\n"===n.charAt(n.length-1),o||(o=h)),o&&(d.loose=!0),s=void 0,(l=/^\[[ xX]\] /.test(n))&&(s=" "!==n[1],n=n.replace(/^\[[ xX]\] +/,"")),d.items.push({type:"list_item",raw:c,task:l,checked:s,loose:o,text:n});return d}}},{key:"html",value:function(t){var e=this.rules.block.html.exec(t);if(e)return{type:this.options.sanitize?"paragraph":"html",raw:e[0],pre:!this.options.sanitizer&&("pre"===e[1]||"script"===e[1]||"style"===e[1]),text:this.options.sanitize?this.options.sanitizer?this.options.sanitizer(e[0]):Zr(e[0]):e[0]}}},{key:"def",value:function(t){var e=this.rules.block.def.exec(t);if(e)return e[3]&&(e[3]=e[3].substring(1,e[3].length-1)),{tag:e[1].toLowerCase().replace(/\s+/g," "),raw:e[0],href:e[2],title:e[3]}}},{key:"table",value:function(t){var e=this.rules.block.table.exec(t);if(e){var n={type:"table",header:Dr(e[1].replace(/^ *| *\| *$/g,"")),align:e[2].replace(/^ *|\| *$/g,"").split(/ *\| */),cells:e[3]?e[3].replace(/\n$/,"").split("\n"):[]};if(n.header.length===n.align.length){n.raw=e[0];var r,i=n.align.length;for(r=0;r<i;r++)/^ *-+: *$/.test(n.align[r])?n.align[r]="right":/^ *:-+: *$/.test(n.align[r])?n.align[r]="center":/^ *:-+ *$/.test(n.align[r])?n.align[r]="left":n.align[r]=null;for(i=n.cells.length,r=0;r<i;r++)n.cells[r]=Dr(n.cells[r].replace(/^ *\| *| *\| *$/g,""),n.header.length);return n}}}},{key:"lheading",value:function(t){var e=this.rules.block.lheading.exec(t);if(e)return{type:"heading",raw:e[0],depth:"="===e[2].charAt(0)?1:2,text:e[1]}}},{key:"paragraph",value:function(t){var e=this.rules.block.paragraph.exec(t);if(e)return{type:"paragraph",raw:e[0],text:"\n"===e[1].charAt(e[1].length-1)?e[1].slice(0,-1):e[1]}}},{key:"text",value:function(t,e){var n=this.rules.block.text.exec(t);if(n){var r=e[e.length-1];return r&&"text"===r.type?{raw:n[0],text:n[0]}:{type:"text",raw:n[0],text:n[0]}}}},{key:"escape",value:function(t){var e=this.rules.inline.escape.exec(t);if(e)return{type:"escape",raw:e[0],text:Zr(e[1])}}},{key:"tag",value:function(t,e,n){var r=this.rules.inline.tag.exec(t);if(r)return!e&&/^<a /i.test(r[0])?e=!0:e&&/^<\/a>/i.test(r[0])&&(e=!1),!n&&/^<(pre|code|kbd|script)(\s|>)/i.test(r[0])?n=!0:n&&/^<\/(pre|code|kbd|script)(\s|>)/i.test(r[0])&&(n=!1),{type:this.options.sanitize?"text":"html",raw:r[0],inLink:e,inRawBlock:n,text:this.options.sanitize?this.options.sanitizer?this.options.sanitizer(r[0]):Zr(r[0]):r[0]}}},{key:"link",value:function(t){var e=this.rules.inline.link.exec(t);if(e){var n=Wr(e[2],"()");if(n>-1){var r=(0===e[0].indexOf("!")?5:4)+e[1].length+n;e[2]=e[2].substring(0,n),e[0]=e[0].substring(0,r).trim(),e[3]=""}var i=e[2],a="";if(this.options.pedantic){var o=/^([^'"]*[^\s])\s+(['"])(.*)\2/.exec(i);o?(i=o[1],a=o[3]):a=""}else a=e[3]?e[3].slice(1,-1):"";return Kr(e,{href:(i=i.trim().replace(/^<([\s\S]*)>$/,"$1"))?i.replace(this.rules.inline._escapes,"$1"):i,title:a?a.replace(this.rules.inline._escapes,"$1"):a},e[0])}}},{key:"reflink",value:function(t,e){var n;if((n=this.rules.inline.reflink.exec(t))||(n=this.rules.inline.nolink.exec(t))){var r=(n[2]||n[1]).replace(/\s+/g," ");if(!(r=e[r.toLowerCase()])||!r.href){var i=n[0].charAt(0);return{type:"text",raw:i,text:i}}return Kr(n,r,n[0])}}},{key:"strong",value:function(t){var e=this.rules.inline.strong.exec(t);if(e)return{type:"strong",raw:e[0],text:e[4]||e[3]||e[2]||e[1]}}},{key:"em",value:function(t){var e=this.rules.inline.em.exec(t);if(e)return{type:"em",raw:e[0],text:e[6]||e[5]||e[4]||e[3]||e[2]||e[1]}}},{key:"codespan",value:function(t){var e=this.rules.inline.code.exec(t);if(e){var n=e[2].replace(/\n/g," "),r=/[^ ]/.test(n),i=n.startsWith(" ")&&n.endsWith(" ");return r&&i&&(n=n.substring(1,n.length-1)),n=Zr(n,!0),{type:"codespan",raw:e[0],text:n}}}},{key:"br",value:function(t){var e=this.rules.inline.br.exec(t);if(e)return{type:"br",raw:e[0]}}},{key:"del",value:function(t){var e=this.rules.inline.del.exec(t);if(e)return{type:"del",raw:e[0],text:e[1]}}},{key:"autolink",value:function(t,e){var n,r,i=this.rules.inline.autolink.exec(t);if(i)return r="@"===i[2]?"mailto:"+(n=Zr(this.options.mangle?e(i[1]):i[1])):n=Zr(i[1]),{type:"link",raw:i[0],text:n,href:r,tokens:[{type:"text",raw:n,text:n}]}}},{key:"url",value:function(t,e){var n;if(n=this.rules.inline.url.exec(t)){var r,i;if("@"===n[2])i="mailto:"+(r=Zr(this.options.mangle?e(n[0]):n[0]));else{var a;do{a=n[0],n[0]=this.rules.inline._backpedal.exec(n[0])[0]}while(a!==n[0]);r=Zr(n[0]),i="www."===n[1]?"http://"+r:r}return{type:"link",raw:n[0],text:r,href:i,tokens:[{type:"text",raw:r,text:r}]}}}},{key:"inlineText",value:function(t,e,n){var r,i=this.rules.inline.text.exec(t);if(i)return r=e?this.options.sanitize?this.options.sanitizer?this.options.sanitizer(i[0]):Zr(i[0]):i[0]:Zr(this.options.smartypants?n(i[0]):i[0]),{type:"text",raw:i[0],text:r}}}]),t}(),Fr=Cr,Hr=Ir,Br=Lr,Yr={newline:/^\n+/,code:/^( {4}[^\n]+\n*)+/,fences:/^ {0,3}(`{3,}(?=[^`\n]*\n)|~{3,})([^\n]*)\n(?:|([\s\S]*?)\n)(?: {0,3}\1[~`]* *(?:\n+|$)|$)/,hr:/^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n+|$)/,heading:/^ {0,3}(#{1,6}) +([^\n]*?)(?: +#+)? *(?:\n+|$)/,blockquote:/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,list:/^( {0,3})(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,html:"^ {0,3}(?:<(script|pre|style)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?\\?>\\n*|<![A-Z][\\s\\S]*?>\\n*|<!\\[CDATA\\[[\\s\\S]*?\\]\\]>\\n*|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:\\n{2,}|$)|<(?!script|pre|style)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:\\n{2,}|$)|</(?!script|pre|style)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:\\n{2,}|$))",def:/^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n+|$)/,nptable:Fr,table:Fr,lheading:/^([^\n]+)\n {0,3}(=+|-+) *(?:\n+|$)/,_paragraph:/^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html)[^\n]+)*)/,text:/^[^\n]+/,_label:/(?!\s*\])(?:\\[\[\]]|[^\[\]])+/,_title:/(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/};Yr.def=Hr(Yr.def).replace("label",Yr._label).replace("title",Yr._title).getRegex(),Yr.bullet=/(?:[*+-]|\d{1,9}\.)/,Yr.item=/^( *)(bull) ?[^\n]*(?:\n(?!\1bull ?)[^\n]*)*/,Yr.item=Hr(Yr.item,"gm").replace(/bull/g,Yr.bullet).getRegex(),Yr.list=Hr(Yr.list).replace(/bull/g,Yr.bullet).replace("hr","\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))").replace("def","\\n+(?="+Yr.def.source+")").getRegex(),Yr._tag="address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul",Yr._comment=/<!--(?!-?>)[\s\S]*?-->/,Yr.html=Hr(Yr.html,"i").replace("comment",Yr._comment).replace("tag",Yr._tag).replace("attribute",/ +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(),Yr.paragraph=Hr(Yr._paragraph).replace("hr",Yr.hr).replace("heading"," {0,3}#{1,6} ").replace("|lheading","").replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)]) ").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|!--)").replace("tag",Yr._tag).getRegex(),Yr.blockquote=Hr(Yr.blockquote).replace("paragraph",Yr.paragraph).getRegex(),Yr.normal=Br({},Yr),Yr.gfm=Br({},Yr.normal,{nptable:"^ *([^|\\n ].*\\|.*)\\n *([-:]+ *\\|[-| :]*)(?:\\n((?:(?!\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)",table:"^ *\\|(.+)\\n *\\|?( *[-:]+[-| :]*)(?:\\n *((?:(?!\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)"}),Yr.gfm.nptable=Hr(Yr.gfm.nptable).replace("hr",Yr.hr).replace("heading"," {0,3}#{1,6} ").replace("blockquote"," {0,3}>").replace("code"," {4}[^\\n]").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)]) ").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|!--)").replace("tag",Yr._tag).getRegex(),Yr.gfm.table=Hr(Yr.gfm.table).replace("hr",Yr.hr).replace("heading"," {0,3}#{1,6} ").replace("blockquote"," {0,3}>").replace("code"," {4}[^\\n]").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)]) ").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|!--)").replace("tag",Yr._tag).getRegex(),Yr.pedantic=Br({},Yr.normal,{html:Hr("^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:\"[^\"]*\"|'[^']*'|\\s[^'\"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))").replace("comment",Yr._comment).replace(/tag/g,"(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,heading:/^ *(#{1,6}) *([^\n]+?) *(?:#+ *)?(?:\n+|$)/,fences:Fr,paragraph:Hr(Yr.normal._paragraph).replace("hr",Yr.hr).replace("heading"," *#{1,6} *[^\n]").replace("lheading",Yr.lheading).replace("blockquote"," {0,3}>").replace("|fences","").replace("|list","").replace("|html","").getRegex()});var Vr={escape:/^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,autolink:/^<(scheme:[^\s\x00-\x1f<>]*|email)>/,url:Fr,tag:"^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>",link:/^!?\[(label)\]\(\s*(href)(?:\s+(title))?\s*\)/,reflink:/^!?\[(label)\]\[(?!\s*\])((?:\\[\[\]]?|[^\[\]\\])+)\]/,nolink:/^!?\[(?!\s*\])((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\](?:\[\])?/,strong:/^__([^\s_])__(?!_)|^\*\*([^\s*])\*\*(?!\*)|^__([^\s][\s\S]*?[^\s])__(?!_)|^\*\*([^\s][\s\S]*?[^\s])\*\*(?!\*)/,em:/^_([^\s_])_(?!_)|^_([^\s_<][\s\S]*?[^\s_])_(?!_|[^\s,punctuation])|^_([^\s_<][\s\S]*?[^\s])_(?!_|[^\s,punctuation])|^\*([^\s*<\[])\*(?!\*)|^\*([^\s<"][\s\S]*?[^\s\[\*])\*(?![\]`punctuation])|^\*([^\s*"<\[][\s\S]*[^\s])\*(?!\*)/,code:/^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,br:/^( {2,}|\\)\n(?!\s*$)/,del:Fr,text:/^(`+|[^`])(?:[\s\S]*?(?:(?=[\\<!\[`*]|\b_|$)|[^ ](?= {2,}\n))|(?= {2,}\n))/,_punctuation:"!\"#$%&'()*+\\-./:;<=>?@\\[^_{|}~"};Vr.em=Hr(Vr.em).replace(/punctuation/g,Vr._punctuation).getRegex(),Vr._escapes=/\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/g,Vr._scheme=/[a-zA-Z][a-zA-Z0-9+.-]{1,31}/,Vr._email=/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/,Vr.autolink=Hr(Vr.autolink).replace("scheme",Vr._scheme).replace("email",Vr._email).getRegex(),Vr._attribute=/\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/,Vr.tag=Hr(Vr.tag).replace("comment",Yr._comment).replace("attribute",Vr._attribute).getRegex(),Vr._label=/(?:\[[^\[\]]*\]|\\.|`[^`]*`|[^\[\]\\`])*?/,Vr._href=/<(?:\\[<>]?|[^\s<>\\])*>|[^\s\x00-\x1f]*/,Vr._title=/"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/,Vr.link=Hr(Vr.link).replace("label",Vr._label).replace("href",Vr._href).replace("title",Vr._title).getRegex(),Vr.reflink=Hr(Vr.reflink).replace("label",Vr._label).getRegex(),Vr.normal=Br({},Vr),Vr.pedantic=Br({},Vr.normal,{strong:/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,em:/^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/,link:Hr(/^!?\[(label)\]\((.*?)\)/).replace("label",Vr._label).getRegex(),reflink:Hr(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label",Vr._label).getRegex()}),Vr.gfm=Br({},Vr.normal,{escape:Hr(Vr.escape).replace("])","~|])").getRegex(),_extended_email:/[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/,url:/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/,_backpedal:/(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,del:/^~+(?=\S)([\s\S]*?\S)~+/,text:/^(`+|[^`])(?:[\s\S]*?(?:(?=[\\<!\[`*~]|\b_|https?:\/\/|ftp:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))|(?= {2,}\n|[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@))/}),Vr.gfm.url=Hr(Vr.gfm.url,"i").replace("email",Vr.gfm._extended_email).getRegex(),Vr.breaks=Br({},Vr.gfm,{br:Hr(Vr.br).replace("{2,}","*").getRegex(),text:Hr(Vr.gfm.text).replace("\\b_","\\b_| {2,}\\n").replace(/\{2,\}/g,"*").getRegex()});var Gr={block:Yr,inline:Vr},Xr=ar.defaults,Qr=Gr.block,ti=Gr.inline;function ei(t){return t.replace(/---/g,"—").replace(/--/g,"–").replace(/(^|[-\u2014/(\[{"\s])'/g,"$1‘").replace(/'/g,"’").replace(/(^|[-\u2014/(\[{\u2018\s])"/g,"$1“").replace(/"/g,"”").replace(/\.{3}/g,"…")}function ni(t){var e,n,r="",i=t.length;for(e=0;e<i;e++)n=t.charCodeAt(e),Math.random()>.5&&(n="x"+n.toString(16)),r+="&#"+n+";";return r}var ri=function(){function t(e){fe(this,t),this.tokens=[],this.tokens.links=Object.create(null),this.options=e||Xr,this.options.tokenizer=this.options.tokenizer||new Jr,this.tokenizer=this.options.tokenizer,this.tokenizer.options=this.options;var n={block:Qr.normal,inline:ti.normal};this.options.pedantic?(n.block=Qr.pedantic,n.inline=ti.pedantic):this.options.gfm&&(n.block=Qr.gfm,this.options.breaks?n.inline=ti.breaks:n.inline=ti.gfm),this.tokenizer.rules=n}return ge(t,[{key:"lex",value:function(t){return t=t.replace(/\r\n|\r/g,"\n").replace(/\t/g,"    "),this.blockTokens(t,this.tokens,!0),this.inline(this.tokens),this.tokens}},{key:"blockTokens",value:function(t){var e,n,r,i,a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[],o=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];for(t=t.replace(/^ +$/gm,"");t;)if(e=this.tokenizer.space(t))t=t.substring(e.raw.length),e.type&&a.push(e);else if(e=this.tokenizer.code(t,a))t=t.substring(e.raw.length),e.type?a.push(e):((i=a[a.length-1]).raw+="\n"+e.raw,i.text+="\n"+e.text);else if(e=this.tokenizer.fences(t))t=t.substring(e.raw.length),a.push(e);else if(e=this.tokenizer.heading(t))t=t.substring(e.raw.length),a.push(e);else if(e=this.tokenizer.nptable(t))t=t.substring(e.raw.length),a.push(e);else if(e=this.tokenizer.hr(t))t=t.substring(e.raw.length),a.push(e);else if(e=this.tokenizer.blockquote(t))t=t.substring(e.raw.length),e.tokens=this.blockTokens(e.text,[],o),a.push(e);else if(e=this.tokenizer.list(t)){for(t=t.substring(e.raw.length),r=e.items.length,n=0;n<r;n++)e.items[n].tokens=this.blockTokens(e.items[n].text,[],!1);a.push(e)}else if(e=this.tokenizer.html(t))t=t.substring(e.raw.length),a.push(e);else if(o&&(e=this.tokenizer.def(t)))t=t.substring(e.raw.length),this.tokens.links[e.tag]||(this.tokens.links[e.tag]={href:e.href,title:e.title});else if(e=this.tokenizer.table(t))t=t.substring(e.raw.length),a.push(e);else if(e=this.tokenizer.lheading(t))t=t.substring(e.raw.length),a.push(e);else if(o&&(e=this.tokenizer.paragraph(t)))t=t.substring(e.raw.length),a.push(e);else if(e=this.tokenizer.text(t,a))t=t.substring(e.raw.length),e.type?a.push(e):((i=a[a.length-1]).raw+="\n"+e.raw,i.text+="\n"+e.text);else if(t){var l="Infinite loop on byte: "+t.charCodeAt(0);if(this.options.silent){console.error(l);break}throw new Error(l)}return a}},{key:"inline",value:function(t){var e,n,r,i,a,o,l=t.length;for(e=0;e<l;e++)switch((o=t[e]).type){case"paragraph":case"text":case"heading":o.tokens=[],this.inlineTokens(o.text,o.tokens);break;case"table":for(o.tokens={header:[],cells:[]},i=o.header.length,n=0;n<i;n++)o.tokens.header[n]=[],this.inlineTokens(o.header[n],o.tokens.header[n]);for(i=o.cells.length,n=0;n<i;n++)for(a=o.cells[n],o.tokens.cells[n]=[],r=0;r<a.length;r++)o.tokens.cells[n][r]=[],this.inlineTokens(a[r],o.tokens.cells[n][r]);break;case"blockquote":this.inline(o.tokens);break;case"list":for(i=o.items.length,n=0;n<i;n++)this.inline(o.items[n].tokens)}return t}},{key:"inlineTokens",value:function(t){for(var e,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[],r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],i=arguments.length>3&&void 0!==arguments[3]&&arguments[3];t;)if(e=this.tokenizer.escape(t))t=t.substring(e.raw.length),n.push(e);else if(e=this.tokenizer.tag(t,r,i))t=t.substring(e.raw.length),r=e.inLink,i=e.inRawBlock,n.push(e);else if(e=this.tokenizer.link(t))t=t.substring(e.raw.length),"link"===e.type&&(e.tokens=this.inlineTokens(e.text,[],!0,i)),n.push(e);else if(e=this.tokenizer.reflink(t,this.tokens.links))t=t.substring(e.raw.length),"link"===e.type&&(e.tokens=this.inlineTokens(e.text,[],!0,i)),n.push(e);else if(e=this.tokenizer.strong(t))t=t.substring(e.raw.length),e.tokens=this.inlineTokens(e.text,[],r,i),n.push(e);else if(e=this.tokenizer.em(t))t=t.substring(e.raw.length),e.tokens=this.inlineTokens(e.text,[],r,i),n.push(e);else if(e=this.tokenizer.codespan(t))t=t.substring(e.raw.length),n.push(e);else if(e=this.tokenizer.br(t))t=t.substring(e.raw.length),n.push(e);else if(e=this.tokenizer.del(t))t=t.substring(e.raw.length),e.tokens=this.inlineTokens(e.text,[],r,i),n.push(e);else if(e=this.tokenizer.autolink(t,ni))t=t.substring(e.raw.length),n.push(e);else if(r||!(e=this.tokenizer.url(t,ni))){if(e=this.tokenizer.inlineText(t,i,ei))t=t.substring(e.raw.length),n.push(e);else if(t){var a="Infinite loop on byte: "+t.charCodeAt(0);if(this.options.silent){console.error(a);break}throw new Error(a)}}else t=t.substring(e.raw.length),n.push(e);return n}}],[{key:"lex",value:function(e,n){return new t(n).lex(e)}},{key:"rules",get:function(){return{block:Qr,inline:ti}}}]),t}(),ii=ar.defaults,ai=$r,oi=Rr,li=function(){function t(e){fe(this,t),this.options=e||ii}return ge(t,[{key:"code",value:function(t,e,n){var r=(e||"").match(/\S*/)[0];if(this.options.highlight){var i=this.options.highlight(t,r);null!=i&&i!==t&&(n=!0,t=i)}return r?'<pre><code class="'+this.options.langPrefix+oi(r,!0)+'">'+(n?t:oi(t,!0))+"</code></pre>\n":"<pre><code>"+(n?t:oi(t,!0))+"</code></pre>\n"}},{key:"blockquote",value:function(t){return"<blockquote>\n"+t+"</blockquote>\n"}},{key:"html",value:function(t){return t}},{key:"heading",value:function(t,e,n,r){return this.options.headerIds?"<h"+e+' id="'+this.options.headerPrefix+r.slug(n)+'">'+t+"</h"+e+">\n":"<h"+e+">"+t+"</h"+e+">\n"}},{key:"hr",value:function(){return this.options.xhtml?"<hr/>\n":"<hr>\n"}},{key:"list",value:function(t,e,n){var r=e?"ol":"ul";return"<"+r+(e&&1!==n?' start="'+n+'"':"")+">\n"+t+"</"+r+">\n"}},{key:"listitem",value:function(t){return"<li>"+t+"</li>\n"}},{key:"checkbox",value:function(t){return"<input "+(t?'checked="" ':"")+'disabled="" type="checkbox"'+(this.options.xhtml?" /":"")+"> "}},{key:"paragraph",value:function(t){return"<p>"+t+"</p>\n"}},{key:"table",value:function(t,e){return e&&(e="<tbody>"+e+"</tbody>"),"<table>\n<thead>\n"+t+"</thead>\n"+e+"</table>\n"}},{key:"tablerow",value:function(t){return"<tr>\n"+t+"</tr>\n"}},{key:"tablecell",value:function(t,e){var n=e.header?"th":"td";return(e.align?"<"+n+' align="'+e.align+'">':"<"+n+">")+t+"</"+n+">\n"}},{key:"strong",value:function(t){return"<strong>"+t+"</strong>"}},{key:"em",value:function(t){return"<em>"+t+"</em>"}},{key:"codespan",value:function(t){return"<code>"+t+"</code>"}},{key:"br",value:function(){return this.options.xhtml?"<br/>":"<br>"}},{key:"del",value:function(t){return"<del>"+t+"</del>"}},{key:"link",value:function(t,e,n){if(null===(t=ai(this.options.sanitize,this.options.baseUrl,t)))return n;var r='<a href="'+oi(t)+'"';return e&&(r+=' title="'+e+'"'),r+=">"+n+"</a>"}},{key:"image",value:function(t,e,n){if(null===(t=ai(this.options.sanitize,this.options.baseUrl,t)))return n;var r='<img src="'+t+'" alt="'+n+'"';return e&&(r+=' title="'+e+'"'),r+=this.options.xhtml?"/>":">"}},{key:"text",value:function(t){return t}}]),t}(),si=function(){function t(){fe(this,t)}return ge(t,[{key:"strong",value:function(t){return t}},{key:"em",value:function(t){return t}},{key:"codespan",value:function(t){return t}},{key:"del",value:function(t){return t}},{key:"html",value:function(t){return t}},{key:"text",value:function(t){return t}},{key:"link",value:function(t,e,n){return""+n}},{key:"image",value:function(t,e,n){return""+n}},{key:"br",value:function(){return""}}]),t}(),ci=function(){function t(){fe(this,t),this.seen={}}return ge(t,[{key:"slug",value:function(t){var e=t.toLowerCase().trim().replace(/<[!\/a-z].*?>/gi,"").replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g,"").replace(/\s/g,"-");if(this.seen.hasOwnProperty(e)){var n=e;do{this.seen[n]++,e=n+"-"+this.seen[n]}while(this.seen.hasOwnProperty(e))}return this.seen[e]=0,e}}]),t}(),ui=ar.defaults,pi=Or,di=function(){function t(e){fe(this,t),this.options=e||ui,this.options.renderer=this.options.renderer||new li,this.renderer=this.options.renderer,this.renderer.options=this.options,this.textRenderer=new si,this.slugger=new ci}return ge(t,[{key:"parse",value:function(t){var e,n,r,i,a,o,l,s,c,u,p,d,f,h,g,m,v,y,k=!(arguments.length>1&&void 0!==arguments[1])||arguments[1],b="",w=t.length;for(e=0;e<w;e++)switch((u=t[e]).type){case"space":continue;case"hr":b+=this.renderer.hr();continue;case"heading":b+=this.renderer.heading(this.parseInline(u.tokens),u.depth,pi(this.parseInline(u.tokens,this.textRenderer)),this.slugger);continue;case"code":b+=this.renderer.code(u.text,u.lang,u.escaped);continue;case"table":for(s="",l="",i=u.header.length,n=0;n<i;n++)l+=this.renderer.tablecell(this.parseInline(u.tokens.header[n]),{header:!0,align:u.align[n]});for(s+=this.renderer.tablerow(l),c="",i=u.cells.length,n=0;n<i;n++){for(l="",a=(o=u.tokens.cells[n]).length,r=0;r<a;r++)l+=this.renderer.tablecell(this.parseInline(o[r]),{header:!1,align:u.align[r]});c+=this.renderer.tablerow(l)}b+=this.renderer.table(s,c);continue;case"blockquote":c=this.parse(u.tokens),b+=this.renderer.blockquote(c);continue;case"list":for(p=u.ordered,d=u.start,f=u.loose,i=u.items.length,c="",n=0;n<i;n++)m=(g=u.items[n]).checked,v=g.task,h="",g.task&&(y=this.renderer.checkbox(m),f?g.tokens.length>0&&"text"===g.tokens[0].type?(g.tokens[0].text=y+" "+g.tokens[0].text,g.tokens[0].tokens&&g.tokens[0].tokens.length>0&&"text"===g.tokens[0].tokens[0].type&&(g.tokens[0].tokens[0].text=y+" "+g.tokens[0].tokens[0].text)):g.tokens.unshift({type:"text",text:y}):h+=y),h+=this.parse(g.tokens,f),c+=this.renderer.listitem(h,v,m);b+=this.renderer.list(c,p,d);continue;case"html":b+=this.renderer.html(u.text);continue;case"paragraph":b+=this.renderer.paragraph(this.parseInline(u.tokens));continue;case"text":for(c=u.tokens?this.parseInline(u.tokens):u.text;e+1<w&&"text"===t[e+1].type;)c+="\n"+((u=t[++e]).tokens?this.parseInline(u.tokens):u.text);b+=k?this.renderer.paragraph(c):c;continue;default:var x='Token with "'+u.type+'" type was not found.';if(this.options.silent)return void console.error(x);throw new Error(x)}return b}},{key:"parseInline",value:function(t,e){e=e||this.renderer;var n,r,i="",a=t.length;for(n=0;n<a;n++)switch((r=t[n]).type){case"escape":i+=e.text(r.text);break;case"html":i+=e.html(r.text);break;case"link":i+=e.link(r.href,r.title,this.parseInline(r.tokens,e));break;case"image":i+=e.image(r.href,r.title,r.text);break;case"strong":i+=e.strong(this.parseInline(r.tokens,e));break;case"em":i+=e.em(this.parseInline(r.tokens,e));break;case"codespan":i+=e.codespan(r.text);break;case"br":i+=e.br();break;case"del":i+=e.del(this.parseInline(r.tokens,e));break;case"text":i+=e.text(r.text);break;default:var o='Token with "'+r.type+'" type was not found.';if(this.options.silent)return void console.error(o);throw new Error(o)}return i}}],[{key:"parse",value:function(e,n){return new t(n).parse(e)}}]),t}(),fi=Lr,hi=Nr,gi=Rr,mi=ar.getDefaults,vi=ar.changeDefaults,yi=ar.defaults;function ki(t,e,n){if(null==t)throw new Error("marked(): input parameter is undefined or null");if("string"!=typeof t)throw new Error("marked(): input parameter is of type "+Object.prototype.toString.call(t)+", string expected");if("function"==typeof e&&(n=e,e=null),e=fi({},ki.defaults,e||{}),hi(e),n){var r,i=e.highlight;try{r=ri.lex(t,e)}catch(t){return n(t)}var a=function(t){var a;if(!t)try{a=di.parse(r,e)}catch(e){t=e}return e.highlight=i,t?n(t):n(null,a)};if(!i||i.length<3)return a();if(delete e.highlight,!r.length)return a();var o=0;return ki.walkTokens(r,(function(t){"code"===t.type&&(o++,i(t.text,t.lang,(function(e,n){if(e)return a(e);null!=n&&n!==t.text&&(t.text=n,t.escaped=!0),0===--o&&a()})))})),void(0===o&&a())}try{var l=ri.lex(t,e);return e.walkTokens&&ki.walkTokens(l,e.walkTokens),di.parse(l,e)}catch(t){if(t.message+="\nPlease report this to https://github.com/markedjs/marked.",e.silent)return"<p>An error occurred:</p><pre>"+gi(t.message+"",!0)+"</pre>";throw t}}ki.options=ki.setOptions=function(t){return fi(ki.defaults,t),vi(ki.defaults),ki},ki.getDefaults=mi,ki.defaults=yi,ki.use=function(t){var e=fi({},t);if(t.renderer&&function(){var n=ki.defaults.renderer||new li,r=function(e){var r=n[e];n[e]=function(){for(var i=arguments.length,a=new Array(i),o=0;o<i;o++)a[o]=arguments[o];var l=t.renderer[e].apply(n,a);return!1===l&&(l=r.apply(n,a)),l}};for(var i in t.renderer)r(i);e.renderer=n}(),t.tokenizer&&function(){var n=ki.defaults.tokenizer||new Jr,r=function(e){var r=n[e];n[e]=function(){for(var i=arguments.length,a=new Array(i),o=0;o<i;o++)a[o]=arguments[o];var l=t.tokenizer[e].apply(n,a);return!1===l&&(l=r.apply(n,a)),l}};for(var i in t.tokenizer)r(i);e.tokenizer=n}(),t.walkTokens){var n=ki.defaults.walkTokens;e.walkTokens=function(e){t.walkTokens(e),n&&n(e)}}ki.setOptions(e)},ki.walkTokens=function(t,e){var n,r=ke(t);try{for(r.s();!(n=r.n()).done;){var i=n.value;switch(e(i),i.type){case"table":var a,o=ke(i.tokens.header);try{for(o.s();!(a=o.n()).done;){var l=a.value;ki.walkTokens(l,e)}}catch(t){o.e(t)}finally{o.f()}var s,c=ke(i.tokens.cells);try{for(c.s();!(s=c.n()).done;){var u,p=ke(s.value);try{for(p.s();!(u=p.n()).done;){var d=u.value;ki.walkTokens(d,e)}}catch(t){p.e(t)}finally{p.f()}}}catch(t){c.e(t)}finally{c.f()}break;case"list":ki.walkTokens(i.items,e);break;default:i.tokens&&ki.walkTokens(i.tokens,e)}}}catch(t){r.e(t)}finally{r.f()}},ki.Parser=di,ki.parser=di.parse,ki.Renderer=li,ki.TextRenderer=si,ki.Lexer=ri,ki.lexer=ri.lex,ki.Tokenizer=Jr,ki.Slugger=ci,ki.parse=ki;var bi=ki;return function(){var t,e=null;function n(){var n;!e||e.closed?((e=window.open("about:blank","reveal.js - Notes","width=1100,height=700")).marked=bi,e.document.write("<html lang=\"en\">\n\t<head>\n\t\t<meta charset=\"utf-8\">\n\n\t\t<title>reveal.js - Speaker View</title>\n\n\t\t<style>\n\t\t\tbody {\n\t\t\t\tfont-family: Helvetica;\n\t\t\t\tfont-size: 18px;\n\t\t\t}\n\n\t\t\t#current-slide,\n\t\t\t#upcoming-slide,\n\t\t\t#speaker-controls {\n\t\t\t\tpadding: 6px;\n\t\t\t\tbox-sizing: border-box;\n\t\t\t\t-moz-box-sizing: border-box;\n\t\t\t}\n\n\t\t\t#current-slide iframe,\n\t\t\t#upcoming-slide iframe {\n\t\t\t\twidth: 100%;\n\t\t\t\theight: 100%;\n\t\t\t\tborder: 1px solid #ddd;\n\t\t\t}\n\n\t\t\t#current-slide .label,\n\t\t\t#upcoming-slide .label {\n\t\t\t\tposition: absolute;\n\t\t\t\ttop: 10px;\n\t\t\t\tleft: 10px;\n\t\t\t\tz-index: 2;\n\t\t\t}\n\n\t\t\t#connection-status {\n\t\t\t\tposition: absolute;\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 0;\n\t\t\t\twidth: 100%;\n\t\t\t\theight: 100%;\n\t\t\t\tz-index: 20;\n\t\t\t\tpadding: 30% 20% 20% 20%;\n\t\t\t\tfont-size: 18px;\n\t\t\t\tcolor: #222;\n\t\t\t\tbackground: #fff;\n\t\t\t\ttext-align: center;\n\t\t\t\tbox-sizing: border-box;\n\t\t\t\tline-height: 1.4;\n\t\t\t}\n\n\t\t\t.overlay-element {\n\t\t\t\theight: 34px;\n\t\t\t\tline-height: 34px;\n\t\t\t\tpadding: 0 10px;\n\t\t\t\ttext-shadow: none;\n\t\t\t\tbackground: rgba( 220, 220, 220, 0.8 );\n\t\t\t\tcolor: #222;\n\t\t\t\tfont-size: 14px;\n\t\t\t}\n\n\t\t\t.overlay-element.interactive:hover {\n\t\t\t\tbackground: rgba( 220, 220, 220, 1 );\n\t\t\t}\n\n\t\t\t#current-slide {\n\t\t\t\tposition: absolute;\n\t\t\t\twidth: 60%;\n\t\t\t\theight: 100%;\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 0;\n\t\t\t\tpadding-right: 0;\n\t\t\t}\n\n\t\t\t#upcoming-slide {\n\t\t\t\tposition: absolute;\n\t\t\t\twidth: 40%;\n\t\t\t\theight: 40%;\n\t\t\t\tright: 0;\n\t\t\t\ttop: 0;\n\t\t\t}\n\n\t\t\t/* Speaker controls */\n\t\t\t#speaker-controls {\n\t\t\t\tposition: absolute;\n\t\t\t\ttop: 40%;\n\t\t\t\tright: 0;\n\t\t\t\twidth: 40%;\n\t\t\t\theight: 60%;\n\t\t\t\toverflow: auto;\n\t\t\t\tfont-size: 18px;\n\t\t\t}\n\n\t\t\t\t.speaker-controls-time.hidden,\n\t\t\t\t.speaker-controls-notes.hidden {\n\t\t\t\t\tdisplay: none;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .label,\n\t\t\t\t.speaker-controls-pace .label,\n\t\t\t\t.speaker-controls-notes .label {\n\t\t\t\t\ttext-transform: uppercase;\n\t\t\t\t\tfont-weight: normal;\n\t\t\t\t\tfont-size: 0.66em;\n\t\t\t\t\tcolor: #666;\n\t\t\t\t\tmargin: 0;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time, .speaker-controls-pace {\n\t\t\t\t\tborder-bottom: 1px solid rgba( 200, 200, 200, 0.5 );\n\t\t\t\t\tmargin-bottom: 10px;\n\t\t\t\t\tpadding: 10px 16px;\n\t\t\t\t\tpadding-bottom: 20px;\n\t\t\t\t\tcursor: pointer;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .reset-button {\n\t\t\t\t\topacity: 0;\n\t\t\t\t\tfloat: right;\n\t\t\t\t\tcolor: #666;\n\t\t\t\t\ttext-decoration: none;\n\t\t\t\t}\n\t\t\t\t.speaker-controls-time:hover .reset-button {\n\t\t\t\t\topacity: 1;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .timer,\n\t\t\t\t.speaker-controls-time .clock {\n\t\t\t\t\twidth: 50%;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .timer,\n\t\t\t\t.speaker-controls-time .clock,\n\t\t\t\t.speaker-controls-time .pacing .hours-value,\n\t\t\t\t.speaker-controls-time .pacing .minutes-value,\n\t\t\t\t.speaker-controls-time .pacing .seconds-value {\n\t\t\t\t\tfont-size: 1.9em;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .timer {\n\t\t\t\t\tfloat: left;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .clock {\n\t\t\t\t\tfloat: right;\n\t\t\t\t\ttext-align: right;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time span.mute {\n\t\t\t\t\topacity: 0.3;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .pacing-title {\n\t\t\t\t\tmargin-top: 5px;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .pacing.ahead {\n\t\t\t\t\tcolor: blue;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .pacing.on-track {\n\t\t\t\t\tcolor: green;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-time .pacing.behind {\n\t\t\t\t\tcolor: red;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-notes {\n\t\t\t\t\tpadding: 10px 16px;\n\t\t\t\t}\n\n\t\t\t\t.speaker-controls-notes .value {\n\t\t\t\t\tmargin-top: 5px;\n\t\t\t\t\tline-height: 1.4;\n\t\t\t\t\tfont-size: 1.2em;\n\t\t\t\t}\n\n\t\t\t/* Layout selector */\n\t\t\t#speaker-layout {\n\t\t\t\tposition: absolute;\n\t\t\t\ttop: 10px;\n\t\t\t\tright: 10px;\n\t\t\t\tcolor: #222;\n\t\t\t\tz-index: 10;\n\t\t\t}\n\t\t\t\t#speaker-layout select {\n\t\t\t\t\tposition: absolute;\n\t\t\t\t\twidth: 100%;\n\t\t\t\t\theight: 100%;\n\t\t\t\t\ttop: 0;\n\t\t\t\t\tleft: 0;\n\t\t\t\t\tborder: 0;\n\t\t\t\t\tbox-shadow: 0;\n\t\t\t\t\tcursor: pointer;\n\t\t\t\t\topacity: 0;\n\n\t\t\t\t\tfont-size: 1em;\n\t\t\t\t\tbackground-color: transparent;\n\n\t\t\t\t\t-moz-appearance: none;\n\t\t\t\t\t-webkit-appearance: none;\n\t\t\t\t\t-webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n\t\t\t\t}\n\n\t\t\t\t#speaker-layout select:focus {\n\t\t\t\t\toutline: none;\n\t\t\t\t\tbox-shadow: none;\n\t\t\t\t}\n\n\t\t\t.clear {\n\t\t\t\tclear: both;\n\t\t\t}\n\n\t\t\t/* Speaker layout: Wide */\n\t\t\tbody[data-speaker-layout=\"wide\"] #current-slide,\n\t\t\tbody[data-speaker-layout=\"wide\"] #upcoming-slide {\n\t\t\t\twidth: 50%;\n\t\t\t\theight: 45%;\n\t\t\t\tpadding: 6px;\n\t\t\t}\n\n\t\t\tbody[data-speaker-layout=\"wide\"] #current-slide {\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 0;\n\t\t\t}\n\n\t\t\tbody[data-speaker-layout=\"wide\"] #upcoming-slide {\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 50%;\n\t\t\t}\n\n\t\t\tbody[data-speaker-layout=\"wide\"] #speaker-controls {\n\t\t\t\ttop: 45%;\n\t\t\t\tleft: 0;\n\t\t\t\twidth: 100%;\n\t\t\t\theight: 50%;\n\t\t\t\tfont-size: 1.25em;\n\t\t\t}\n\n\t\t\t/* Speaker layout: Tall */\n\t\t\tbody[data-speaker-layout=\"tall\"] #current-slide,\n\t\t\tbody[data-speaker-layout=\"tall\"] #upcoming-slide {\n\t\t\t\twidth: 45%;\n\t\t\t\theight: 50%;\n\t\t\t\tpadding: 6px;\n\t\t\t}\n\n\t\t\tbody[data-speaker-layout=\"tall\"] #current-slide {\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 0;\n\t\t\t}\n\n\t\t\tbody[data-speaker-layout=\"tall\"] #upcoming-slide {\n\t\t\t\ttop: 50%;\n\t\t\t\tleft: 0;\n\t\t\t}\n\n\t\t\tbody[data-speaker-layout=\"tall\"] #speaker-controls {\n\t\t\t\tpadding-top: 40px;\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 45%;\n\t\t\t\twidth: 55%;\n\t\t\t\theight: 100%;\n\t\t\t\tfont-size: 1.25em;\n\t\t\t}\n\n\t\t\t/* Speaker layout: Notes only */\n\t\t\tbody[data-speaker-layout=\"notes-only\"] #current-slide,\n\t\t\tbody[data-speaker-layout=\"notes-only\"] #upcoming-slide {\n\t\t\t\tdisplay: none;\n\t\t\t}\n\n\t\t\tbody[data-speaker-layout=\"notes-only\"] #speaker-controls {\n\t\t\t\tpadding-top: 40px;\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 0;\n\t\t\t\twidth: 100%;\n\t\t\t\theight: 100%;\n\t\t\t\tfont-size: 1.25em;\n\t\t\t}\n\n\t\t\t@media screen and (max-width: 1080px) {\n\t\t\t\tbody[data-speaker-layout=\"default\"] #speaker-controls {\n\t\t\t\t\tfont-size: 16px;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t@media screen and (max-width: 900px) {\n\t\t\t\tbody[data-speaker-layout=\"default\"] #speaker-controls {\n\t\t\t\t\tfont-size: 14px;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t@media screen and (max-width: 800px) {\n\t\t\t\tbody[data-speaker-layout=\"default\"] #speaker-controls {\n\t\t\t\t\tfont-size: 12px;\n\t\t\t\t}\n\t\t\t}\n\n\t\t</style>\n\t</head>\n\n\t<body>\n\n\t\t<div id=\"connection-status\">Loading speaker view...</div>\n\n\t\t<div id=\"current-slide\"></div>\n\t\t<div id=\"upcoming-slide\"><span class=\"overlay-element label\">Upcoming</span></div>\n\t\t<div id=\"speaker-controls\">\n\t\t\t<div class=\"speaker-controls-time\">\n\t\t\t\t<h4 class=\"label\">Time <span class=\"reset-button\">Click to Reset</span></h4>\n\t\t\t\t<div class=\"clock\">\n\t\t\t\t\t<span class=\"clock-value\">0:00 AM</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"timer\">\n\t\t\t\t\t<span class=\"hours-value\">00</span><span class=\"minutes-value\">:00</span><span class=\"seconds-value\">:00</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"clear\"></div>\n\n\t\t\t\t<h4 class=\"label pacing-title\" style=\"display: none\">Pacing – Time to finish current slide</h4>\n\t\t\t\t<div class=\"pacing\" style=\"display: none\">\n\t\t\t\t\t<span class=\"hours-value\">00</span><span class=\"minutes-value\">:00</span><span class=\"seconds-value\">:00</span>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<div class=\"speaker-controls-notes hidden\">\n\t\t\t\t<h4 class=\"label\">Notes</h4>\n\t\t\t\t<div class=\"value\"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div id=\"speaker-layout\" class=\"overlay-element interactive\">\n\t\t\t<span class=\"speaker-layout-label\"></span>\n\t\t\t<select class=\"speaker-layout-dropdown\"></select>\n\t\t</div>\n\n\t\t<script>\n\n\t\t\t(function() {\n\n\t\t\t\tvar notes,\n\t\t\t\t\tnotesValue,\n\t\t\t\t\tcurrentState,\n\t\t\t\t\tcurrentSlide,\n\t\t\t\t\tupcomingSlide,\n\t\t\t\t\tlayoutLabel,\n\t\t\t\t\tlayoutDropdown,\n\t\t\t\t\tpendingCalls = {},\n\t\t\t\t\tlastRevealApiCallId = 0,\n\t\t\t\t\tconnected = false;\n\n\t\t\t\tvar SPEAKER_LAYOUTS = {\n\t\t\t\t\t'default': 'Default',\n\t\t\t\t\t'wide': 'Wide',\n\t\t\t\t\t'tall': 'Tall',\n\t\t\t\t\t'notes-only': 'Notes only'\n\t\t\t\t};\n\n\t\t\t\tsetupLayout();\n\n\t\t\t\tvar connectionStatus = document.querySelector( '#connection-status' );\n\t\t\t\tvar connectionTimeout = setTimeout( function() {\n\t\t\t\t\tconnectionStatus.innerHTML = 'Error connecting to main window.<br>Please try closing and reopening the speaker view.';\n\t\t\t\t}, 5000 );\n\n\t\t\t\twindow.addEventListener( 'message', function( event ) {\n\n\t\t\t\t\tclearTimeout( connectionTimeout );\n\t\t\t\t\tconnectionStatus.style.display = 'none';\n\n\t\t\t\t\tvar data = JSON.parse( event.data );\n\n\t\t\t\t\t// The overview mode is only useful to the reveal.js instance\n\t\t\t\t\t// where navigation occurs so we don't sync it\n\t\t\t\t\tif( data.state ) delete data.state.overview;\n\n\t\t\t\t\t// Messages sent by the notes plugin inside of the main window\n\t\t\t\t\tif( data && data.namespace === 'reveal-notes' ) {\n\t\t\t\t\t\tif( data.type === 'connect' ) {\n\t\t\t\t\t\t\thandleConnectMessage( data );\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse if( data.type === 'state' ) {\n\t\t\t\t\t\t\thandleStateMessage( data );\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse if( data.type === 'return' ) {\n\t\t\t\t\t\t\tpendingCalls[data.callId](data.result);\n\t\t\t\t\t\t\tdelete pendingCalls[data.callId];\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\t// Messages sent by the reveal.js inside of the current slide preview\n\t\t\t\t\telse if( data && data.namespace === 'reveal' ) {\n\t\t\t\t\t\tif( /ready/.test( data.eventName ) ) {\n\t\t\t\t\t\t\t// Send a message back to notify that the handshake is complete\n\t\t\t\t\t\t\twindow.opener.postMessage( JSON.stringify({ namespace: 'reveal-notes', type: 'connected'} ), '*' );\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse if( /slidechanged|fragmentshown|fragmenthidden|paused|resumed/.test( data.eventName ) && currentState !== JSON.stringify( data.state ) ) {\n\n\t\t\t\t\t\t\twindow.opener.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ]} ), '*' );\n\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t} );\n\n\t\t\t\t/**\n\t\t\t\t * Asynchronously calls the Reveal.js API of the main frame.\n\t\t\t\t */\n\t\t\t\tfunction callRevealApi( methodName, methodArguments, callback ) {\n\n\t\t\t\t\tvar callId = ++lastRevealApiCallId;\n\t\t\t\t\tpendingCalls[callId] = callback;\n\t\t\t\t\twindow.opener.postMessage( JSON.stringify( {\n\t\t\t\t\t\tnamespace: 'reveal-notes',\n\t\t\t\t\t\ttype: 'call',\n\t\t\t\t\t\tcallId: callId,\n\t\t\t\t\t\tmethodName: methodName,\n\t\t\t\t\t\targuments: methodArguments\n\t\t\t\t\t} ), '*' );\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Called when the main window is trying to establish a\n\t\t\t\t * connection.\n\t\t\t\t */\n\t\t\t\tfunction handleConnectMessage( data ) {\n\n\t\t\t\t\tif( connected === false ) {\n\t\t\t\t\t\tconnected = true;\n\n\t\t\t\t\t\tsetupIframes( data );\n\t\t\t\t\t\tsetupKeyboard();\n\t\t\t\t\t\tsetupNotes();\n\t\t\t\t\t\tsetupTimer();\n\t\t\t\t\t}\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Called when the main window sends an updated state.\n\t\t\t\t */\n\t\t\t\tfunction handleStateMessage( data ) {\n\n\t\t\t\t\t// Store the most recently set state to avoid circular loops\n\t\t\t\t\t// applying the same state\n\t\t\t\t\tcurrentState = JSON.stringify( data.state );\n\n\t\t\t\t\t// No need for updating the notes in case of fragment changes\n\t\t\t\t\tif ( data.notes ) {\n\t\t\t\t\t\tnotes.classList.remove( 'hidden' );\n\t\t\t\t\t\tnotesValue.style.whiteSpace = data.whitespace;\n\t\t\t\t\t\tif( data.markdown ) {\n\t\t\t\t\t\t\tnotesValue.innerHTML = marked( data.notes );\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse {\n\t\t\t\t\t\t\tnotesValue.innerHTML = data.notes;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\telse {\n\t\t\t\t\t\tnotes.classList.add( 'hidden' );\n\t\t\t\t\t}\n\n\t\t\t\t\t// Update the note slides\n\t\t\t\t\tcurrentSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ] }), '*' );\n\t\t\t\t\tupcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ] }), '*' );\n\t\t\t\t\tupcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'next' }), '*' );\n\n\t\t\t\t}\n\n\t\t\t\t// Limit to max one state update per X ms\n\t\t\t\thandleStateMessage = debounce( handleStateMessage, 200 );\n\n\t\t\t\t/**\n\t\t\t\t * Forward keyboard events to the current slide window.\n\t\t\t\t * This enables keyboard events to work even if focus\n\t\t\t\t * isn't set on the current slide iframe.\n\t\t\t\t *\n\t\t\t\t * Block F5 default handling, it reloads and disconnects\n\t\t\t\t * the speaker notes window.\n\t\t\t\t */\n\t\t\t\tfunction setupKeyboard() {\n\n\t\t\t\t\tdocument.addEventListener( 'keydown', function( event ) {\n\t\t\t\t\t\tif( event.keyCode === 116 || ( event.metaKey && event.keyCode === 82 ) ) {\n\t\t\t\t\t\t\tevent.preventDefault();\n\t\t\t\t\t\t\treturn false;\n\t\t\t\t\t\t}\n\t\t\t\t\t\tcurrentSlide.contentWindow.postMessage( JSON.stringify({ method: 'triggerKey', args: [ event.keyCode ] }), '*' );\n\t\t\t\t\t} );\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Creates the preview iframes.\n\t\t\t\t */\n\t\t\t\tfunction setupIframes( data ) {\n\n\t\t\t\t\tvar params = [\n\t\t\t\t\t\t'receiver',\n\t\t\t\t\t\t'progress=false',\n\t\t\t\t\t\t'history=false',\n\t\t\t\t\t\t'transition=none',\n\t\t\t\t\t\t'autoSlide=0',\n\t\t\t\t\t\t'backgroundTransition=none'\n\t\t\t\t\t].join( '&' );\n\n\t\t\t\t\tvar urlSeparator = /\\?/.test(data.url) ? '&' : '?';\n\t\t\t\t\tvar hash = '#/' + data.state.indexh + '/' + data.state.indexv;\n\t\t\t\t\tvar currentURL = data.url + urlSeparator + params + '&postMessageEvents=true' + hash;\n\t\t\t\t\tvar upcomingURL = data.url + urlSeparator + params + '&controls=false' + hash;\n\n\t\t\t\t\tcurrentSlide = document.createElement( 'iframe' );\n\t\t\t\t\tcurrentSlide.setAttribute( 'width', 1280 );\n\t\t\t\t\tcurrentSlide.setAttribute( 'height', 1024 );\n\t\t\t\t\tcurrentSlide.setAttribute( 'src', currentURL );\n\t\t\t\t\tdocument.querySelector( '#current-slide' ).appendChild( currentSlide );\n\n\t\t\t\t\tupcomingSlide = document.createElement( 'iframe' );\n\t\t\t\t\tupcomingSlide.setAttribute( 'width', 640 );\n\t\t\t\t\tupcomingSlide.setAttribute( 'height', 512 );\n\t\t\t\t\tupcomingSlide.setAttribute( 'src', upcomingURL );\n\t\t\t\t\tdocument.querySelector( '#upcoming-slide' ).appendChild( upcomingSlide );\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Setup the notes UI.\n\t\t\t\t */\n\t\t\t\tfunction setupNotes() {\n\n\t\t\t\t\tnotes = document.querySelector( '.speaker-controls-notes' );\n\t\t\t\t\tnotesValue = document.querySelector( '.speaker-controls-notes .value' );\n\n\t\t\t\t}\n\n\t\t\t\tfunction getTimings( callback ) {\n\n\t\t\t\t\tcallRevealApi( 'getSlidesAttributes', [], function ( slideAttributes ) {\n\t\t\t\t\t\tcallRevealApi( 'getConfig', [], function ( config ) {\n\t\t\t\t\t\t\tvar totalTime = config.totalTime;\n\t\t\t\t\t\t\tvar minTimePerSlide = config.minimumTimePerSlide || 0;\n\t\t\t\t\t\t\tvar defaultTiming = config.defaultTiming;\n\t\t\t\t\t\t\tif ((defaultTiming == null) && (totalTime == null)) {\n\t\t\t\t\t\t\t\tcallback(null);\n\t\t\t\t\t\t\t\treturn;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t// Setting totalTime overrides defaultTiming\n\t\t\t\t\t\t\tif (totalTime) {\n\t\t\t\t\t\t\t\tdefaultTiming = 0;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tvar timings = [];\n\t\t\t\t\t\t\tfor ( var i in slideAttributes ) {\n\t\t\t\t\t\t\t\tvar slide = slideAttributes[ i ];\n\t\t\t\t\t\t\t\tvar timing = defaultTiming;\n\t\t\t\t\t\t\t\tif( slide.hasOwnProperty( 'data-timing' )) {\n\t\t\t\t\t\t\t\t\tvar t = slide[ 'data-timing' ];\n\t\t\t\t\t\t\t\t\ttiming = parseInt(t);\n\t\t\t\t\t\t\t\t\tif( isNaN(timing) ) {\n\t\t\t\t\t\t\t\t\t\tconsole.warn(\"Could not parse timing '\" + t + \"' of slide \" + i + \"; using default of \" + defaultTiming);\n\t\t\t\t\t\t\t\t\t\ttiming = defaultTiming;\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\ttimings.push(timing);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tif ( totalTime ) {\n\t\t\t\t\t\t\t\t// After we've allocated time to individual slides, we summarize it and\n\t\t\t\t\t\t\t\t// subtract it from the total time\n\t\t\t\t\t\t\t\tvar remainingTime = totalTime - timings.reduce( function(a, b) { return a + b; }, 0 );\n\t\t\t\t\t\t\t\t// The remaining time is divided by the number of slides that have 0 seconds\n\t\t\t\t\t\t\t\t// allocated at the moment, giving the average time-per-slide on the remaining slides\n\t\t\t\t\t\t\t\tvar remainingSlides = (timings.filter( function(x) { return x == 0 }) ).length\n\t\t\t\t\t\t\t\tvar timePerSlide = Math.round( remainingTime / remainingSlides, 0 )\n\t\t\t\t\t\t\t\t// And now we replace every zero-value timing with that average\n\t\t\t\t\t\t\t\ttimings = timings.map( function(x) { return (x==0 ? timePerSlide : x) } );\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tvar slidesUnderMinimum = timings.filter( function(x) { return (x < minTimePerSlide) } ).length\n\t\t\t\t\t\t\tif ( slidesUnderMinimum ) {\n\t\t\t\t\t\t\t\tmessage = \"The pacing time for \" + slidesUnderMinimum + \" slide(s) is under the configured minimum of \" + minTimePerSlide + \" seconds. Check the data-timing attribute on individual slides, or consider increasing the totalTime or minimumTimePerSlide configuration options (or removing some slides).\";\n\t\t\t\t\t\t\t\talert(message);\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tcallback( timings );\n\t\t\t\t\t\t} );\n\t\t\t\t\t} );\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Return the number of seconds allocated for presenting\n\t\t\t\t * all slides up to and including this one.\n\t\t\t\t */\n\t\t\t\tfunction getTimeAllocated( timings, callback ) {\n\n\t\t\t\t\tcallRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {\n\t\t\t\t\t\tvar allocated = 0;\n\t\t\t\t\t\tfor (var i in timings.slice(0, currentSlide + 1)) {\n\t\t\t\t\t\t\tallocated += timings[i];\n\t\t\t\t\t\t}\n\t\t\t\t\t\tcallback( allocated );\n\t\t\t\t\t} );\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Create the timer and clock and start updating them\n\t\t\t\t * at an interval.\n\t\t\t\t */\n\t\t\t\tfunction setupTimer() {\n\n\t\t\t\t\tvar start = new Date(),\n\t\t\t\t\ttimeEl = document.querySelector( '.speaker-controls-time' ),\n\t\t\t\t\tclockEl = timeEl.querySelector( '.clock-value' ),\n\t\t\t\t\thoursEl = timeEl.querySelector( '.hours-value' ),\n\t\t\t\t\tminutesEl = timeEl.querySelector( '.minutes-value' ),\n\t\t\t\t\tsecondsEl = timeEl.querySelector( '.seconds-value' ),\n\t\t\t\t\tpacingTitleEl = timeEl.querySelector( '.pacing-title' ),\n\t\t\t\t\tpacingEl = timeEl.querySelector( '.pacing' ),\n\t\t\t\t\tpacingHoursEl = pacingEl.querySelector( '.hours-value' ),\n\t\t\t\t\tpacingMinutesEl = pacingEl.querySelector( '.minutes-value' ),\n\t\t\t\t\tpacingSecondsEl = pacingEl.querySelector( '.seconds-value' );\n\n\t\t\t\t\tvar timings = null;\n\t\t\t\t\tgetTimings( function ( _timings ) {\n\n\t\t\t\t\t\ttimings = _timings;\n\t\t\t\t\t\tif (_timings !== null) {\n\t\t\t\t\t\t\tpacingTitleEl.style.removeProperty('display');\n\t\t\t\t\t\t\tpacingEl.style.removeProperty('display');\n\t\t\t\t\t\t}\n\n\t\t\t\t\t\t// Update once directly\n\t\t\t\t\t\t_updateTimer();\n\n\t\t\t\t\t\t// Then update every second\n\t\t\t\t\t\tsetInterval( _updateTimer, 1000 );\n\n\t\t\t\t\t} );\n\n\n\t\t\t\t\tfunction _resetTimer() {\n\n\t\t\t\t\t\tif (timings == null) {\n\t\t\t\t\t\t\tstart = new Date();\n\t\t\t\t\t\t\t_updateTimer();\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse {\n\t\t\t\t\t\t\t// Reset timer to beginning of current slide\n\t\t\t\t\t\t\tgetTimeAllocated( timings, function ( slideEndTimingSeconds ) {\n\t\t\t\t\t\t\t\tvar slideEndTiming = slideEndTimingSeconds * 1000;\n\t\t\t\t\t\t\t\tcallRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {\n\t\t\t\t\t\t\t\t\tvar currentSlideTiming = timings[currentSlide] * 1000;\n\t\t\t\t\t\t\t\t\tvar previousSlidesTiming = slideEndTiming - currentSlideTiming;\n\t\t\t\t\t\t\t\t\tvar now = new Date();\n\t\t\t\t\t\t\t\t\tstart = new Date(now.getTime() - previousSlidesTiming);\n\t\t\t\t\t\t\t\t\t_updateTimer();\n\t\t\t\t\t\t\t\t} );\n\t\t\t\t\t\t\t} );\n\t\t\t\t\t\t}\n\n\t\t\t\t\t}\n\n\t\t\t\t\ttimeEl.addEventListener( 'click', function() {\n\t\t\t\t\t\t_resetTimer();\n\t\t\t\t\t\treturn false;\n\t\t\t\t\t} );\n\n\t\t\t\t\tfunction _displayTime( hrEl, minEl, secEl, time) {\n\n\t\t\t\t\t\tvar sign = Math.sign(time) == -1 ? \"-\" : \"\";\n\t\t\t\t\t\ttime = Math.abs(Math.round(time / 1000));\n\t\t\t\t\t\tvar seconds = time % 60;\n\t\t\t\t\t\tvar minutes = Math.floor( time / 60 ) % 60 ;\n\t\t\t\t\t\tvar hours = Math.floor( time / ( 60 * 60 )) ;\n\t\t\t\t\t\thrEl.innerHTML = sign + zeroPadInteger( hours );\n\t\t\t\t\t\tif (hours == 0) {\n\t\t\t\t\t\t\thrEl.classList.add( 'mute' );\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse {\n\t\t\t\t\t\t\thrEl.classList.remove( 'mute' );\n\t\t\t\t\t\t}\n\t\t\t\t\t\tminEl.innerHTML = ':' + zeroPadInteger( minutes );\n\t\t\t\t\t\tif (hours == 0 && minutes == 0) {\n\t\t\t\t\t\t\tminEl.classList.add( 'mute' );\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse {\n\t\t\t\t\t\t\tminEl.classList.remove( 'mute' );\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsecEl.innerHTML = ':' + zeroPadInteger( seconds );\n\t\t\t\t\t}\n\n\t\t\t\t\tfunction _updateTimer() {\n\n\t\t\t\t\t\tvar diff, hours, minutes, seconds,\n\t\t\t\t\t\tnow = new Date();\n\n\t\t\t\t\t\tdiff = now.getTime() - start.getTime();\n\n\t\t\t\t\t\tclockEl.innerHTML = now.toLocaleTimeString( 'en-US', { hour12: true, hour: '2-digit', minute:'2-digit' } );\n\t\t\t\t\t\t_displayTime( hoursEl, minutesEl, secondsEl, diff );\n\t\t\t\t\t\tif (timings !== null) {\n\t\t\t\t\t\t\t_updatePacing(diff);\n\t\t\t\t\t\t}\n\n\t\t\t\t\t}\n\n\t\t\t\t\tfunction _updatePacing(diff) {\n\n\t\t\t\t\t\tgetTimeAllocated( timings, function ( slideEndTimingSeconds ) {\n\t\t\t\t\t\t\tvar slideEndTiming = slideEndTimingSeconds * 1000;\n\n\t\t\t\t\t\t\tcallRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {\n\t\t\t\t\t\t\t\tvar currentSlideTiming = timings[currentSlide] * 1000;\n\t\t\t\t\t\t\t\tvar timeLeftCurrentSlide = slideEndTiming - diff;\n\t\t\t\t\t\t\t\tif (timeLeftCurrentSlide < 0) {\n\t\t\t\t\t\t\t\t\tpacingEl.className = 'pacing behind';\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\telse if (timeLeftCurrentSlide < currentSlideTiming) {\n\t\t\t\t\t\t\t\t\tpacingEl.className = 'pacing on-track';\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\telse {\n\t\t\t\t\t\t\t\t\tpacingEl.className = 'pacing ahead';\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t_displayTime( pacingHoursEl, pacingMinutesEl, pacingSecondsEl, timeLeftCurrentSlide );\n\t\t\t\t\t\t\t} );\n\t\t\t\t\t\t} );\n\t\t\t\t\t}\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Sets up the speaker view layout and layout selector.\n\t\t\t\t */\n\t\t\t\tfunction setupLayout() {\n\n\t\t\t\t\tlayoutDropdown = document.querySelector( '.speaker-layout-dropdown' );\n\t\t\t\t\tlayoutLabel = document.querySelector( '.speaker-layout-label' );\n\n\t\t\t\t\t// Render the list of available layouts\n\t\t\t\t\tfor( var id in SPEAKER_LAYOUTS ) {\n\t\t\t\t\t\tvar option = document.createElement( 'option' );\n\t\t\t\t\t\toption.setAttribute( 'value', id );\n\t\t\t\t\t\toption.textContent = SPEAKER_LAYOUTS[ id ];\n\t\t\t\t\t\tlayoutDropdown.appendChild( option );\n\t\t\t\t\t}\n\n\t\t\t\t\t// Monitor the dropdown for changes\n\t\t\t\t\tlayoutDropdown.addEventListener( 'change', function( event ) {\n\n\t\t\t\t\t\tsetLayout( layoutDropdown.value );\n\n\t\t\t\t\t}, false );\n\n\t\t\t\t\t// Restore any currently persisted layout\n\t\t\t\t\tsetLayout( getLayout() );\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Sets a new speaker view layout. The layout is persisted\n\t\t\t\t * in local storage.\n\t\t\t\t */\n\t\t\t\tfunction setLayout( value ) {\n\n\t\t\t\t\tvar title = SPEAKER_LAYOUTS[ value ];\n\n\t\t\t\t\tlayoutLabel.innerHTML = 'Layout' + ( title ? ( ': ' + title ) : '' );\n\t\t\t\t\tlayoutDropdown.value = value;\n\n\t\t\t\t\tdocument.body.setAttribute( 'data-speaker-layout', value );\n\n\t\t\t\t\t// Persist locally\n\t\t\t\t\tif( supportsLocalStorage() ) {\n\t\t\t\t\t\twindow.localStorage.setItem( 'reveal-speaker-layout', value );\n\t\t\t\t\t}\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Returns the ID of the most recently set speaker layout\n\t\t\t\t * or our default layout if none has been set.\n\t\t\t\t */\n\t\t\t\tfunction getLayout() {\n\n\t\t\t\t\tif( supportsLocalStorage() ) {\n\t\t\t\t\t\tvar layout = window.localStorage.getItem( 'reveal-speaker-layout' );\n\t\t\t\t\t\tif( layout ) {\n\t\t\t\t\t\t\treturn layout;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t\t// Default to the first record in the layouts hash\n\t\t\t\t\tfor( var id in SPEAKER_LAYOUTS ) {\n\t\t\t\t\t\treturn id;\n\t\t\t\t\t}\n\n\t\t\t\t}\n\n\t\t\t\tfunction supportsLocalStorage() {\n\n\t\t\t\t\ttry {\n\t\t\t\t\t\tlocalStorage.setItem('test', 'test');\n\t\t\t\t\t\tlocalStorage.removeItem('test');\n\t\t\t\t\t\treturn true;\n\t\t\t\t\t}\n\t\t\t\t\tcatch( e ) {\n\t\t\t\t\t\treturn false;\n\t\t\t\t\t}\n\n\t\t\t\t}\n\n\t\t\t\tfunction zeroPadInteger( num ) {\n\n\t\t\t\t\tvar str = '00' + parseInt( num );\n\t\t\t\t\treturn str.substring( str.length - 2 );\n\n\t\t\t\t}\n\n\t\t\t\t/**\n\t\t\t\t * Limits the frequency at which a function can be called.\n\t\t\t\t */\n\t\t\t\tfunction debounce( fn, ms ) {\n\n\t\t\t\t\tvar lastTime = 0,\n\t\t\t\t\t\ttimeout;\n\n\t\t\t\t\treturn function() {\n\n\t\t\t\t\t\tvar args = arguments;\n\t\t\t\t\t\tvar context = this;\n\n\t\t\t\t\t\tclearTimeout( timeout );\n\n\t\t\t\t\t\tvar timeSinceLastCall = Date.now() - lastTime;\n\t\t\t\t\t\tif( timeSinceLastCall > ms ) {\n\t\t\t\t\t\t\tfn.apply( context, args );\n\t\t\t\t\t\t\tlastTime = Date.now();\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse {\n\t\t\t\t\t\t\ttimeout = setTimeout( function() {\n\t\t\t\t\t\t\t\tfn.apply( context, args );\n\t\t\t\t\t\t\t\tlastTime = Date.now();\n\t\t\t\t\t\t\t}, ms - timeSinceLastCall );\n\t\t\t\t\t\t}\n\n\t\t\t\t\t}\n\n\t\t\t\t}\n\n\t\t\t})();\n\n\t\t<\/script>\n\t</body>\n</html>"),e?(n=setInterval((function(){e.postMessage(JSON.stringify({namespace:"reveal-notes",type:"connect",url:window.location.protocol+"//"+window.location.host+window.location.pathname+window.location.search,state:t.getState()}),"*")}),500),window.addEventListener("message",(function(i){var a,o,l,s,c=JSON.parse(i.data);c&&"reveal-notes"===c.namespace&&"connected"===c.type&&(clearInterval(n),t.on("slidechanged",r),t.on("fragmentshown",r),t.on("fragmenthidden",r),t.on("overviewhidden",r),t.on("overviewshown",r),t.on("paused",r),t.on("resumed",r),r()),c&&"reveal-notes"===c.namespace&&"call"===c.type&&(a=c.methodName,o=c.arguments,l=c.callId,s=t[a].apply(t,o),e.postMessage(JSON.stringify({namespace:"reveal-notes",type:"return",result:s,callId:l}),"*"))}))):alert("Speaker view popup failed to open. Please make sure popups are allowed and reopen the speaker view.")):e.focus();function r(n){var r=t.getCurrentSlide(),i=r.querySelector("aside.notes"),a=r.querySelector(".current-fragment"),o={namespace:"reveal-notes",type:"state",notes:"",markdown:!1,whitespace:"normal",state:t.getState()};if(r.hasAttribute("data-notes")&&(o.notes=r.getAttribute("data-notes"),o.whitespace="pre-wrap"),a){var l=a.querySelector("aside.notes");l?i=l:a.hasAttribute("data-notes")&&(o.notes=a.getAttribute("data-notes"),o.whitespace="pre-wrap",i=null)}i&&(o.notes=i.innerHTML,o.markdown="string"==typeof i.getAttribute("data-markdown")),e.postMessage(JSON.stringify(o),"*")}}return{id:"notes",init:function(e){t=e,/receiver/i.test(window.location.search)||(null!==window.location.search.match(/(\?|\&)notes/gi)&&n(),t.addKeyBinding({keyCode:83,key:"S",description:"Speaker notes view"},(function(){n()})))},open:n}}}));
+(function(e,t){typeof exports==`object`&&typeof module<`u`?module.exports=t():typeof define==`function`&&define.amd?define([],t):(e=typeof globalThis<`u`?globalThis:e||self,e.RevealNotes=t())})(this,function(){var e=`<!--
+	NOTE: You need to build the notes plugin after making changes to this file.
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - Speaker View</title>
+
+		<style>
+			body {
+				font-family: Helvetica;
+				font-size: 18px;
+			}
+
+			#current-slide,
+			#upcoming-slide,
+			#speaker-controls {
+				padding: 6px;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+			}
+
+			#current-slide iframe,
+			#upcoming-slide iframe {
+				width: 100%;
+				height: 100%;
+				border: 1px solid #ddd;
+			}
+
+			#current-slide .label,
+			#upcoming-slide .label {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				z-index: 2;
+			}
+
+			#connection-status {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 20;
+				padding: 30% 20% 20% 20%;
+				font-size: 18px;
+				color: #222;
+				background: #fff;
+				text-align: center;
+				box-sizing: border-box;
+				line-height: 1.4;
+			}
+
+			.overlay-element {
+				height: 34px;
+				line-height: 34px;
+				padding: 0 10px;
+				text-shadow: none;
+				background: rgba( 220, 220, 220, 0.8 );
+				color: #222;
+				font-size: 14px;
+			}
+
+			.overlay-element.interactive:hover {
+				background: rgba( 220, 220, 220, 1 );
+			}
+
+			#current-slide {
+				position: absolute;
+				width: 60%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				padding-right: 0;
+			}
+
+			#upcoming-slide {
+				position: absolute;
+				width: 40%;
+				height: 40%;
+				right: 0;
+				top: 0;
+			}
+
+			/* Speaker controls */
+			#speaker-controls {
+				position: absolute;
+				top: 40%;
+				right: 0;
+				width: 40%;
+				height: 60%;
+				overflow: auto;
+				font-size: 18px;
+			}
+
+				.speaker-controls-time.hidden,
+				.speaker-controls-notes.hidden {
+					display: none;
+				}
+
+				.speaker-controls-time .label,
+				.speaker-controls-pace .label,
+				.speaker-controls-notes .label {
+					text-transform: uppercase;
+					font-weight: normal;
+					font-size: 0.66em;
+					color: #666;
+					margin: 0;
+				}
+
+				.speaker-controls-time, .speaker-controls-pace {
+					border-bottom: 1px solid rgba( 200, 200, 200, 0.5 );
+					margin-bottom: 10px;
+					padding: 10px 16px;
+					padding-bottom: 20px;
+					cursor: pointer;
+				}
+
+				.speaker-controls-time .reset-button {
+					opacity: 0;
+					float: right;
+					color: #666;
+					text-decoration: none;
+				}
+				.speaker-controls-time:hover .reset-button {
+					opacity: 1;
+				}
+
+				.speaker-controls-time .timer,
+				.speaker-controls-time .clock {
+					width: 50%;
+				}
+
+				.speaker-controls-time .timer,
+				.speaker-controls-time .clock,
+				.speaker-controls-time .pacing .hours-value,
+				.speaker-controls-time .pacing .minutes-value,
+				.speaker-controls-time .pacing .seconds-value {
+					font-size: 1.9em;
+				}
+
+				.speaker-controls-time .timer {
+					float: left;
+				}
+
+				.speaker-controls-time .clock {
+					float: right;
+					text-align: right;
+				}
+
+				.speaker-controls-time span.mute {
+					opacity: 0.3;
+				}
+
+				.speaker-controls-time .pacing-title {
+					margin-top: 5px;
+				}
+
+				.speaker-controls-time .pacing.ahead {
+					color: blue;
+				}
+
+				.speaker-controls-time .pacing.on-track {
+					color: green;
+				}
+
+				.speaker-controls-time .pacing.behind {
+					color: red;
+				}
+
+				.speaker-controls-notes {
+					padding: 10px 16px;
+				}
+
+				.speaker-controls-notes .value {
+					margin-top: 5px;
+					line-height: 1.4;
+					font-size: 1.2em;
+				}
+
+			/* Layout selector\xA0*/
+			#speaker-layout {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				color: #222;
+				z-index: 10;
+			}
+				#speaker-layout select {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					border: 0;
+					box-shadow: 0;
+					cursor: pointer;
+					opacity: 0;
+
+					font-size: 1em;
+					background-color: transparent;
+
+					-moz-appearance: none;
+					-webkit-appearance: none;
+					-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				}
+
+				#speaker-layout select:focus {
+					outline: none;
+					box-shadow: none;
+				}
+
+			.clear {
+				clear: both;
+			}
+
+			/* Speaker layout: Wide */
+			body[data-speaker-layout="wide"] #current-slide,
+			body[data-speaker-layout="wide"] #upcoming-slide {
+				width: 50%;
+				height: 45%;
+				padding: 6px;
+			}
+
+			body[data-speaker-layout="wide"] #current-slide {
+				top: 0;
+				left: 0;
+			}
+
+			body[data-speaker-layout="wide"] #upcoming-slide {
+				top: 0;
+				left: 50%;
+			}
+
+			body[data-speaker-layout="wide"] #speaker-controls {
+				top: 45%;
+				left: 0;
+				width: 100%;
+				height: 50%;
+				font-size: 1.25em;
+			}
+
+			/* Speaker layout: Tall */
+			body[data-speaker-layout="tall"] #current-slide,
+			body[data-speaker-layout="tall"] #upcoming-slide {
+				width: 45%;
+				height: 50%;
+				padding: 6px;
+			}
+
+			body[data-speaker-layout="tall"] #current-slide {
+				top: 0;
+				left: 0;
+			}
+
+			body[data-speaker-layout="tall"] #upcoming-slide {
+				top: 50%;
+				left: 0;
+			}
+
+			body[data-speaker-layout="tall"] #speaker-controls {
+				padding-top: 40px;
+				top: 0;
+				left: 45%;
+				width: 55%;
+				height: 100%;
+				font-size: 1.25em;
+			}
+
+			/* Speaker layout: Notes only */
+			body[data-speaker-layout="notes-only"] #current-slide,
+			body[data-speaker-layout="notes-only"] #upcoming-slide {
+				display: none;
+			}
+
+			body[data-speaker-layout="notes-only"] #speaker-controls {
+				padding-top: 40px;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				font-size: 1.25em;
+			}
+
+			@media screen and (max-width: 1080px) {
+				body[data-speaker-layout="default"] #speaker-controls {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width: 900px) {
+				body[data-speaker-layout="default"] #speaker-controls {
+					font-size: 14px;
+				}
+			}
+
+			@media screen and (max-width: 800px) {
+				body[data-speaker-layout="default"] #speaker-controls {
+					font-size: 12px;
+				}
+			}
+
+		</style>
+	</head>
+
+	<body>
+
+		<div id="connection-status">Loading speaker view...</div>
+
+		<div id="current-slide"></div>
+		<div id="upcoming-slide"><span class="overlay-element label">Upcoming</span></div>
+		<div id="speaker-controls">
+			<div class="speaker-controls-time">
+				<h4 class="label">Time <span class="reset-button">Click to Reset</span></h4>
+				<div class="clock">
+					<span class="clock-value">0:00 AM</span>
+				</div>
+				<div class="timer">
+					<span class="hours-value">00</span><span class="minutes-value">:00</span><span class="seconds-value">:00</span>
+				</div>
+				<div class="clear"></div>
+
+				<h4 class="label pacing-title" style="display: none">Pacing – Time to finish current slide</h4>
+				<div class="pacing" style="display: none">
+					<span class="hours-value">00</span><span class="minutes-value">:00</span><span class="seconds-value">:00</span>
+				</div>
+			</div>
+
+			<div class="speaker-controls-notes hidden">
+				<h4 class="label">Notes</h4>
+				<div class="value"></div>
+			</div>
+		</div>
+		<div id="speaker-layout" class="overlay-element interactive">
+			<span class="speaker-layout-label"></span>
+			<select class="speaker-layout-dropdown"></select>
+		</div>
+
+		<script>
+
+			(function() {
+
+				var notes,
+					notesValue,
+					currentState,
+					currentSlide,
+					upcomingSlide,
+					layoutLabel,
+					layoutDropdown,
+					pendingCalls = {},
+					lastRevealApiCallId = 0,
+					connected = false
+
+				var connectionStatus = document.querySelector( '#connection-status' );
+
+				var SPEAKER_LAYOUTS = {
+					'default': 'Default',
+					'wide': 'Wide',
+					'tall': 'Tall',
+					'notes-only': 'Notes only'
+				};
+
+				setupLayout();
+
+				let openerOrigin;
+
+				try {
+					openerOrigin = window.opener.location.origin;
+				}
+				catch ( error ) { console.warn( error ) }
+
+				// In order to prevent XSS, the speaker view will only run if its
+				// opener has the same origin as itself
+				if( window.location.origin !== openerOrigin ) {
+					connectionStatus.innerHTML = 'Cross origin error.<br>The speaker window can only be opened from the same origin.';
+					return;
+				}
+
+				var connectionTimeout = setTimeout( function() {
+					connectionStatus.innerHTML = 'Error connecting to main window.<br>Please try closing and reopening the speaker view.';
+				}, 5000 );
+
+				window.addEventListener( 'message', function( event ) {
+
+					// Validate the origin of all messages to avoid parsing messages
+					// that aren't meant for us. Ignore when running off file:// so
+					// that the speaker view continues to work without a web server.
+					if( window.location.origin !== event.origin && window.location.origin !== 'file://' ) {
+						return
+					}
+
+					clearTimeout( connectionTimeout );
+					connectionStatus.style.display = 'none';
+
+					var data = JSON.parse( event.data );
+
+					// The overview mode is only useful to the reveal.js instance
+					// where navigation occurs so we don't sync it
+					if( data.state ) delete data.state.overview;
+
+					// Messages sent by the notes plugin inside of the main window
+					if( data && data.namespace === 'reveal-notes' ) {
+						if( data.type === 'connect' ) {
+							handleConnectMessage( data );
+						}
+						else if( data.type === 'state' ) {
+							handleStateMessage( data );
+						}
+						else if( data.type === 'return' ) {
+							pendingCalls[data.callId](data.result);
+							delete pendingCalls[data.callId];
+						}
+					}
+					// Messages sent by the reveal.js inside of the current slide preview
+					else if( data && data.namespace === 'reveal' ) {
+						const supportedEvents = [
+							'slidechanged',
+							'fragmentshown',
+							'fragmenthidden',
+							'paused',
+							'resumed',
+							'previewiframe',
+							'previewimage',
+							'previewvideo',
+							'closeoverlay'
+						];
+
+						if( /ready/.test( data.eventName ) ) {
+							// Send a message back to notify that the handshake is complete
+							window.opener.postMessage( JSON.stringify({ namespace: 'reveal-notes', type: 'connected'} ), '*' );
+						}
+						else if( supportedEvents.includes( data.eventName ) && currentState !== JSON.stringify( data.state ) ) {
+							dispatchStateToMainWindow( data.state );
+						}
+					}
+
+				} );
+
+				/**
+				 * Updates the presentation in the main window to match the state
+				 * of the presentation in the notes window.
+				 */
+				const dispatchStateToMainWindow = debounce(( state ) => {
+					window.opener.postMessage( JSON.stringify({ method: 'setState', args: [ state ]} ), '*' );
+				}, 500);
+
+				/**
+				 * Asynchronously calls the Reveal.js API of the main frame.
+				 */
+				function callRevealApi( methodName, methodArguments, callback ) {
+
+					var callId = ++lastRevealApiCallId;
+					pendingCalls[callId] = callback;
+					window.opener.postMessage( JSON.stringify( {
+						namespace: 'reveal-notes',
+						type: 'call',
+						callId: callId,
+						methodName: methodName,
+						arguments: methodArguments
+					} ), '*' );
+
+				}
+
+				/**
+				 * Called when the main window is trying to establish a
+				 * connection.
+				 */
+				function handleConnectMessage( data ) {
+
+					if( connected === false ) {
+						connected = true;
+
+						setupIframes( data );
+						setupKeyboard();
+						setupNotes();
+						setupTimer();
+						setupHeartbeat();
+					}
+
+				}
+
+				/**
+				 * Called when the main window sends an updated state.
+				 */
+				function handleStateMessage( data ) {
+
+					// Store the most recently set state to avoid circular loops
+					// applying the same state
+					currentState = JSON.stringify( data.state );
+
+					// No need for updating the notes in case of fragment changes
+					if ( data.notes ) {
+						notes.classList.remove( 'hidden' );
+						notesValue.style.whiteSpace = data.whitespace;
+						if( data.markdown ) {
+							notesValue.innerHTML = marked.parse( data.notes );
+						}
+						else {
+							notesValue.innerHTML = data.notes;
+						}
+					}
+					else {
+						notes.classList.add( 'hidden' );
+					}
+
+					// Don't show lightboxes in the upcoming slide
+					const { previewVideo, previewImage, previewIframe, ...upcomingState } = data.state;
+
+					// Update the note slides
+					currentSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ] }), '*' );
+					upcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ upcomingState ] }), '*' );
+					upcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'next' }), '*' );
+
+				}
+
+				// Limit to max one state update per X ms
+				handleStateMessage = debounce( handleStateMessage, 200 );
+
+				/**
+				 * Forward keyboard events to the current slide window.
+				 * This enables keyboard events to work even if focus
+				 * isn't set on the current slide iframe.
+				 *
+				 * Block F5 default handling, it reloads and disconnects
+				 * the speaker notes window.
+				 */
+				function setupKeyboard() {
+
+					document.addEventListener( 'keydown', function( event ) {
+						if( event.keyCode === 116 || ( event.metaKey && event.keyCode === 82 ) ) {
+							event.preventDefault();
+							return false;
+						}
+						currentSlide.contentWindow.postMessage( JSON.stringify({ method: 'triggerKey', args: [ event.keyCode ] }), '*' );
+					} );
+
+				}
+
+				/**
+				 * Creates the preview iframes.
+				 */
+				function setupIframes( data ) {
+
+					var params = [
+						'receiver',
+						'progress=false',
+						'history=false',
+						'transition=none',
+						'autoSlide=0',
+						'backgroundTransition=none'
+					].join( '&' );
+
+					var urlSeparator = /\\?/.test(data.url) ? '&' : '?';
+					var hash = '#/' + data.state.indexh + '/' + data.state.indexv;
+					var currentURL = data.url + urlSeparator + params + '&scrollActivationWidth=false&postMessageEvents=true' + hash;
+					var upcomingURL = data.url + urlSeparator + params + '&scrollActivationWidth=false&controls=false' + hash;
+
+					currentSlide = document.createElement( 'iframe' );
+					currentSlide.setAttribute( 'width', 1280 );
+					currentSlide.setAttribute( 'height', 1024 );
+					currentSlide.setAttribute( 'src', currentURL );
+					document.querySelector( '#current-slide' ).appendChild( currentSlide );
+
+					upcomingSlide = document.createElement( 'iframe' );
+					upcomingSlide.setAttribute( 'width', 640 );
+					upcomingSlide.setAttribute( 'height', 512 );
+					upcomingSlide.setAttribute( 'src', upcomingURL );
+					document.querySelector( '#upcoming-slide' ).appendChild( upcomingSlide );
+
+				}
+
+				/**
+				 * Setup the notes UI.
+				 */
+				function setupNotes() {
+
+					notes = document.querySelector( '.speaker-controls-notes' );
+					notesValue = document.querySelector( '.speaker-controls-notes .value' );
+
+				}
+
+				/**
+				 * We send out a heartbeat at all times to ensure we can
+				 * reconnect with the main presentation window after reloads.
+				 */
+				function setupHeartbeat() {
+
+					setInterval( () => {
+						window.opener.postMessage( JSON.stringify({ namespace: 'reveal-notes', type: 'heartbeat'} ), '*' );
+					}, 1000 );
+
+				}
+
+				function getTimings( callback ) {
+
+					callRevealApi( 'getSlidesAttributes', [], function ( slideAttributes ) {
+						callRevealApi( 'getConfig', [], function ( config ) {
+							var totalTime = config.totalTime;
+							var minTimePerSlide = config.minimumTimePerSlide || 0;
+							var defaultTiming = config.defaultTiming;
+							if ((defaultTiming == null) && (totalTime == null)) {
+								callback(null);
+								return;
+							}
+							// Setting totalTime overrides defaultTiming
+							if (totalTime) {
+								defaultTiming = 0;
+							}
+							var timings = [];
+							for ( var i in slideAttributes ) {
+								var slide = slideAttributes[ i ];
+								var timing = defaultTiming;
+								if( slide.hasOwnProperty( 'data-timing' )) {
+									var t = slide[ 'data-timing' ];
+									timing = parseInt(t);
+									if( isNaN(timing) ) {
+										console.warn("Could not parse timing '" + t + "' of slide " + i + "; using default of " + defaultTiming);
+										timing = defaultTiming;
+									}
+								}
+								timings.push(timing);
+							}
+							if ( totalTime ) {
+								// After we've allocated time to individual slides, we summarize it and
+								// subtract it from the total time
+								var remainingTime = totalTime - timings.reduce( function(a, b) { return a + b; }, 0 );
+								// The remaining time is divided by the number of slides that have 0 seconds
+								// allocated at the moment, giving the average time-per-slide on the remaining slides
+								var remainingSlides = (timings.filter( function(x) { return x == 0 }) ).length
+								var timePerSlide = Math.round( remainingTime / remainingSlides, 0 )
+								// And now we replace every zero-value timing with that average
+								timings = timings.map( function(x) { return (x==0 ? timePerSlide : x) } );
+							}
+							var slidesUnderMinimum = timings.filter( function(x) { return (x < minTimePerSlide) } ).length
+							if ( slidesUnderMinimum ) {
+								message = "The pacing time for " + slidesUnderMinimum + " slide(s) is under the configured minimum of " + minTimePerSlide + " seconds. Check the data-timing attribute on individual slides, or consider increasing the totalTime or minimumTimePerSlide configuration options (or removing some slides).";
+								alert(message);
+							}
+							callback( timings );
+						} );
+					} );
+
+				}
+
+				/**
+				 * Return the number of seconds allocated for presenting
+				 * all slides up to and including this one.
+				 */
+				function getTimeAllocated( timings, callback ) {
+
+					callRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {
+						var allocated = 0;
+						for (var i in timings.slice(0, currentSlide + 1)) {
+							allocated += timings[i];
+						}
+						callback( allocated );
+					} );
+
+				}
+
+				/**
+				 * Create the timer and clock and start updating them
+				 * at an interval.
+				 */
+				function setupTimer() {
+
+					var start = new Date(),
+					timeEl = document.querySelector( '.speaker-controls-time' ),
+					clockEl = timeEl.querySelector( '.clock-value' ),
+					hoursEl = timeEl.querySelector( '.hours-value' ),
+					minutesEl = timeEl.querySelector( '.minutes-value' ),
+					secondsEl = timeEl.querySelector( '.seconds-value' ),
+					pacingTitleEl = timeEl.querySelector( '.pacing-title' ),
+					pacingEl = timeEl.querySelector( '.pacing' ),
+					pacingHoursEl = pacingEl.querySelector( '.hours-value' ),
+					pacingMinutesEl = pacingEl.querySelector( '.minutes-value' ),
+					pacingSecondsEl = pacingEl.querySelector( '.seconds-value' );
+
+					var timings = null;
+					getTimings( function ( _timings ) {
+
+						timings = _timings;
+						if (_timings !== null) {
+							pacingTitleEl.style.removeProperty('display');
+							pacingEl.style.removeProperty('display');
+						}
+
+						// Update once directly
+						_updateTimer();
+
+						// Then update every second
+						setInterval( _updateTimer, 1000 );
+
+					} );
+
+
+					function _resetTimer() {
+
+						if (timings == null) {
+							start = new Date();
+							_updateTimer();
+						}
+						else {
+							// Reset timer to beginning of current slide
+							getTimeAllocated( timings, function ( slideEndTimingSeconds ) {
+								var slideEndTiming = slideEndTimingSeconds * 1000;
+								callRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {
+									var currentSlideTiming = timings[currentSlide] * 1000;
+									var previousSlidesTiming = slideEndTiming - currentSlideTiming;
+									var now = new Date();
+									start = new Date(now.getTime() - previousSlidesTiming);
+									_updateTimer();
+								} );
+							} );
+						}
+
+					}
+
+					timeEl.addEventListener( 'click', function() {
+						_resetTimer();
+						return false;
+					} );
+
+					function _displayTime( hrEl, minEl, secEl, time) {
+
+						var sign = Math.sign(time) == -1 ? "-" : "";
+						time = Math.abs(Math.round(time / 1000));
+						var seconds = time % 60;
+						var minutes = Math.floor( time / 60 ) % 60 ;
+						var hours = Math.floor( time / ( 60 * 60 )) ;
+						hrEl.innerHTML = sign + zeroPadInteger( hours );
+						if (hours == 0) {
+							hrEl.classList.add( 'mute' );
+						}
+						else {
+							hrEl.classList.remove( 'mute' );
+						}
+						minEl.innerHTML = ':' + zeroPadInteger( minutes );
+						if (hours == 0 && minutes == 0) {
+							minEl.classList.add( 'mute' );
+						}
+						else {
+							minEl.classList.remove( 'mute' );
+						}
+						secEl.innerHTML = ':' + zeroPadInteger( seconds );
+					}
+
+					function _updateTimer() {
+
+						var diff, hours, minutes, seconds,
+						now = new Date();
+
+						diff = now.getTime() - start.getTime();
+
+						clockEl.innerHTML = now.toLocaleTimeString( 'en-US', { hour12: true, hour: '2-digit', minute:'2-digit' } );
+						_displayTime( hoursEl, minutesEl, secondsEl, diff );
+						if (timings !== null) {
+							_updatePacing(diff);
+						}
+
+					}
+
+					function _updatePacing(diff) {
+
+						getTimeAllocated( timings, function ( slideEndTimingSeconds ) {
+							var slideEndTiming = slideEndTimingSeconds * 1000;
+
+							callRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {
+								var currentSlideTiming = timings[currentSlide] * 1000;
+								var timeLeftCurrentSlide = slideEndTiming - diff;
+								if (timeLeftCurrentSlide < 0) {
+									pacingEl.className = 'pacing behind';
+								}
+								else if (timeLeftCurrentSlide < currentSlideTiming) {
+									pacingEl.className = 'pacing on-track';
+								}
+								else {
+									pacingEl.className = 'pacing ahead';
+								}
+								_displayTime( pacingHoursEl, pacingMinutesEl, pacingSecondsEl, timeLeftCurrentSlide );
+							} );
+						} );
+					}
+
+				}
+
+				/**
+				 * Sets up the speaker view layout and layout selector.
+				 */
+				function setupLayout() {
+
+					layoutDropdown = document.querySelector( '.speaker-layout-dropdown' );
+					layoutLabel = document.querySelector( '.speaker-layout-label' );
+
+					// Render the list of available layouts
+					for( var id in SPEAKER_LAYOUTS ) {
+						var option = document.createElement( 'option' );
+						option.setAttribute( 'value', id );
+						option.textContent = SPEAKER_LAYOUTS[ id ];
+						layoutDropdown.appendChild( option );
+					}
+
+					// Monitor the dropdown for changes
+					layoutDropdown.addEventListener( 'change', function( event ) {
+
+						setLayout( layoutDropdown.value );
+
+					}, false );
+
+					// Restore any currently persisted layout
+					setLayout( getLayout() );
+
+				}
+
+				/**
+				 * Sets a new speaker view layout. The layout is persisted
+				 * in local storage.
+				 */
+				function setLayout( value ) {
+
+					var title = SPEAKER_LAYOUTS[ value ];
+
+					layoutLabel.innerHTML = 'Layout' + ( title ? ( ': ' + title ) : '' );
+					layoutDropdown.value = value;
+
+					document.body.setAttribute( 'data-speaker-layout', value );
+
+					// Persist locally
+					if( supportsLocalStorage() ) {
+						window.localStorage.setItem( 'reveal-speaker-layout', value );
+					}
+
+				}
+
+				/**
+				 * Returns the ID of the most recently set speaker layout
+				 * or our default layout if none has been set.
+				 */
+				function getLayout() {
+
+					if( supportsLocalStorage() ) {
+						var layout = window.localStorage.getItem( 'reveal-speaker-layout' );
+						if( layout ) {
+							return layout;
+						}
+					}
+
+					// Default to the first record in the layouts hash
+					for( var id in SPEAKER_LAYOUTS ) {
+						return id;
+					}
+
+				}
+
+				function supportsLocalStorage() {
+
+					try {
+						localStorage.setItem('test', 'test');
+						localStorage.removeItem('test');
+						return true;
+					}
+					catch( e ) {
+						return false;
+					}
+
+				}
+
+				function zeroPadInteger( num ) {
+
+					var str = '00' + parseInt( num );
+					return str.substring( str.length - 2 );
+
+				}
+
+				/**
+				 * Limits the frequency at which a function can be called.
+				 */
+				function debounce( fn, ms ) {
+
+					var lastTime = 0,
+						timeout;
+
+					return function() {
+
+						var args = arguments;
+						var context = this;
+
+						clearTimeout( timeout );
+
+						var timeSinceLastCall = Date.now() - lastTime;
+						if( timeSinceLastCall > ms ) {
+							fn.apply( context, args );
+							lastTime = Date.now();
+						}
+						else {
+							timeout = setTimeout( function() {
+								fn.apply( context, args );
+								lastTime = Date.now();
+							}, ms - timeSinceLastCall );
+						}
+
+					}
+
+				}
+
+			})();
+
+		<\/script>
+	</body>
+</html>`;function t(){return{async:!1,breaks:!1,extensions:null,gfm:!0,hooks:null,pedantic:!1,renderer:null,silent:!1,tokenizer:null,walkTokens:null}}var n=t();function r(e){n=e}var i={exec:()=>null};function a(e,t=``){let n=typeof e==`string`?e:e.source,r={replace:(e,t)=>{let i=typeof t==`string`?t:t.source;return i=i.replace(s.caret,`$1`),n=n.replace(e,i),r},getRegex:()=>new RegExp(n,t)};return r}var o=(()=>{try{return!0}catch{return!1}})(),s={codeRemoveIndent:/^(?: {1,4}| {0,3}\t)/gm,outputLinkReplace:/\\([\[\]])/g,indentCodeCompensation:/^(\s+)(?:```)/,beginningSpace:/^\s+/,endingHash:/#$/,startingSpaceChar:/^ /,endingSpaceChar:/ $/,nonSpaceChar:/[^ ]/,newLineCharGlobal:/\n/g,tabCharGlobal:/\t/g,multipleSpaceGlobal:/\s+/g,blankLine:/^[ \t]*$/,doubleBlankLine:/\n[ \t]*\n[ \t]*$/,blockquoteStart:/^ {0,3}>/,blockquoteSetextReplace:/\n {0,3}((?:=+|-+) *)(?=\n|$)/g,blockquoteSetextReplace2:/^ {0,3}>[ \t]?/gm,listReplaceNesting:/^ {1,4}(?=( {4})*[^ ])/g,listIsTask:/^\[[ xX]\] +\S/,listReplaceTask:/^\[[ xX]\] +/,listTaskCheckbox:/\[[ xX]\]/,anyLine:/\n.*\n/,hrefBrackets:/^<(.*)>$/,tableDelimiter:/[:|]/,tableAlignChars:/^\||\| *$/g,tableRowBlankLine:/\n[ \t]*$/,tableAlignRight:/^ *-+: *$/,tableAlignCenter:/^ *:-+: *$/,tableAlignLeft:/^ *:-+ *$/,startATag:/^<a /i,endATag:/^<\/a>/i,startPreScriptTag:/^<(pre|code|kbd|script)(\s|>)/i,endPreScriptTag:/^<\/(pre|code|kbd|script)(\s|>)/i,startAngleBracket:/^</,endAngleBracket:/>$/,pedanticHrefTitle:/^([^'"]*[^\s])\s+(['"])(.*)\2/,unicodeAlphaNumeric:/[\p{L}\p{N}]/u,escapeTest:/[&<>"']/,escapeReplace:/[&<>"']/g,escapeTestNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/,escapeReplaceNoEncode:/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g,caret:/(^|[^\[])\^/g,percentDecode:/%25/g,findPipe:/\|/g,splitPipe:/ \|/,slashPipe:/\\\|/g,carriageReturn:/\r\n|\r/g,spaceLine:/^ +$/gm,notSpaceStart:/^\S*/,endingNewline:/\n$/,listItemRegex:e=>RegExp(`^( {0,3}${e})((?:[	 ][^\\n]*)?(?:\\n|$))`),nextBulletRegex:e=>RegExp(`^ {0,${Math.min(3,e-1)}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`),hrRegex:e=>RegExp(`^ {0,${Math.min(3,e-1)}}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)`),fencesBeginRegex:e=>RegExp(`^ {0,${Math.min(3,e-1)}}(?:\`\`\`|~~~)`),headingBeginRegex:e=>RegExp(`^ {0,${Math.min(3,e-1)}}#`),htmlBeginRegex:e=>RegExp(`^ {0,${Math.min(3,e-1)}}<(?:[a-z].*>|!--)`,`i`),blockquoteBeginRegex:e=>RegExp(`^ {0,${Math.min(3,e-1)}}>`)},c=/^(?:[ \t]*(?:\n|$))+/,l=/^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/,u=/^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/,d=/^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/,f=/^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/,p=/ {0,3}(?:[*+-]|\d{1,9}[.)])/,m=/^(?!bull |blockCode|fences|blockquote|heading|html|table)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html|table))+?)\n {0,3}(=+|-+) *(?:\n+|$)/,h=a(m).replace(/bull/g,p).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/\|table/g,``).getRegex(),ee=a(m).replace(/bull/g,p).replace(/blockCode/g,/(?: {4}| {0,3}\t)/).replace(/fences/g,/ {0,3}(?:`{3,}|~{3,})/).replace(/blockquote/g,/ {0,3}>/).replace(/heading/g,/ {0,3}#{1,6}/).replace(/html/g,/ {0,3}<[^\n>]+>\n/).replace(/table/g,/ {0,3}\|?(?:[:\- ]*\|)+[\:\- ]*\n/).getRegex(),g=/^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/,te=/^[^\n]+/,_=/(?!\s*\])(?:\\[\s\S]|[^\[\]\\])+/,ne=a(/^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)/).replace(`label`,_).replace(`title`,/(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/).getRegex(),re=a(/^(bull)([ \t][^\n]+?)?(?:\n|$)/).replace(/bull/g,p).getRegex(),v=`address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul`,y=/<!--(?:-?>|[\s\S]*?(?:-->|$))/,ie=a(`^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ 	]*)+\\n|$))`,`i`).replace(`comment`,y).replace(`tag`,v).replace(`attribute`,/ +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(),b=a(g).replace(`hr`,d).replace(`heading`,` {0,3}#{1,6}(?:\\s|$)`).replace(`|lheading`,``).replace(`|table`,``).replace(`blockquote`,` {0,3}>`).replace(`fences`," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace(`list`,` {0,3}(?:[*+-]|1[.)])[ \\t]`).replace(`html`,`</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)`).replace(`tag`,v).getRegex(),x={blockquote:a(/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/).replace(`paragraph`,b).getRegex(),code:l,def:ne,fences:u,heading:f,hr:d,html:ie,lheading:h,list:re,newline:c,paragraph:b,table:i,text:te},S=a(`^ *([^\\n ].*)\\n {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)`).replace(`hr`,d).replace(`heading`,` {0,3}#{1,6}(?:\\s|$)`).replace(`blockquote`,` {0,3}>`).replace(`code`,`(?: {4}| {0,3}	)[^\\n]`).replace(`fences`," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace(`list`,` {0,3}(?:[*+-]|1[.)])[ \\t]`).replace(`html`,`</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)`).replace(`tag`,v).getRegex(),ae={...x,lheading:ee,table:S,paragraph:a(g).replace(`hr`,d).replace(`heading`,` {0,3}#{1,6}(?:\\s|$)`).replace(`|lheading`,``).replace(`table`,S).replace(`blockquote`,` {0,3}>`).replace(`fences`," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace(`list`,` {0,3}(?:[*+-]|1[.)])[ \\t]`).replace(`html`,`</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)`).replace(`tag`,v).getRegex()},oe={...x,html:a(`^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`).replace(`comment`,y).replace(/tag/g,`(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b`).getRegex(),def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,heading:/^(#{1,6})(.*)(?:\n+|$)/,fences:i,lheading:/^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/,paragraph:a(g).replace(`hr`,d).replace(`heading`,` *#{1,6} *[^
+]`).replace(`lheading`,h).replace(`|table`,``).replace(`blockquote`,` {0,3}>`).replace(`|fences`,``).replace(`|list`,``).replace(`|html`,``).replace(`|tag`,``).getRegex()},se=/^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,ce=/^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,C=/^( {2,}|\\)\n(?!\s*$)/,le=/^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/,w=/[\p{P}\p{S}]/u,T=/[\s\p{P}\p{S}]/u,E=/[^\s\p{P}\p{S}]/u,ue=a(/^((?![*_])punctSpace)/,`u`).replace(/punctSpace/g,T).getRegex(),D=/(?!~)[\p{P}\p{S}]/u,de=/(?!~)[\s\p{P}\p{S}]/u,fe=/(?:[^\s\p{P}\p{S}]|~)/u,pe=a(/link|precode-code|html/,`g`).replace(`link`,/\[(?:[^\[\]`]|(?<a>`+)[^`]+\k<a>(?!`))*?\]\((?:\\[\s\S]|[^\\\(\)]|\((?:\\[\s\S]|[^\\\(\)])*\))*\)/).replace(`precode-`,o?"(?<!`)()":"(^^|[^`])").replace(`code`,/(?<b>`+)[^`]+\k<b>(?!`)/).replace(`html`,/<(?! )[^<>]*?>/).getRegex(),O=/^(?:\*+(?:((?!\*)punct)|([^\s*]))?)|^_+(?:((?!_)punct)|([^\s_]))?/,me=a(O,`u`).replace(/punct/g,w).getRegex(),he=a(O,`u`).replace(/punct/g,D).getRegex(),k=`^[^_*]*?__[^_*]*?\\*[^_*]*?(?=__)|[^*]+(?=[^*])|(?!\\*)punct(\\*+)(?=[\\s]|$)|notPunctSpace(\\*+)(?!\\*)(?=punctSpace|$)|(?!\\*)punctSpace(\\*+)(?=notPunctSpace)|[\\s](\\*+)(?!\\*)(?=punct)|(?!\\*)punct(\\*+)(?!\\*)(?=punct)|notPunctSpace(\\*+)(?=notPunctSpace)`,ge=a(k,`gu`).replace(/notPunctSpace/g,E).replace(/punctSpace/g,T).replace(/punct/g,w).getRegex(),A=a(k,`gu`).replace(/notPunctSpace/g,fe).replace(/punctSpace/g,de).replace(/punct/g,D).getRegex(),_e=a(`^[^_*]*?\\*\\*[^_*]*?_[^_*]*?(?=\\*\\*)|[^_]+(?=[^_])|(?!_)punct(_+)(?=[\\s]|$)|notPunctSpace(_+)(?!_)(?=punctSpace|$)|(?!_)punctSpace(_+)(?=notPunctSpace)|[\\s](_+)(?!_)(?=punct)|(?!_)punct(_+)(?!_)(?=punct)`,`gu`).replace(/notPunctSpace/g,E).replace(/punctSpace/g,T).replace(/punct/g,w).getRegex(),ve=a(/^~~?(?:((?!~)punct)|[^\s~])/,`u`).replace(/punct/g,w).getRegex(),ye=a(`^[^~]+(?=[^~])|(?!~)punct(~~?)(?=[\\s]|$)|notPunctSpace(~~?)(?!~)(?=punctSpace|$)|(?!~)punctSpace(~~?)(?=notPunctSpace)|[\\s](~~?)(?!~)(?=punct)|(?!~)punct(~~?)(?!~)(?=punct)|notPunctSpace(~~?)(?=notPunctSpace)`,`gu`).replace(/notPunctSpace/g,E).replace(/punctSpace/g,T).replace(/punct/g,w).getRegex(),be=a(/\\(punct)/,`gu`).replace(/punct/g,w).getRegex(),xe=a(/^<(scheme:[^\s\x00-\x1f<>]*|email)>/).replace(`scheme`,/[a-zA-Z][a-zA-Z0-9+.-]{1,31}/).replace(`email`,/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/).getRegex(),j=a(y).replace(`(?:-->|$)`,`-->`).getRegex(),Se=a(`^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>`).replace(`comment`,j).replace(`attribute`,/\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/).getRegex(),M=/(?:\[(?:\\[\s\S]|[^\[\]\\])*\]|\\[\s\S]|`+(?!`)[^`]*?`+(?!`)|``+(?=\])|[^\[\]\\`])*?/,Ce=a(/^!?\[(label)\]\(\s*(href)(?:(?:[ \t]+(?:\n[ \t]*)?|\n[ \t]*)(title))?\s*\)/).replace(`label`,M).replace(`href`,/<(?:\\.|[^\n<>\\])+>|[^ \t\n\x00-\x1f]*/).replace(`title`,/"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/).getRegex(),N=a(/^!?\[(label)\]\[(ref)\]/).replace(`label`,M).replace(`ref`,_).getRegex(),P=a(/^!?\[(ref)\](?:\[\])?/).replace(`ref`,_).getRegex(),we=a(`reflink|nolink(?!\\()`,`g`).replace(`reflink`,N).replace(`nolink`,P).getRegex(),F=/[hH][tT][tT][pP][sS]?|[fF][tT][pP]/,I={_backpedal:i,anyPunctuation:be,autolink:xe,blockSkip:pe,br:C,code:ce,del:i,delLDelim:i,delRDelim:i,emStrongLDelim:me,emStrongRDelimAst:ge,emStrongRDelimUnd:_e,escape:se,link:Ce,nolink:P,punctuation:ue,reflink:N,reflinkSearch:we,tag:Se,text:le,url:i},Te={...I,link:a(/^!?\[(label)\]\((.*?)\)/).replace(`label`,M).getRegex(),reflink:a(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace(`label`,M).getRegex()},L={...I,emStrongRDelimAst:A,emStrongLDelim:he,delLDelim:ve,delRDelim:ye,url:a(/^((?:protocol):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/).replace(`protocol`,F).replace(`email`,/[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/).getRegex(),_backpedal:/(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/,del:/^(~~?)(?=[^\s~])((?:\\[\s\S]|[^\\])*?(?:\\[\s\S]|[^\s~\\]))\1(?=[^~]|$)/,text:a(/^([`~]+|[^`~])(?:(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|protocol:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)))/).replace(`protocol`,F).getRegex()},Ee={...L,br:a(C).replace(`{2,}`,`*`).getRegex(),text:a(L.text).replace(`\\b_`,`\\b_| {2,}\\n`).replace(/\{2,\}/g,`*`).getRegex()},R={normal:x,gfm:ae,pedantic:oe},z={normal:I,gfm:L,breaks:Ee,pedantic:Te},De={"&":`&amp;`,"<":`&lt;`,">":`&gt;`,'"':`&quot;`,"'":`&#39;`},B=e=>De[e];function V(e,t){if(t){if(s.escapeTest.test(e))return e.replace(s.escapeReplace,B)}else if(s.escapeTestNoEncode.test(e))return e.replace(s.escapeReplaceNoEncode,B);return e}function H(e){try{e=encodeURI(e).replace(s.percentDecode,`%`)}catch{return null}return e}function U(e,t){let n=e.replace(s.findPipe,(e,t,n)=>{let r=!1,i=t;for(;--i>=0&&n[i]===`\\`;)r=!r;return r?`|`:` |`}).split(s.splitPipe),r=0;if(n[0].trim()||n.shift(),n.length>0&&!n.at(-1)?.trim()&&n.pop(),t)if(n.length>t)n.splice(t);else for(;n.length<t;)n.push(``);for(;r<n.length;r++)n[r]=n[r].trim().replace(s.slashPipe,`|`);return n}function W(e,t,n){let r=e.length;if(r===0)return``;let i=0;for(;i<r;){let a=e.charAt(r-i-1);if(a===t&&!n)i++;else if(a!==t&&n)i++;else break}return e.slice(0,r-i)}function Oe(e,t){if(e.indexOf(t[1])===-1)return-1;let n=0;for(let r=0;r<e.length;r++)if(e[r]===`\\`)r++;else if(e[r]===t[0])n++;else if(e[r]===t[1]&&(n--,n<0))return r;return n>0?-2:-1}function ke(e,t=0){let n=t,r=``;for(let t of e)if(t===`	`){let e=4-n%4;r+=` `.repeat(e),n+=e}else r+=t,n++;return r}function G(e,t,n,r,i){let a=t.href,o=t.title||null,s=e[1].replace(i.other.outputLinkReplace,`$1`);r.state.inLink=!0;let c={type:e[0].charAt(0)===`!`?`image`:`link`,raw:n,href:a,title:o,text:s,tokens:r.inlineTokens(s)};return r.state.inLink=!1,c}function Ae(e,t,n){let r=e.match(n.other.indentCodeCompensation);if(r===null)return t;let i=r[1];return t.split(`
+`).map(e=>{let t=e.match(n.other.beginningSpace);if(t===null)return e;let[r]=t;return r.length>=i.length?e.slice(i.length):e}).join(`
+`)}var K=class{options;rules;lexer;constructor(e){this.options=e||n}space(e){let t=this.rules.block.newline.exec(e);if(t&&t[0].length>0)return{type:`space`,raw:t[0]}}code(e){let t=this.rules.block.code.exec(e);if(t){let e=t[0].replace(this.rules.other.codeRemoveIndent,``);return{type:`code`,raw:t[0],codeBlockStyle:`indented`,text:this.options.pedantic?e:W(e,`
+`)}}}fences(e){let t=this.rules.block.fences.exec(e);if(t){let e=t[0],n=Ae(e,t[3]||``,this.rules);return{type:`code`,raw:e,lang:t[2]?t[2].trim().replace(this.rules.inline.anyPunctuation,`$1`):t[2],text:n}}}heading(e){let t=this.rules.block.heading.exec(e);if(t){let e=t[2].trim();if(this.rules.other.endingHash.test(e)){let t=W(e,`#`);(this.options.pedantic||!t||this.rules.other.endingSpaceChar.test(t))&&(e=t.trim())}return{type:`heading`,raw:t[0],depth:t[1].length,text:e,tokens:this.lexer.inline(e)}}}hr(e){let t=this.rules.block.hr.exec(e);if(t)return{type:`hr`,raw:W(t[0],`
+`)}}blockquote(e){let t=this.rules.block.blockquote.exec(e);if(t){let e=W(t[0],`
+`).split(`
+`),n=``,r=``,i=[];for(;e.length>0;){let t=!1,a=[],o;for(o=0;o<e.length;o++)if(this.rules.other.blockquoteStart.test(e[o]))a.push(e[o]),t=!0;else if(!t)a.push(e[o]);else break;e=e.slice(o);let s=a.join(`
+`),c=s.replace(this.rules.other.blockquoteSetextReplace,`
+    $1`).replace(this.rules.other.blockquoteSetextReplace2,``);n=n?`${n}
+${s}`:s,r=r?`${r}
+${c}`:c;let l=this.lexer.state.top;if(this.lexer.state.top=!0,this.lexer.blockTokens(c,i,!0),this.lexer.state.top=l,e.length===0)break;let u=i.at(-1);if(u?.type===`code`)break;if(u?.type===`blockquote`){let t=u,a=t.raw+`
+`+e.join(`
+`),o=this.blockquote(a);i[i.length-1]=o,n=n.substring(0,n.length-t.raw.length)+o.raw,r=r.substring(0,r.length-t.text.length)+o.text;break}else if(u?.type===`list`){let t=u,a=t.raw+`
+`+e.join(`
+`),o=this.list(a);i[i.length-1]=o,n=n.substring(0,n.length-u.raw.length)+o.raw,r=r.substring(0,r.length-t.raw.length)+o.raw,e=a.substring(i.at(-1).raw.length).split(`
+`);continue}}return{type:`blockquote`,raw:n,tokens:i,text:r}}}list(e){let t=this.rules.block.list.exec(e);if(t){let n=t[1].trim(),r=n.length>1,i={type:`list`,raw:``,ordered:r,start:r?+n.slice(0,-1):``,loose:!1,items:[]};n=r?`\\d{1,9}\\${n.slice(-1)}`:`\\${n}`,this.options.pedantic&&(n=r?n:`[*+-]`);let a=this.rules.other.listItemRegex(n),o=!1;for(;e;){let n=!1,r=``,s=``;if(!(t=a.exec(e))||this.rules.block.hr.test(e))break;r=t[0],e=e.substring(r.length);let c=ke(t[2].split(`
+`,1)[0],t[1].length),l=e.split(`
+`,1)[0],u=!c.trim(),d=0;if(this.options.pedantic?(d=2,s=c.trimStart()):u?d=t[1].length+1:(d=c.search(this.rules.other.nonSpaceChar),d=d>4?1:d,s=c.slice(d),d+=t[1].length),u&&this.rules.other.blankLine.test(l)&&(r+=l+`
+`,e=e.substring(l.length+1),n=!0),!n){let t=this.rules.other.nextBulletRegex(d),n=this.rules.other.hrRegex(d),i=this.rules.other.fencesBeginRegex(d),a=this.rules.other.headingBeginRegex(d),o=this.rules.other.htmlBeginRegex(d),f=this.rules.other.blockquoteBeginRegex(d);for(;e;){let p=e.split(`
+`,1)[0],m;if(l=p,this.options.pedantic?(l=l.replace(this.rules.other.listReplaceNesting,`  `),m=l):m=l.replace(this.rules.other.tabCharGlobal,`    `),i.test(l)||a.test(l)||o.test(l)||f.test(l)||t.test(l)||n.test(l))break;if(m.search(this.rules.other.nonSpaceChar)>=d||!l.trim())s+=`
+`+m.slice(d);else{if(u||c.replace(this.rules.other.tabCharGlobal,`    `).search(this.rules.other.nonSpaceChar)>=4||i.test(c)||a.test(c)||n.test(c))break;s+=`
+`+l}u=!l.trim(),r+=p+`
+`,e=e.substring(p.length+1),c=m.slice(d)}}i.loose||(o?i.loose=!0:this.rules.other.doubleBlankLine.test(r)&&(o=!0)),i.items.push({type:`list_item`,raw:r,task:!!this.options.gfm&&this.rules.other.listIsTask.test(s),loose:!1,text:s,tokens:[]}),i.raw+=r}let s=i.items.at(-1);if(s)s.raw=s.raw.trimEnd(),s.text=s.text.trimEnd();else return;i.raw=i.raw.trimEnd();for(let e of i.items){if(this.lexer.state.top=!1,e.tokens=this.lexer.blockTokens(e.text,[]),e.task){if(e.text=e.text.replace(this.rules.other.listReplaceTask,``),e.tokens[0]?.type===`text`||e.tokens[0]?.type===`paragraph`){e.tokens[0].raw=e.tokens[0].raw.replace(this.rules.other.listReplaceTask,``),e.tokens[0].text=e.tokens[0].text.replace(this.rules.other.listReplaceTask,``);for(let e=this.lexer.inlineQueue.length-1;e>=0;e--)if(this.rules.other.listIsTask.test(this.lexer.inlineQueue[e].src)){this.lexer.inlineQueue[e].src=this.lexer.inlineQueue[e].src.replace(this.rules.other.listReplaceTask,``);break}}let t=this.rules.other.listTaskCheckbox.exec(e.raw);if(t){let n={type:`checkbox`,raw:t[0]+` `,checked:t[0]!==`[ ]`};e.checked=n.checked,i.loose?e.tokens[0]&&[`paragraph`,`text`].includes(e.tokens[0].type)&&`tokens`in e.tokens[0]&&e.tokens[0].tokens?(e.tokens[0].raw=n.raw+e.tokens[0].raw,e.tokens[0].text=n.raw+e.tokens[0].text,e.tokens[0].tokens.unshift(n)):e.tokens.unshift({type:`paragraph`,raw:n.raw,text:n.raw,tokens:[n]}):e.tokens.unshift(n)}}if(!i.loose){let t=e.tokens.filter(e=>e.type===`space`);i.loose=t.length>0&&t.some(e=>this.rules.other.anyLine.test(e.raw))}}if(i.loose)for(let e of i.items){e.loose=!0;for(let t of e.tokens)t.type===`text`&&(t.type=`paragraph`)}return i}}html(e){let t=this.rules.block.html.exec(e);if(t)return{type:`html`,block:!0,raw:t[0],pre:t[1]===`pre`||t[1]===`script`||t[1]===`style`,text:t[0]}}def(e){let t=this.rules.block.def.exec(e);if(t){let e=t[1].toLowerCase().replace(this.rules.other.multipleSpaceGlobal,` `),n=t[2]?t[2].replace(this.rules.other.hrefBrackets,`$1`).replace(this.rules.inline.anyPunctuation,`$1`):``,r=t[3]?t[3].substring(1,t[3].length-1).replace(this.rules.inline.anyPunctuation,`$1`):t[3];return{type:`def`,tag:e,raw:t[0],href:n,title:r}}}table(e){let t=this.rules.block.table.exec(e);if(!t||!this.rules.other.tableDelimiter.test(t[2]))return;let n=U(t[1]),r=t[2].replace(this.rules.other.tableAlignChars,``).split(`|`),i=t[3]?.trim()?t[3].replace(this.rules.other.tableRowBlankLine,``).split(`
+`):[],a={type:`table`,raw:t[0],header:[],align:[],rows:[]};if(n.length===r.length){for(let e of r)this.rules.other.tableAlignRight.test(e)?a.align.push(`right`):this.rules.other.tableAlignCenter.test(e)?a.align.push(`center`):this.rules.other.tableAlignLeft.test(e)?a.align.push(`left`):a.align.push(null);for(let e=0;e<n.length;e++)a.header.push({text:n[e],tokens:this.lexer.inline(n[e]),header:!0,align:a.align[e]});for(let e of i)a.rows.push(U(e,a.header.length).map((e,t)=>({text:e,tokens:this.lexer.inline(e),header:!1,align:a.align[t]})));return a}}lheading(e){let t=this.rules.block.lheading.exec(e);if(t){let e=t[1].trim();return{type:`heading`,raw:t[0],depth:t[2].charAt(0)===`=`?1:2,text:e,tokens:this.lexer.inline(e)}}}paragraph(e){let t=this.rules.block.paragraph.exec(e);if(t){let e=t[1].charAt(t[1].length-1)===`
+`?t[1].slice(0,-1):t[1];return{type:`paragraph`,raw:t[0],text:e,tokens:this.lexer.inline(e)}}}text(e){let t=this.rules.block.text.exec(e);if(t)return{type:`text`,raw:t[0],text:t[0],tokens:this.lexer.inline(t[0])}}escape(e){let t=this.rules.inline.escape.exec(e);if(t)return{type:`escape`,raw:t[0],text:t[1]}}tag(e){let t=this.rules.inline.tag.exec(e);if(t)return!this.lexer.state.inLink&&this.rules.other.startATag.test(t[0])?this.lexer.state.inLink=!0:this.lexer.state.inLink&&this.rules.other.endATag.test(t[0])&&(this.lexer.state.inLink=!1),!this.lexer.state.inRawBlock&&this.rules.other.startPreScriptTag.test(t[0])?this.lexer.state.inRawBlock=!0:this.lexer.state.inRawBlock&&this.rules.other.endPreScriptTag.test(t[0])&&(this.lexer.state.inRawBlock=!1),{type:`html`,raw:t[0],inLink:this.lexer.state.inLink,inRawBlock:this.lexer.state.inRawBlock,block:!1,text:t[0]}}link(e){let t=this.rules.inline.link.exec(e);if(t){let e=t[2].trim();if(!this.options.pedantic&&this.rules.other.startAngleBracket.test(e)){if(!this.rules.other.endAngleBracket.test(e))return;let t=W(e.slice(0,-1),`\\`);if((e.length-t.length)%2==0)return}else{let e=Oe(t[2],`()`);if(e===-2)return;if(e>-1){let n=(t[0].indexOf(`!`)===0?5:4)+t[1].length+e;t[2]=t[2].substring(0,e),t[0]=t[0].substring(0,n).trim(),t[3]=``}}let n=t[2],r=``;if(this.options.pedantic){let e=this.rules.other.pedanticHrefTitle.exec(n);e&&(n=e[1],r=e[3])}else r=t[3]?t[3].slice(1,-1):``;return n=n.trim(),this.rules.other.startAngleBracket.test(n)&&(n=this.options.pedantic&&!this.rules.other.endAngleBracket.test(e)?n.slice(1):n.slice(1,-1)),G(t,{href:n&&n.replace(this.rules.inline.anyPunctuation,`$1`),title:r&&r.replace(this.rules.inline.anyPunctuation,`$1`)},t[0],this.lexer,this.rules)}}reflink(e,t){let n;if((n=this.rules.inline.reflink.exec(e))||(n=this.rules.inline.nolink.exec(e))){let e=t[(n[2]||n[1]).replace(this.rules.other.multipleSpaceGlobal,` `).toLowerCase()];if(!e){let e=n[0].charAt(0);return{type:`text`,raw:e,text:e}}return G(n,e,n[0],this.lexer,this.rules)}}emStrong(e,t,n=``){let r=this.rules.inline.emStrongLDelim.exec(e);if(!(!r||!r[1]&&!r[2]&&!r[3]&&!r[4]||r[4]&&n.match(this.rules.other.unicodeAlphaNumeric))&&(!(r[1]||r[3])||!n||this.rules.inline.punctuation.exec(n))){let n=[...r[0]].length-1,i,a,o=n,s=0,c=r[0][0]===`*`?this.rules.inline.emStrongRDelimAst:this.rules.inline.emStrongRDelimUnd;for(c.lastIndex=0,t=t.slice(-1*e.length+n);(r=c.exec(t))!=null;){if(i=r[1]||r[2]||r[3]||r[4]||r[5]||r[6],!i)continue;if(a=[...i].length,r[3]||r[4]){o+=a;continue}else if((r[5]||r[6])&&n%3&&!((n+a)%3)){s+=a;continue}if(o-=a,o>0)continue;a=Math.min(a,a+o+s);let t=[...r[0]][0].length,c=e.slice(0,n+r.index+t+a);if(Math.min(n,a)%2){let e=c.slice(1,-1);return{type:`em`,raw:c,text:e,tokens:this.lexer.inlineTokens(e)}}let l=c.slice(2,-2);return{type:`strong`,raw:c,text:l,tokens:this.lexer.inlineTokens(l)}}}}codespan(e){let t=this.rules.inline.code.exec(e);if(t){let e=t[2].replace(this.rules.other.newLineCharGlobal,` `),n=this.rules.other.nonSpaceChar.test(e),r=this.rules.other.startingSpaceChar.test(e)&&this.rules.other.endingSpaceChar.test(e);return n&&r&&(e=e.substring(1,e.length-1)),{type:`codespan`,raw:t[0],text:e}}}br(e){let t=this.rules.inline.br.exec(e);if(t)return{type:`br`,raw:t[0]}}del(e,t,n=``){let r=this.rules.inline.delLDelim.exec(e);if(r&&(!r[1]||!n||this.rules.inline.punctuation.exec(n))){let n=[...r[0]].length-1,i,a,o=n,s=this.rules.inline.delRDelim;for(s.lastIndex=0,t=t.slice(-1*e.length+n);(r=s.exec(t))!=null;){if(i=r[1]||r[2]||r[3]||r[4]||r[5]||r[6],!i||(a=[...i].length,a!==n))continue;if(r[3]||r[4]){o+=a;continue}if(o-=a,o>0)continue;a=Math.min(a,a+o);let t=[...r[0]][0].length,s=e.slice(0,n+r.index+t+a),c=s.slice(n,-n);return{type:`del`,raw:s,text:c,tokens:this.lexer.inlineTokens(c)}}}}autolink(e){let t=this.rules.inline.autolink.exec(e);if(t){let e,n;return t[2]===`@`?(e=t[1],n=`mailto:`+e):(e=t[1],n=e),{type:`link`,raw:t[0],text:e,href:n,tokens:[{type:`text`,raw:e,text:e}]}}}url(e){let t;if(t=this.rules.inline.url.exec(e)){let e,n;if(t[2]===`@`)e=t[0],n=`mailto:`+e;else{let r;do r=t[0],t[0]=this.rules.inline._backpedal.exec(t[0])?.[0]??``;while(r!==t[0]);e=t[0],n=t[1]===`www.`?`http://`+t[0]:t[0]}return{type:`link`,raw:t[0],text:e,href:n,tokens:[{type:`text`,raw:e,text:e}]}}}inlineText(e){let t=this.rules.inline.text.exec(e);if(t){let e=this.lexer.state.inRawBlock;return{type:`text`,raw:t[0],text:t[0],escaped:e}}}},q=class e{tokens;options;state;inlineQueue;tokenizer;constructor(e){this.tokens=[],this.tokens.links=Object.create(null),this.options=e||n,this.options.tokenizer=this.options.tokenizer||new K,this.tokenizer=this.options.tokenizer,this.tokenizer.options=this.options,this.tokenizer.lexer=this,this.inlineQueue=[],this.state={inLink:!1,inRawBlock:!1,top:!0};let t={other:s,block:R.normal,inline:z.normal};this.options.pedantic?(t.block=R.pedantic,t.inline=z.pedantic):this.options.gfm&&(t.block=R.gfm,this.options.breaks?t.inline=z.breaks:t.inline=z.gfm),this.tokenizer.rules=t}static get rules(){return{block:R,inline:z}}static lex(t,n){return new e(n).lex(t)}static lexInline(t,n){return new e(n).inlineTokens(t)}lex(e){e=e.replace(s.carriageReturn,`
+`),this.blockTokens(e,this.tokens);for(let e=0;e<this.inlineQueue.length;e++){let t=this.inlineQueue[e];this.inlineTokens(t.src,t.tokens)}return this.inlineQueue=[],this.tokens}blockTokens(e,t=[],n=!1){for(this.tokenizer.lexer=this,this.options.pedantic&&(e=e.replace(s.tabCharGlobal,`    `).replace(s.spaceLine,``));e;){let r;if(this.options.extensions?.block?.some(n=>(r=n.call({lexer:this},e,t))?(e=e.substring(r.raw.length),t.push(r),!0):!1))continue;if(r=this.tokenizer.space(e)){e=e.substring(r.raw.length);let n=t.at(-1);r.raw.length===1&&n!==void 0?n.raw+=`
+`:t.push(r);continue}if(r=this.tokenizer.code(e)){e=e.substring(r.raw.length);let n=t.at(-1);n?.type===`paragraph`||n?.type===`text`?(n.raw+=(n.raw.endsWith(`
+`)?``:`
+`)+r.raw,n.text+=`
+`+r.text,this.inlineQueue.at(-1).src=n.text):t.push(r);continue}if(r=this.tokenizer.fences(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.heading(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.hr(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.blockquote(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.list(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.html(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.def(e)){e=e.substring(r.raw.length);let n=t.at(-1);n?.type===`paragraph`||n?.type===`text`?(n.raw+=(n.raw.endsWith(`
+`)?``:`
+`)+r.raw,n.text+=`
+`+r.raw,this.inlineQueue.at(-1).src=n.text):this.tokens.links[r.tag]||(this.tokens.links[r.tag]={href:r.href,title:r.title},t.push(r));continue}if(r=this.tokenizer.table(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.lheading(e)){e=e.substring(r.raw.length),t.push(r);continue}let i=e;if(this.options.extensions?.startBlock){let t=1/0,n=e.slice(1),r;this.options.extensions.startBlock.forEach(e=>{r=e.call({lexer:this},n),typeof r==`number`&&r>=0&&(t=Math.min(t,r))}),t<1/0&&t>=0&&(i=e.substring(0,t+1))}if(this.state.top&&(r=this.tokenizer.paragraph(i))){let a=t.at(-1);n&&a?.type===`paragraph`?(a.raw+=(a.raw.endsWith(`
+`)?``:`
+`)+r.raw,a.text+=`
+`+r.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=a.text):t.push(r),n=i.length!==e.length,e=e.substring(r.raw.length);continue}if(r=this.tokenizer.text(e)){e=e.substring(r.raw.length);let n=t.at(-1);n?.type===`text`?(n.raw+=(n.raw.endsWith(`
+`)?``:`
+`)+r.raw,n.text+=`
+`+r.text,this.inlineQueue.pop(),this.inlineQueue.at(-1).src=n.text):t.push(r);continue}if(e){let t=`Infinite loop on byte: `+e.charCodeAt(0);if(this.options.silent){console.error(t);break}else throw Error(t)}}return this.state.top=!0,t}inline(e,t=[]){return this.inlineQueue.push({src:e,tokens:t}),t}inlineTokens(e,t=[]){this.tokenizer.lexer=this;let n=e,r=null;if(this.tokens.links){let e=Object.keys(this.tokens.links);if(e.length>0)for(;(r=this.tokenizer.rules.inline.reflinkSearch.exec(n))!=null;)e.includes(r[0].slice(r[0].lastIndexOf(`[`)+1,-1))&&(n=n.slice(0,r.index)+`[`+`a`.repeat(r[0].length-2)+`]`+n.slice(this.tokenizer.rules.inline.reflinkSearch.lastIndex))}for(;(r=this.tokenizer.rules.inline.anyPunctuation.exec(n))!=null;)n=n.slice(0,r.index)+`++`+n.slice(this.tokenizer.rules.inline.anyPunctuation.lastIndex);let i;for(;(r=this.tokenizer.rules.inline.blockSkip.exec(n))!=null;)i=r[2]?r[2].length:0,n=n.slice(0,r.index+i)+`[`+`a`.repeat(r[0].length-i-2)+`]`+n.slice(this.tokenizer.rules.inline.blockSkip.lastIndex);n=this.options.hooks?.emStrongMask?.call({lexer:this},n)??n;let a=!1,o=``;for(;e;){a||(o=``),a=!1;let r;if(this.options.extensions?.inline?.some(n=>(r=n.call({lexer:this},e,t))?(e=e.substring(r.raw.length),t.push(r),!0):!1))continue;if(r=this.tokenizer.escape(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.tag(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.link(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.reflink(e,this.tokens.links)){e=e.substring(r.raw.length);let n=t.at(-1);r.type===`text`&&n?.type===`text`?(n.raw+=r.raw,n.text+=r.text):t.push(r);continue}if(r=this.tokenizer.emStrong(e,n,o)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.codespan(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.br(e)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.del(e,n,o)){e=e.substring(r.raw.length),t.push(r);continue}if(r=this.tokenizer.autolink(e)){e=e.substring(r.raw.length),t.push(r);continue}if(!this.state.inLink&&(r=this.tokenizer.url(e))){e=e.substring(r.raw.length),t.push(r);continue}let i=e;if(this.options.extensions?.startInline){let t=1/0,n=e.slice(1),r;this.options.extensions.startInline.forEach(e=>{r=e.call({lexer:this},n),typeof r==`number`&&r>=0&&(t=Math.min(t,r))}),t<1/0&&t>=0&&(i=e.substring(0,t+1))}if(r=this.tokenizer.inlineText(i)){e=e.substring(r.raw.length),r.raw.slice(-1)!==`_`&&(o=r.raw.slice(-1)),a=!0;let n=t.at(-1);n?.type===`text`?(n.raw+=r.raw,n.text+=r.text):t.push(r);continue}if(e){let t=`Infinite loop on byte: `+e.charCodeAt(0);if(this.options.silent){console.error(t);break}else throw Error(t)}}return t}},J=class{options;parser;constructor(e){this.options=e||n}space(e){return``}code({text:e,lang:t,escaped:n}){let r=(t||``).match(s.notSpaceStart)?.[0],i=e.replace(s.endingNewline,``)+`
+`;return r?`<pre><code class="language-`+V(r)+`">`+(n?i:V(i,!0))+`</code></pre>
+`:`<pre><code>`+(n?i:V(i,!0))+`</code></pre>
+`}blockquote({tokens:e}){return`<blockquote>
+${this.parser.parse(e)}</blockquote>
+`}html({text:e}){return e}def(e){return``}heading({tokens:e,depth:t}){return`<h${t}>${this.parser.parseInline(e)}</h${t}>
+`}hr(e){return`<hr>
+`}list(e){let t=e.ordered,n=e.start,r=``;for(let t=0;t<e.items.length;t++){let n=e.items[t];r+=this.listitem(n)}let i=t?`ol`:`ul`,a=t&&n!==1?` start="`+n+`"`:``;return`<`+i+a+`>
+`+r+`</`+i+`>
+`}listitem(e){return`<li>${this.parser.parse(e.tokens)}</li>
+`}checkbox({checked:e}){return`<input `+(e?`checked="" `:``)+`disabled="" type="checkbox"> `}paragraph({tokens:e}){return`<p>${this.parser.parseInline(e)}</p>
+`}table(e){let t=``,n=``;for(let t=0;t<e.header.length;t++)n+=this.tablecell(e.header[t]);t+=this.tablerow({text:n});let r=``;for(let t=0;t<e.rows.length;t++){let i=e.rows[t];n=``;for(let e=0;e<i.length;e++)n+=this.tablecell(i[e]);r+=this.tablerow({text:n})}return r&&=`<tbody>${r}</tbody>`,`<table>
+<thead>
+`+t+`</thead>
+`+r+`</table>
+`}tablerow({text:e}){return`<tr>
+${e}</tr>
+`}tablecell(e){let t=this.parser.parseInline(e.tokens),n=e.header?`th`:`td`;return(e.align?`<${n} align="${e.align}">`:`<${n}>`)+t+`</${n}>
+`}strong({tokens:e}){return`<strong>${this.parser.parseInline(e)}</strong>`}em({tokens:e}){return`<em>${this.parser.parseInline(e)}</em>`}codespan({text:e}){return`<code>${V(e,!0)}</code>`}br(e){return`<br>`}del({tokens:e}){return`<del>${this.parser.parseInline(e)}</del>`}link({href:e,title:t,tokens:n}){let r=this.parser.parseInline(n),i=H(e);if(i===null)return r;e=i;let a=`<a href="`+e+`"`;return t&&(a+=` title="`+V(t)+`"`),a+=`>`+r+`</a>`,a}image({href:e,title:t,text:n,tokens:r}){r&&(n=this.parser.parseInline(r,this.parser.textRenderer));let i=H(e);if(i===null)return V(n);e=i;let a=`<img src="${e}" alt="${V(n)}"`;return t&&(a+=` title="${V(t)}"`),a+=`>`,a}text(e){return`tokens`in e&&e.tokens?this.parser.parseInline(e.tokens):`escaped`in e&&e.escaped?e.text:V(e.text)}},Y=class{strong({text:e}){return e}em({text:e}){return e}codespan({text:e}){return e}del({text:e}){return e}html({text:e}){return e}text({text:e}){return e}link({text:e}){return``+e}image({text:e}){return``+e}br(){return``}checkbox({raw:e}){return e}},X=class e{options;renderer;textRenderer;constructor(e){this.options=e||n,this.options.renderer=this.options.renderer||new J,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new Y}static parse(t,n){return new e(n).parse(t)}static parseInline(t,n){return new e(n).parseInline(t)}parse(e){this.renderer.parser=this;let t=``;for(let n=0;n<e.length;n++){let r=e[n];if(this.options.extensions?.renderers?.[r.type]){let e=r,n=this.options.extensions.renderers[e.type].call({parser:this},e);if(n!==!1||![`space`,`hr`,`heading`,`code`,`table`,`blockquote`,`list`,`html`,`def`,`paragraph`,`text`].includes(e.type)){t+=n||``;continue}}let i=r;switch(i.type){case`space`:t+=this.renderer.space(i);break;case`hr`:t+=this.renderer.hr(i);break;case`heading`:t+=this.renderer.heading(i);break;case`code`:t+=this.renderer.code(i);break;case`table`:t+=this.renderer.table(i);break;case`blockquote`:t+=this.renderer.blockquote(i);break;case`list`:t+=this.renderer.list(i);break;case`checkbox`:t+=this.renderer.checkbox(i);break;case`html`:t+=this.renderer.html(i);break;case`def`:t+=this.renderer.def(i);break;case`paragraph`:t+=this.renderer.paragraph(i);break;case`text`:t+=this.renderer.text(i);break;default:{let e=`Token with "`+i.type+`" type was not found.`;if(this.options.silent)return console.error(e),``;throw Error(e)}}}return t}parseInline(e,t=this.renderer){this.renderer.parser=this;let n=``;for(let r=0;r<e.length;r++){let i=e[r];if(this.options.extensions?.renderers?.[i.type]){let e=this.options.extensions.renderers[i.type].call({parser:this},i);if(e!==!1||![`escape`,`html`,`link`,`image`,`strong`,`em`,`codespan`,`br`,`del`,`text`].includes(i.type)){n+=e||``;continue}}let a=i;switch(a.type){case`escape`:n+=t.text(a);break;case`html`:n+=t.html(a);break;case`link`:n+=t.link(a);break;case`image`:n+=t.image(a);break;case`checkbox`:n+=t.checkbox(a);break;case`strong`:n+=t.strong(a);break;case`em`:n+=t.em(a);break;case`codespan`:n+=t.codespan(a);break;case`br`:n+=t.br(a);break;case`del`:n+=t.del(a);break;case`text`:n+=t.text(a);break;default:{let e=`Token with "`+a.type+`" type was not found.`;if(this.options.silent)return console.error(e),``;throw Error(e)}}}return n}},Z=class{options;block;constructor(e){this.options=e||n}static passThroughHooks=new Set([`preprocess`,`postprocess`,`processAllTokens`,`emStrongMask`]);static passThroughHooksRespectAsync=new Set([`preprocess`,`postprocess`,`processAllTokens`]);preprocess(e){return e}postprocess(e){return e}processAllTokens(e){return e}emStrongMask(e){return e}provideLexer(){return this.block?q.lex:q.lexInline}provideParser(){return this.block?X.parse:X.parseInline}},Q=new class{defaults=t();options=this.setOptions;parse=this.parseMarkdown(!0);parseInline=this.parseMarkdown(!1);Parser=X;Renderer=J;TextRenderer=Y;Lexer=q;Tokenizer=K;Hooks=Z;constructor(...e){this.use(...e)}walkTokens(e,t){let n=[];for(let r of e)switch(n=n.concat(t.call(this,r)),r.type){case`table`:{let e=r;for(let r of e.header)n=n.concat(this.walkTokens(r.tokens,t));for(let r of e.rows)for(let e of r)n=n.concat(this.walkTokens(e.tokens,t));break}case`list`:{let e=r;n=n.concat(this.walkTokens(e.items,t));break}default:{let e=r;this.defaults.extensions?.childTokens?.[e.type]?this.defaults.extensions.childTokens[e.type].forEach(r=>{let i=e[r].flat(1/0);n=n.concat(this.walkTokens(i,t))}):e.tokens&&(n=n.concat(this.walkTokens(e.tokens,t)))}}return n}use(...e){let t=this.defaults.extensions||{renderers:{},childTokens:{}};return e.forEach(e=>{let n={...e};if(n.async=this.defaults.async||n.async||!1,e.extensions&&(e.extensions.forEach(e=>{if(!e.name)throw Error(`extension name required`);if(`renderer`in e){let n=t.renderers[e.name];n?t.renderers[e.name]=function(...t){let r=e.renderer.apply(this,t);return r===!1&&(r=n.apply(this,t)),r}:t.renderers[e.name]=e.renderer}if(`tokenizer`in e){if(!e.level||e.level!==`block`&&e.level!==`inline`)throw Error(`extension level must be 'block' or 'inline'`);let n=t[e.level];n?n.unshift(e.tokenizer):t[e.level]=[e.tokenizer],e.start&&(e.level===`block`?t.startBlock?t.startBlock.push(e.start):t.startBlock=[e.start]:e.level===`inline`&&(t.startInline?t.startInline.push(e.start):t.startInline=[e.start]))}`childTokens`in e&&e.childTokens&&(t.childTokens[e.name]=e.childTokens)}),n.extensions=t),e.renderer){let t=this.defaults.renderer||new J(this.defaults);for(let n in e.renderer){if(!(n in t))throw Error(`renderer '${n}' does not exist`);if([`options`,`parser`].includes(n))continue;let r=n,i=e.renderer[r],a=t[r];t[r]=(...e)=>{let n=i.apply(t,e);return n===!1&&(n=a.apply(t,e)),n||``}}n.renderer=t}if(e.tokenizer){let t=this.defaults.tokenizer||new K(this.defaults);for(let n in e.tokenizer){if(!(n in t))throw Error(`tokenizer '${n}' does not exist`);if([`options`,`rules`,`lexer`].includes(n))continue;let r=n,i=e.tokenizer[r],a=t[r];t[r]=(...e)=>{let n=i.apply(t,e);return n===!1&&(n=a.apply(t,e)),n}}n.tokenizer=t}if(e.hooks){let t=this.defaults.hooks||new Z;for(let n in e.hooks){if(!(n in t))throw Error(`hook '${n}' does not exist`);if([`options`,`block`].includes(n))continue;let r=n,i=e.hooks[r],a=t[r];Z.passThroughHooks.has(n)?t[r]=e=>{if(this.defaults.async&&Z.passThroughHooksRespectAsync.has(n))return(async()=>{let n=await i.call(t,e);return a.call(t,n)})();let r=i.call(t,e);return a.call(t,r)}:t[r]=(...e)=>{if(this.defaults.async)return(async()=>{let n=await i.apply(t,e);return n===!1&&(n=await a.apply(t,e)),n})();let n=i.apply(t,e);return n===!1&&(n=a.apply(t,e)),n}}n.hooks=t}if(e.walkTokens){let t=this.defaults.walkTokens,r=e.walkTokens;n.walkTokens=function(e){let n=[];return n.push(r.call(this,e)),t&&(n=n.concat(t.call(this,e))),n}}this.defaults={...this.defaults,...n}}),this}setOptions(e){return this.defaults={...this.defaults,...e},this}lexer(e,t){return q.lex(e,t??this.defaults)}parser(e,t){return X.parse(e,t??this.defaults)}parseMarkdown(e){return(t,n)=>{let r={...n},i={...this.defaults,...r},a=this.onError(!!i.silent,!!i.async);if(this.defaults.async===!0&&r.async===!1)return a(Error(`marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise.`));if(typeof t>`u`||t===null)return a(Error(`marked(): input parameter is undefined or null`));if(typeof t!=`string`)return a(Error(`marked(): input parameter is of type `+Object.prototype.toString.call(t)+`, string expected`));if(i.hooks&&(i.hooks.options=i,i.hooks.block=e),i.async)return(async()=>{let n=i.hooks?await i.hooks.preprocess(t):t,r=await(i.hooks?await i.hooks.provideLexer():e?q.lex:q.lexInline)(n,i),a=i.hooks?await i.hooks.processAllTokens(r):r;i.walkTokens&&await Promise.all(this.walkTokens(a,i.walkTokens));let o=await(i.hooks?await i.hooks.provideParser():e?X.parse:X.parseInline)(a,i);return i.hooks?await i.hooks.postprocess(o):o})().catch(a);try{i.hooks&&(t=i.hooks.preprocess(t));let n=(i.hooks?i.hooks.provideLexer():e?q.lex:q.lexInline)(t,i);i.hooks&&(n=i.hooks.processAllTokens(n)),i.walkTokens&&this.walkTokens(n,i.walkTokens);let r=(i.hooks?i.hooks.provideParser():e?X.parse:X.parseInline)(n,i);return i.hooks&&(r=i.hooks.postprocess(r)),r}catch(e){return a(e)}}}onError(e,t){return n=>{if(n.message+=`
+Please report this to https://github.com/markedjs/marked.`,e){let e=`<p>An error occurred:</p><pre>`+V(n.message+``,!0)+`</pre>`;return t?Promise.resolve(e):e}if(t)return Promise.reject(n);throw n}}};function $(e,t){return Q.parse(e,t)}return $.options=$.setOptions=function(e){return Q.setOptions(e),$.defaults=Q.defaults,r($.defaults),$},$.getDefaults=t,$.defaults=n,$.use=function(...e){return Q.use(...e),$.defaults=Q.defaults,r($.defaults),$},$.walkTokens=function(e,t){return Q.walkTokens(e,t)},$.parseInline=Q.parseInline,$.Parser=X,$.parser=X.parse,$.Renderer=J,$.TextRenderer=Y,$.Lexer=q,$.lexer=q.lex,$.Tokenizer=K,$.Hooks=Z,$.parse=$,$.options,$.setOptions,$.use,$.walkTokens,$.parseInline,X.parse,q.lex,()=>{let t,n=null,r;function i(){if(n&&!n.closed)n.focus();else{if(n=window.open(`about:blank`,`reveal.js - Notes`,`width=1100,height=700`),n.marked=$,n.document.write(e),!n){alert(`Speaker view popup failed to open. Please make sure popups are allowed and reopen the speaker view.`);return}o()}}function a(e){n&&!n.closed?n.focus():(n=e,window.addEventListener(`message`,u),d())}function o(){let e=r.getConfig().url,i=typeof e==`string`?e:window.location.protocol+`//`+window.location.host+window.location.pathname+window.location.search;t=setInterval(function(){n.postMessage(JSON.stringify({namespace:`reveal-notes`,type:`connect`,state:r.getState(),url:i}),`*`)},500),window.addEventListener(`message`,u)}function s(e,t,i){let a=r[e].apply(r,t);n.postMessage(JSON.stringify({namespace:`reveal-notes`,type:`return`,result:a,callId:i}),`*`)}function c(e){let t=r.getCurrentSlide(),i=t.querySelectorAll(`aside.notes`),a=t.querySelector(`.current-fragment`),o={namespace:`reveal-notes`,type:`state`,notes:``,markdown:!1,whitespace:`normal`,state:r.getState()};if(t.hasAttribute(`data-notes`)&&(o.notes=t.getAttribute(`data-notes`),o.whitespace=`pre-wrap`),a){let e=a.querySelector(`aside.notes`);e?(o.notes=e.innerHTML,o.markdown=typeof e.getAttribute(`data-markdown`)==`string`,i=null):a.hasAttribute(`data-notes`)&&(o.notes=a.getAttribute(`data-notes`),o.whitespace=`pre-wrap`,i=null)}i&&i.length&&(i=Array.from(i).filter(e=>e.closest(`.fragment`)===null),o.notes=i.map(e=>e.innerHTML).join(`
+`),o.markdown=i[0]&&typeof i[0].getAttribute(`data-markdown`)==`string`),n.postMessage(JSON.stringify(o),`*`)}function l(e){try{return window.location.origin===e.source.location.origin}catch{return!1}}function u(e){if(l(e))try{let n=JSON.parse(e.data);n&&n.namespace===`reveal-notes`&&n.type===`connected`?(clearInterval(t),d()):n&&n.namespace===`reveal-notes`&&n.type===`call`&&s(n.methodName,n.arguments,n.callId)}catch{}}function d(){r.on(`slidechanged`,c),r.on(`fragmentshown`,c),r.on(`fragmenthidden`,c),r.on(`overviewhidden`,c),r.on(`overviewshown`,c),r.on(`paused`,c),r.on(`resumed`,c),r.on(`previewiframe`,c),r.on(`previewimage`,c),r.on(`previewvideo`,c),r.on(`closeoverlay`,c),c()}return{id:`notes`,init:function(e){r=e,/receiver/i.test(window.location.search)||(window.location.search.match(/(\?|\&)notes/gi)===null?window.addEventListener(`message`,e=>{if(!n&&typeof e.data==`string`){let t;try{t=JSON.parse(e.data)}catch{}t&&t.namespace===`reveal-notes`&&t.type===`heartbeat`&&a(e.source)}}):i(),r.addKeyBinding({keyCode:83,key:`S`,description:`Speaker notes view`},function(){i()}))},open:i}}});

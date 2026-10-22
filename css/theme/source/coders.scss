@@ -220,3 +220,8 @@ $selectionColor: #fff;
 .col {
     flex: 1;
 }
+
+// Keep slide backgrounds when exporting to PDF
+html.print-pdf .reveal .backgrounds {
+    display: block;
+}
